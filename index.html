@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キャリフレ × キャリフレセッション｜事業全体設計</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F0F8FA;
+  --fg: #071C22;
+  --primary: #2A9BB0;
+  --primary-dark: #1A6070;
+  --secondary: #C8E8F0;
+  --muted: #E4F2F6;
+  --muted-fg: #3A6878;
+  --white: #ffffff;
+  --radius: 0.75rem;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Manrope', 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.75;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; line-height: 1.3; }
+h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; }
+p { color: var(--muted-fg); }
+
+.container { max-width: 860px; margin: 0 auto; padding: 0 28px; }
+
+section { padding: 88px 0; }
+section.white { background: var(--white); }
+section.muted { background: var(--muted); }
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.divider { width: 36px; height: 2px; background: var(--primary); margin: 20px 0 28px; }
+
+.section-header { margin-bottom: 48px; }
+.section-header p { margin-top: 12px; font-size: 1rem; max-width: 560px; }
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  border: 1px solid var(--secondary);
+}
+
+.card-muted {
+  background: var(--muted);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+@media(max-width:640px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th {
+  background: var(--muted);
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-align: left;
+  padding: 11px 16px;
+}
+td { padding: 13px 16px; border-bottom: 1px solid var(--secondary); color: var(--fg); }
+tr:last-child td { border-bottom: none; }
+td:first-child { color: var(--muted-fg); font-size: 13px; }
+
+.tag {
+  display: inline-block;
+  background: var(--secondary);
+  color: var(--primary-dark);
+  padding: 3px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tag-outline {
+  display: inline-block;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 3px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.big-num {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.note-text {
+  font-size: 12px;
+  color: var(--muted-fg);
+  border-left: 2px solid var(--secondary);
+  padding-left: 12px;
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+.quote {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 500;
+  color: var(--primary-dark);
+  line-height: 1.9;
+  border-left: 3px solid var(--primary);
+  padding-left: 20px;
+  margin: 28px 0;
+}
+
+.flow-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.flow-box {
+  background: var(--white);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  min-width: 140px;
+  text-align: center;
+  flex: 1;
+}
+
+.flow-box h4 { font-size: 13px; color: var(--fg); }
+.flow-box p { font-size: 12px; margin-top: 4px; }
+.flow-arrow { color: var(--primary); font-size: 18px; flex-shrink: 0; }
+
+.step-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.step-num.muted {
+  background: var(--muted);
+  color: var(--muted-fg);
+}
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+}
+
+@media(max-width:600px) { .kpi-row { grid-template-columns: 1fr; } }
+
+.kpi-box {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  text-align: center;
+  border: 1px solid var(--secondary);
+}
+
+.kpi-box .small-label { font-size: 11px; color: var(--muted-fg); margin-top: 6px; letter-spacing: 0.05em; }
+
+.price-card {
+  background: var(--white);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 28px;
+  position: relative;
+}
+
+.price-card.featured { border-color: var(--primary); border-width: 2px; }
+
+.price-badge {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.price-num { font-size: 1.6rem; font-weight: 800; color: var(--fg); line-height: 1; }
+.price-sub { font-size: 12px; color: var(--muted-fg); margin-top: 6px; }
+.price-include { font-size: 11px; color: var(--primary); font-weight: 600; margin-top: 10px; }
+
+.highlight-box {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: var(--radius);
+  padding: 48px 40px;
+  text-align: center;
+  color: white;
+}
+
+.highlight-box h2 { color: white; }
+.highlight-box p { color: rgba(255,255,255,0.8); margin-top: 12px; font-size: 1rem; }
+
+.pl-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.pl-col {
+  padding: 24px 20px;
+  border-right: 1px solid var(--secondary);
+  text-align: center;
+}
+
+.pl-col:last-child { border-right: none; }
+.pl-col .pl-label { font-size: 11px; color: var(--muted-fg); letter-spacing: 0.06em; margin-bottom: 12px; font-weight: 600; }
+.pl-col .pl-num { font-size: 1.3rem; font-weight: 800; line-height: 1.2; }
+.pl-col.header { background: var(--muted); }
+.pl-col.header .pl-label { color: var(--primary-dark); font-size: 13px; font-weight: 700; margin-bottom: 0; }
+.pl-col.profit .pl-num { color: var(--primary); }
+.pl-col.loss .pl-num { color: #dc6b6b; }
+
+.dev-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--secondary);
+}
+.dev-row:last-child { border-bottom: none; }
+.dev-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--secondary);
+  border-radius: 100px;
+  padding: 2px 10px;
+  white-space: nowrap;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HERO -->
+<section style="padding: 100px 0 80px; background: linear-gradient(150deg, var(--bg) 0%, var(--secondary) 100%);">
+  <div class="container">
+    <span class="label">Business Design 2026</span>
+    <h1 style="line-height:1.2;">
+      <span style="color:var(--primary); font-weight:800; letter-spacing:0.04em; display:block;">キャリフレ</span>
+      <span style="display:flex; align-items:center; gap:12px; margin:10px 0; font-size:0.4em; font-weight:400; color:var(--muted-fg); letter-spacing:0.2em;">
+        <span style="flex:1; max-width:60px; height:1px; background:var(--muted-fg); opacity:0.3; display:inline-block;"></span>
+        ×
+        <span style="flex:1; max-width:60px; height:1px; background:var(--muted-fg); opacity:0.3; display:inline-block;"></span>
+      </span>
+      <span style="color:var(--primary); font-weight:800; letter-spacing:0.04em; display:block;">キャリフレセッション</span>
+    </h1>
+    <div class="divider"></div>
+    <p style="font-size:1.05rem; max-width:520px; line-height:1.9;">
+      プロダクトと対話の2軸で、<br>
+      キャリアの判断を一人で抱えない状態をつくる。
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ 一文定義 -->
+<section class="white">
+  <div class="container reveal">
+    <div class="highlight-box">
+      <h2 style="font-size:clamp(1.2rem,2.5vw,1.6rem); line-height:1.7;">
+        キャリフレは、内省の母艦。<br>
+        キャリフレセッションは、必要な深さだけ介入する対話。<br>
+        進むかどうかは、常に本人が決める。
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 事業構造 -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Business Structure</span>
+      <h2>事業の2軸構造</h2>
+      <div class="divider"></div>
+      <p>スケールする収益基盤と、高収益の対人支援を組み合わせる。</p>
+    </div>
+
+    <div class="grid-2 reveal">
+      <div class="card">
+        <span class="tag">プロダクト</span>
+        <h3 style="margin-top:16px; margin-bottom:8px;">キャリフレ</h3>
+        <p style="font-size:13px; margin-bottom:16px;">診断・日記・WCM・持ち味レポートで内省を記録・蓄積する母艦ツール</p>
+        <hr class="light">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; justify-content:space-between; font-size:13px;">
+            <span style="color:var(--muted-fg);">無料トライアル</span><strong>14日間（全機能）</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px;">
+            <span style="color:var(--muted-fg);">月額プラン</span><strong>¥980 / 月</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px;">
+            <span style="color:var(--muted-fg);">年額プラン</span><strong>¥9,800 / 年</strong>
+          </div>
+        </div>
+        <hr class="light">
+        <p style="font-size:12px;">スケール型収益。天井なし。</p>
+      </div>
+
+      <div class="card">
+        <span class="tag">人</span>
+        <h3 style="margin-top:16px; margin-bottom:8px;">キャリフレセッション</h3>
+        <p style="font-size:13px; margin-bottom:16px;">プロダクトで整理された状態を、対話でさらに深める高付加価値サービス</p>
+        <hr class="light">
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; font-size:13px;">
+            <span style="color:var(--muted-fg);">Level 1<br><span style="font-size:11px;">整理セッション・単発</span></span>
+            <div style="text-align:right;">
+              <strong>¥15,000</strong><br>
+              <span style="font-size:11px; color:hsl(var(--brand-amber));">先着10名 ¥10,000</span>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; font-size:13px;">
+            <span style="color:var(--muted-fg);">Level 2<br><span style="font-size:11px;">判断整理・4回パッケージ</span></span>
+            <div style="text-align:right;">
+              <strong>¥60,000</strong><br>
+              <span style="font-size:11px; color:var(--muted-fg);">実績期以降 ¥100,000</span>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; font-size:13px;">
+            <span style="color:var(--muted-fg);">Level 3<br><span style="font-size:11px;">継続サポート・月次</span></span>
+            <strong>¥20,000 / 月</strong>
+          </div>
+        </div>
+        <hr class="light">
+        <p style="font-size:12px;">高単価型収益。1on1。段階的に委託者追加。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ キャリフレを起点にする理由 -->
+<section class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Why キャリフレ First</span>
+      <h2>キャリフレを起点にする理由</h2>
+      <div class="divider"></div>
+      <p>無料相談ではなく、プロダクトを入り口にする。その判断の根拠。</p>
+    </div>
+
+    <div class="reveal" style="display:flex; flex-direction:column; gap:16px;">
+
+      <div class="card" style="display:flex; gap:20px; align-items:flex-start;">
+        <div style="min-width:36px; height:36px; border-radius:50%; background:hsl(var(--primary)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;">1</div>
+        <div>
+          <h4 style="margin-bottom:6px;">信頼の自動構築</h4>
+          <p style="font-size:13px; color:var(--muted-fg);">コーチが話す前に、プロダクトが14日間かけてユーザーの信頼を獲得する。無料相談は人が動かなければ信頼が生まれないが、プロダクトは24時間・何百人に対しても同時に機能する。</p>
+        </div>
+      </div>
+
+      <div class="card" style="display:flex; gap:20px; align-items:flex-start;">
+        <div style="min-width:36px; height:36px; border-radius:50%; background:hsl(var(--primary)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;">2</div>
+        <div>
+          <h4 style="margin-bottom:6px;">成約率の構造的な担保</h4>
+          <p style="font-size:13px; color:var(--muted-fg);">無料相談の来訪者は「買うか迷っている人」。14日使い込んだ人は「変わりたいという意欲」を行動で証明した人。セッションへの転換は説得ではなく、自然な次のステップになる。</p>
+        </div>
+      </div>
+
+      <div class="card" style="display:flex; gap:20px; align-items:flex-start;">
+        <div style="min-width:36px; height:36px; border-radius:50%; background:hsl(var(--primary)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;">3</div>
+        <div>
+          <h4 style="margin-bottom:6px;">セッション品質の向上</h4>
+          <p style="font-size:13px; color:var(--muted-fg);">診断・日記・WCM・持ち味レポートがセッション前に蓄積されている。「自己紹介・現状説明」の時間がゼロになり、初回から深い対話ができる。コーチは「聞き出す」ではなく「一緒に深める」モードで入れる。</p>
+        </div>
+      </div>
+
+      <div class="card" style="display:flex; gap:20px; align-items:flex-start;">
+        <div style="min-width:36px; height:36px; border-radius:50%; background:hsl(var(--primary)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;">4</div>
+        <div>
+          <h4 style="margin-bottom:6px;">労働集約の限界を超える</h4>
+          <p style="font-size:13px; color:var(--muted-fg);">セッション単体の事業は「時間 × 単価」でしか収益が伸びない。1人が対応できる件数には物理的な上限があり、稼働を増やすほどコストも増える。キャリフレがプロダクト側でスクリーニングし、コーチが関わるべき人・場面を絞り込むことで、稼働を「本当に効果が出る人」だけに集中できる。プロダクト収益は稼働ゼロで積み上がる。</p>
+        </div>
+      </div>
+
+      <div class="card" style="display:flex; gap:20px; align-items:flex-start;">
+        <div style="min-width:36px; height:36px; border-radius:50%; background:hsl(var(--primary)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;">5</div>
+        <div>
+          <h4 style="margin-bottom:6px;">利益構造の設計</h4>
+          <p style="font-size:13px; color:var(--muted-fg);">セッションは高単価だが時間コストも高い。サブスク（¥980/月）は追加ユーザーへの限界コストがほぼゼロで、マージン率が根本的に異なる。収益規模が上がるほど全体の利益率が改善する構造になっている。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ターゲット -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Target</span>
+      <h2>ターゲット顧客</h2>
+      <div class="divider"></div>
+      <p>「キャリアの正解が揺らぎ始めるタイミング」にいる人。</p>
+    </div>
+
+    <div class="grid-2 reveal">
+      <div class="card">
+        <span class="tag">メイン①</span>
+        <h3 style="margin-top:14px; margin-bottom:6px;">20代後半〜30代前半</h3>
+        <p style="font-size:13px; color:var(--primary-dark); font-weight:500; margin-bottom:12px;">モヤモヤ期・助走ゾーン</p>
+        <p style="font-size:13px;">JTC若手〜中堅層。将来不安が顕在化し始め、ライフイベントとのバランスに悩み始める層。今すぐ転職したいほどではないが、このままでいいとも言えない。</p>
+      </div>
+      <div class="card">
+        <span class="tag">メイン②</span>
+        <h3 style="margin-top:14px; margin-bottom:6px;">40代</h3>
+        <p style="font-size:13px; color:var(--primary-dark); font-weight:500; margin-bottom:12px;">人生の正午ゾーン・再定義期</p>
+        <p style="font-size:13px;">管理職・リーダー・専門職。実績と責任を持ちながら「この延長線でいいのか」という違和感が出始めた層。転職したいわけではなく、一度立ち止まって再定義したい。</p>
+      </div>
+    </div>
+
+    <div class="quote reveal" style="margin-top:32px;">
+      共通の本質ニーズ：正解を教えてほしいわけではない。<br>
+      「自分の判断を、自分で信じられる状態に戻りたい。」
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ユーザージャーニー -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">User Journey</span>
+      <h2>ユーザージャーニー全体像</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="reveal">
+      <div style="display:flex; flex-direction:column; gap:4px;">
+
+        <div class="card-muted" style="text-align:center;">
+          <span class="tag-outline">認知</span>
+          <p style="font-size:13px; margin-top:8px;">Instagram / X / note / メルマガ / LINE</p>
+          <p style="font-size:12px; margin-top:4px;">CTAはすべて「まず無料診断してみる」に統一</p>
+        </div>
+
+        <div style="text-align:center; color:var(--primary); font-size:22px; padding:4px 0;">↓</div>
+
+        <div class="card" style="border-left: 3px solid var(--primary);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <div>
+              <span class="tag">STEP 1</span>
+              <h3 style="margin-top:10px;">キャリフレ（プロダクト）</h3>
+              <p style="font-size:13px; margin-top:6px;">21日トライアル → 7日間アクティベーションフローで持ち味レポート生成まで到達させる</p>
+            </div>
+            <div style="text-align:right;">
+              <div class="price-num">¥0</div>
+              <div class="price-sub">21日間</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center; color:var(--primary); font-size:22px; padding:4px 0;">↓</div>
+
+        <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:center;">
+          <div class="card-muted" style="text-align:center;">
+            <p style="font-size:12px; color:var(--primary-dark); font-weight:600;">A｜一人で続けられる</p>
+            <p style="font-size:12px; margin-top:6px;">サブスク継続<br>¥980/月</p>
+          </div>
+          <div style="text-align:center; color:var(--muted-fg); font-size:20px;">or</div>
+          <div class="card-muted" style="text-align:center;">
+            <p style="font-size:12px; color:var(--primary-dark); font-weight:600;">B｜詰まった時</p>
+            <p style="font-size:12px; margin-top:6px;">キャリフレセッションへ<br>↓</p>
+          </div>
+        </div>
+
+        <div style="text-align:center; color:var(--primary); font-size:22px; padding:4px 0;">↓</div>
+
+        <div class="card" style="border-left: 3px solid var(--primary);">
+          <span class="tag">STEP 2</span>
+          <h3 style="margin-top:10px;">キャリフレセッション（人）</h3>
+          <p style="font-size:13px; margin-top:6px;">キャリフレで下準備された状態で対話に入る。Level 1 → 2 → 3 と状態に応じて深化。</p>
+        </div>
+
+        <div style="text-align:center; color:var(--primary); font-size:22px; padding:4px 0;">↓</div>
+
+        <div class="card-muted" style="text-align:center;">
+          <p style="font-size:13px; font-weight:600; color:var(--primary-dark);">キャリフレへ回帰・継続</p>
+          <p style="font-size:12px; margin-top:4px;">内省データが蓄積・自走できる状態。必要になれば再びセッションへ。</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ マーケティング -->
+<section class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Marketing</span>
+      <h2>マーケティング設計</h2>
+      <div class="divider"></div>
+      <p>有料広告はYear1では実施しない。SNS有機運用とアプリのシェア機能でバイラル獲得を目指す。</p>
+    </div>
+
+    <div class="reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>チャネル</th>
+            <th>役割</th>
+            <th>頻度・方針</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Instagram</td><td style="color:var(--fg);">共感・教育・流入</td><td style="color:var(--fg);">週4〜5投稿。キャリア迷子あるある、WCM解説</td></tr>
+          <tr><td>X（旧Twitter）</td><td style="color:var(--fg);">思考発信・拡散</td><td style="color:var(--fg);">毎日1〜2投稿。代表による価値観の発信</td></tr>
+          <tr><td>note</td><td style="color:var(--fg);">SEO・信頼形成</td><td style="color:var(--fg);">月2〜4本。WCM解説、自己分析テーマ</td></tr>
+          <tr><td>メルマガ</td><td style="color:var(--fg);">育成・転換</td><td style="color:var(--fg);">週1（月曜朝）。8週間ステップメール設計済み</td></tr>
+          <tr><td>LINE公式</td><td style="color:var(--fg);">リマインド・誘導</td><td style="color:var(--fg);">自動ステップ配信（登録〜90日後まで）</td></tr>
+          <tr><td>Facebook</td><td style="color:var(--fg);">繋がりあるネットワークへの直接発信</td><td style="color:var(--fg);">note更新時に連動（月2〜4回）。ローンチ時は一斉発信</td></tr>
+          <tr><td>リファラル</td><td style="color:var(--fg);">既存ユーザーからの紹介</td><td style="color:var(--fg);">紹介者：サブスク1ヶ月無料 / 被紹介者：トライアル延長。持ち味レポート生成直後に導線設置</td></tr>
+          <tr><td>アプリ内シェア</td><td style="color:var(--fg);">バイラル獲得</td><td style="color:var(--fg);">持ち味レポートをSNS画像としてエクスポート（開発予定）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note-text reveal">
+      ※ Year2以降、登録成長が想定を大きく下回った場合はnoteブースト（月3〜5万円）を検討する。
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ アクティベーション -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Activation</span>
+      <h2>アクティベーション設計</h2>
+      <div class="divider"></div>
+      <p>登録後7日以内に「持ち味レポート」を生成させることが最重要。これがキャリフレ最大のaha moment。14日トライアル終了時に1問だけ問い、状態に応じてサブスクまたはセッションへ誘導する。</p>
+    </div>
+
+    <div class="grid-2 reveal" style="margin-bottom:32px;">
+      <div>
+        <h3 style="margin-bottom:20px;">7日間オンボーディングフロー</h3>
+        <div class="step-row"><div class="step-num">0</div><div><strong style="font-size:14px;">診断完了・レーダーチャート表示</strong><p style="font-size:12px;">即時価値。登録直後にここまで届ける</p></div></div>
+        <div class="step-row"><div class="step-num">1</div><div><strong style="font-size:14px;">日記1件目（3行でいい）</strong><p style="font-size:12px;">低ハードルで最初の記録習慣をつくる</p></div></div>
+        <div class="step-row"><div class="step-num">3</div><div><strong style="font-size:14px;">AIフィードバック体験</strong><p style="font-size:12px;">2回目のaha。AIが返してくれる感動</p></div></div>
+        <div class="step-row"><div class="step-num">5</div><div><strong style="font-size:14px;">WCMシート入力開始</strong><p style="font-size:12px;">診断結果を見ながら書ける設計</p></div></div>
+        <div class="step-row"><div class="step-num" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));">7</div><div><strong style="font-size:14px; color:var(--primary);">WCM完成→持ち味レポート生成</strong><p style="font-size:12px;">最大のaha moment。ここまで必ず届ける</p></div></div>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom:20px;">リマインド通知スケジュール</h3>
+        <table>
+          <thead><tr><th>タイミング</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td>翌日</td><td style="color:var(--fg); font-size:13px;">日記への誘導</td></tr>
+            <tr><td>3日後</td><td style="color:var(--fg); font-size:13px;">持ち味レポートまであと〇ステップ</td></tr>
+            <tr><td>7日後</td><td style="color:var(--fg); font-size:13px;">持ち味レポート生成を促す</td></tr>
+            <tr><td>Day 12</td><td style="color:var(--fg); font-size:13px;">進捗サマリー表示（トライアル終了2日前予告）</td></tr>
+            <tr><td>Day 14</td><td style="color:var(--fg); font-size:13px;">1問診断 → 回答別導線に分岐（サブスク or Level 1）</td></tr>
+            <tr><td>30日後</td><td style="color:var(--fg); font-size:13px;">再診断誘導</td></tr>
+            <tr><td>90日後</td><td style="color:var(--fg); font-size:13px;">診断を一時解放（feature_flags活用）</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card reveal" style="border-left:3px solid var(--primary);">
+      <h4 style="margin-bottom:12px;">Day 14（トライアル終了）：1問だけ問う</h4>
+      <p style="font-size:13px; margin-bottom:16px;">ペイウォールを直接提示するのではなく、状態を本人に確認させる。ブランドと一致する設計。</p>
+      <div class="grid-3" style="gap:12px;">
+        <div class="card-muted" style="text-align:center;">
+          <p style="font-size:12px; font-weight:600; color:var(--primary-dark);">A：自分で整理できそう</p>
+          <p style="font-size:11px; margin-top:6px;">→ サブスクCTA</p>
+        </div>
+        <div class="card-muted" style="text-align:center;">
+          <p style="font-size:12px; font-weight:600; color:var(--primary-dark);">B：もう少し続けたい</p>
+          <p style="font-size:11px; margin-top:6px;">→ サブスクCTA</p>
+        </div>
+        <div class="card-muted" style="text-align:center; border:1px solid var(--primary);">
+          <p style="font-size:12px; font-weight:600; color:var(--primary);">C：誰かと話してみたい</p>
+          <p style="font-size:11px; margin-top:6px;">→ Level 1 セッションCTA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ セッションプログラム -->
+<section class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Session Program</span>
+      <h2>キャリフレセッション<br>プログラム設計</h2>
+      <div class="divider"></div>
+      <p>キャリフレで下準備した状態で対話に入るため、初回から本題に入れる。普通のコーチングより少ない回数で深くなる。</p>
+    </div>
+
+    <div class="grid-3 reveal">
+      <div class="price-card">
+        <span class="tag" style="font-size:11px;">Level 1</span>
+        <h3 style="margin:12px 0 6px;">整理セッション</h3>
+        <p style="font-size:12px; margin-bottom:16px;">詰まりを外に出す1時間</p>
+        <div class="price-num">¥15,000</div>
+        <div class="price-sub">1回 × 60分</div>
+        <div class="price-include">＋ キャリフレ 1ヶ月無料</div>
+        <div style="margin-top:8px; font-size:11px; background:hsl(var(--brand-amber-light)); color:hsl(var(--brand-amber)); padding:4px 10px; border-radius:20px; display:inline-block;">ローンチ記念・先着10名 ¥10,000</div>
+        <hr class="light">
+        <p style="font-size:12px; color:var(--fg);">「今、何に詰まっているか」が自分の言葉になる状態へ。答えを出す場ではない。</p>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-badge">コアプログラム</div>
+        <span class="tag" style="font-size:11px;">Level 2</span>
+        <h3 style="margin:12px 0 6px;">判断整理プログラム</h3>
+        <p style="font-size:12px; margin-bottom:16px;">テーマを決めて判断軸をつくる</p>
+        <div class="price-num">¥60,000〜</div>
+        <div class="price-sub">4回 × 60分（2ヶ月完結）</div>
+        <div class="price-include">＋ キャリフレ 期間中無料</div>
+        <hr class="light">
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;">
+          <span class="tag" style="font-size:10px;">転職</span>
+          <span class="tag" style="font-size:10px;">副業</span>
+          <span class="tag" style="font-size:10px;">ライフ</span>
+          <span class="tag" style="font-size:10px;">リーダー</span>
+          <span class="tag" style="font-size:10px;">若手</span>
+        </div>
+        <p style="font-size:12px; color:var(--fg);">「やる／やらない」の判断基準が自分の言葉になる。</p>
+      </div>
+
+      <div class="price-card">
+        <span class="tag" style="font-size:11px;">Level 3</span>
+        <h3 style="margin:12px 0 6px;">内省伴走</h3>
+        <p style="font-size:12px; margin-bottom:16px;">判断軸を持ち続ける</p>
+        <div class="price-num">¥20,000</div>
+        <div class="price-sub">月2回 × 60分（継続型）</div>
+        <div class="price-include">＋ キャリフレ 継続中無料</div>
+        <hr class="light">
+        <p style="font-size:12px; color:var(--fg);">Level 2修了者のみ。必要がなくなったら自然に卒業する。</p>
+      </div>
+    </div>
+
+    <div class="note-text reveal">
+      ※ なぜ有料か：転職エージェントはあなたが転職するほど報酬が増える。キャリフレセッションはあなたがどの選択をするかに関係なく料金が発生する。利益相反がない構造をつくるために有料にしている。
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 価格ロードマップ -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Pricing Roadmap</span>
+      <h2>価格ロードマップ</h2>
+      <div class="divider"></div>
+      <p>感覚で上げない。事例と需要の数字を見て段階的に引き上げる。</p>
+    </div>
+
+    <div class="reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>フェーズ</th>
+            <th>値上げ条件</th>
+            <th>Level 1</th>
+            <th>Level 2</th>
+            <th>Level 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--fg);">スタート期</strong></td>
+            <td style="color:var(--fg);">事例 0〜10件</td>
+            <td style="color:var(--fg);">¥15,000<br><span style="font-size:11px; color:hsl(var(--brand-amber));">先着10名 ¥10,000</span></td>
+            <td style="color:var(--fg);">¥60,000</td>
+            <td style="color:var(--fg);">¥20,000/月</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--fg);">実績期</strong></td>
+            <td style="color:var(--fg);">事例10件以上 ＋ 変化の声あり</td>
+            <td style="color:var(--fg);">¥15,000</td>
+            <td style="color:var(--fg);">¥100,000（¥25,000 × 4回）</td>
+            <td style="color:var(--fg);">¥25,000/月</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--fg);">ブランド確立期</strong></td>
+            <td style="color:var(--fg);">事例30件 ＋ 申込が供給を超えた</td>
+            <td style="color:var(--fg);">¥20,000</td>
+            <td style="color:var(--fg);">¥150,000〜200,000</td>
+            <td style="color:var(--fg);">¥30,000/月</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note-text reveal">
+      ※ 待ちが出ている状態が「今の価格が安すぎる」最も正当なサイン。需要が供給を超えたタイミングで値上げする。
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 業務委託 -->
+<section class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Organization</span>
+      <h2>業務委託設計（段階的）</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="reveal">
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div class="card" style="flex:1;">
+          <h4>スタート期：基本中村1人で担当</h4>
+          <p style="font-size:13px; margin-top:8px;">セッション品質＝ブランドの信頼。まず自分でやり切り事例を10件つくる。</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num muted">2</div>
+        <div class="card" style="flex:1; opacity:0.7;">
+          <h4>実績期：委託者1〜2名を追加（条件達成後）</h4>
+          <p style="font-size:13px; margin-top:8px;">条件：① 修了事例10件以上 ② メソッドの文書化完了 ③ 申込が1人で捌けない状態</p>
+          <hr class="light">
+          <p style="font-size:13px;"><strong>報酬：固定単価制</strong>　整理セッション ¥7,000/回　/　判断整理 ¥10,000/回</p>
+          <p class="note-text" style="margin-top:12px;">※ %モデルは現行価格では利益が薄い。価格が上がった実績期以降に検討（上限35〜40%相当）。</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num muted">3</div>
+        <div class="card" style="flex:1; opacity:0.5;">
+          <h4>ブランド確立期：複数名体制</h4>
+          <p style="font-size:13px; margin-top:8px;">固定単価＋継続率などの成果報酬を組み合わせる。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ローンチスケジュール -->
+<section class="muted">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Launch Schedule</span>
+      <h2>ローンチスケジュール</h2>
+      <div class="divider"></div>
+      <p>立夏・5月5日をローンチ日に定め、3フェーズで展開する。</p>
+    </div>
+
+    <div class="reveal">
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div class="card" style="flex:1;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+            <h3>準備期</h3>
+            <span class="tag">4月28日〜5月4日</span>
+          </div>
+          <p style="font-size:13px; margin-bottom:12px;">最低限の4点を整えて臨む。Instagram/X/noteはローンチ後に体制が整い次第本格稼働。</p>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">LP最低限の整備（CTA・セッション導線が機能する状態）← みっちー</span></div>
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">Stripe有効化・動作確認 ← 中村</span></div>
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">Facebookローンチ投稿文面の準備 ← 佐治さん・中村</span></div>
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">LINE配信設定 ← 中村</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-num" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));">2</div>
+        <div class="card" style="flex:1; border-color:var(--primary); border-width:2px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+            <h3>ソフトローンチ</h3>
+            <span class="tag" style="background:var(--primary); color:white;">5月5日（立夏）</span>
+          </div>
+          <p style="font-size:13px; margin-bottom:12px;">二十四節気・夏が立つ日。季節の節目に自分のキャリアを見つめ直す、というコンセプトと重なるローンチ日。</p>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">有料サブスク（¥980/月・¥9,800/年）を有効化</span></div>
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">Facebookローンチ発信</span></div>
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">メルマガ・LINE配信スタート</span></div>
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">Instagram・X・note本格投稿開始</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-num muted">3</div>
+        <div class="card" style="flex:1; opacity:0.8;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+            <h3>フルローンチ</h3>
+            <span class="tag">6月〜7月</span>
+          </div>
+          <p style="font-size:13px; margin-bottom:12px;">開発優先度P1〜P3が揃い次第、全チャネル本格稼働。</p>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--muted-fg);">—</span><span style="color:var(--fg);">SNSシェア機能リリース → 口コミ・SNS拡散による新規獲得開始</span></div>
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--muted-fg);">—</span><span style="color:var(--fg);">オンボーディングフロー完成・リマインドメール自動化</span></div>
+            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--muted-fg);">—</span><span style="color:var(--fg);">全マーケティングチャネル本格稼働</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 役割分担 -->
+<section class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Roles</span>
+      <h2>役割分担</h2>
+      <div class="divider"></div>
+      <p>ローンチ前後それぞれで、誰が何を担うかを明確にする。</p>
+    </div>
+
+    <div class="reveal">
+      <h3 style="margin-bottom:16px;">ローンチ前（〜5月4日）</h3>
+      <table>
+        <thead>
+          <tr><th>役割</th><th>担当</th><th>タスク</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>社長</td>
+            <td style="font-weight:700; color:var(--primary);">佐治さん</td>
+            <td style="font-size:13px;">ローンチ投稿の文面確認・Facebook/note素材提供</td>
+          </tr>
+          <tr>
+            <td>LP・事業管理</td>
+            <td style="font-weight:700; color:var(--primary);">みっちー</td>
+            <td style="font-size:13px;">LP更新（CTA・セッション導線・フロー説明）、KPIダッシュボード設計</td>
+          </tr>
+          <tr>
+            <td>アドミ・承認管理</td>
+            <td style="font-weight:700; color:var(--primary);">りさこさん</td>
+            <td style="font-size:13px;">Stripe承認フォロー・Apple Developer承認対応・各種アドミ</td>
+          </tr>
+          <tr>
+            <td>X運用（余力時）</td>
+            <td style="font-weight:700; color:var(--primary);">ゆうまくん</td>
+            <td style="font-size:13px;">既存note記事をXで発信・X運用の基本を習得</td>
+          </tr>
+          <tr>
+            <td>開発・実働責任者</td>
+            <td style="font-weight:700; color:var(--primary);">中村</td>
+            <td style="font-size:13px;">Stripe有効化・LINE/メルマガ設計・動作確認・セッション受付整備</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="reveal" style="margin-top:40px;">
+      <h3 style="margin-bottom:16px;">ローンチ後（5月5日〜）</h3>
+      <table>
+        <thead>
+          <tr><th>役割</th><th>担当</th><th>タスク</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>社長</td>
+            <td style="font-weight:700; color:var(--primary);">佐治さん</td>
+            <td style="font-size:13px;">note記事執筆（月1〜2本）・Facebook発信（note連動）</td>
+          </tr>
+          <tr>
+            <td>LP・事業管理</td>
+            <td style="font-weight:700; color:var(--primary);">みっちー</td>
+            <td style="font-size:13px;">LP改善・登録率/CV率モニタリング・事業計画の数値管理・月次レポート</td>
+          </tr>
+          <tr>
+            <td>SNS・コンテンツ運用</td>
+            <td style="font-weight:700; color:var(--primary);">りさこさん</td>
+            <td style="font-size:13px;">Instagram/X/LINE/メルマガ定期配信・コメント対応・各種アドミ継続</td>
+          </tr>
+          <tr>
+            <td>X運用（余力時）</td>
+            <td style="font-weight:700; color:var(--primary);">ゆうまくん</td>
+            <td style="font-size:13px;">佐治さんのnote記事をX投稿・自分のコメントを添えて発信。自身の投稿も随時。</td>
+          </tr>
+          <tr>
+            <td>開発・実働責任者</td>
+            <td style="font-weight:700; color:var(--primary);">中村</td>
+            <td style="font-size:13px;">セッション実施・キャリフレ機能開発・LINE/メルマガ設計・データ分析</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ 3年事業計画 -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Business Plan</span>
+      <h2>3年事業計画</h2>
+      <div class="divider"></div>
+      <p>Year1 = ローンチ後12ヶ月（2026年5月〜2027年4月）。カレンダー年ではなく事業年として読む。</p>
+    </div>
+
+    <!-- P&L Summary -->
+    <div class="reveal" style="margin-bottom:40px;">
+      <div class="pl-row">
+        <div class="pl-col header"><div class="pl-label">項目</div></div>
+        <div class="pl-col header"><div class="pl-label">Year 1<br><span style="font-weight:400; font-size:10px;">〜2027.4</span></div></div>
+        <div class="pl-col header"><div class="pl-label">Year 2<br><span style="font-weight:400; font-size:10px;">〜2028.4</span></div></div>
+        <div class="pl-col header"><div class="pl-label">Year 3<br><span style="font-weight:400; font-size:10px;">〜2029.4</span></div></div>
+      </div>
+      <div class="pl-row" style="border-top:none;">
+        <div class="pl-col header"><div class="pl-label" style="font-size:12px; margin:0;">売上</div></div>
+        <div class="pl-col"><div class="pl-num">284万</div></div>
+        <div class="pl-col"><div class="pl-num">1,390万</div></div>
+        <div class="pl-col"><div class="pl-num">2,810万</div></div>
+      </div>
+      <div class="pl-row" style="border-top:none;">
+        <div class="pl-col header"><div class="pl-label" style="font-size:12px; margin:0;">費用</div></div>
+        <div class="pl-col"><div class="pl-num" style="color:var(--muted-fg);">622万</div></div>
+        <div class="pl-col"><div class="pl-num" style="color:var(--muted-fg);">1,184万</div></div>
+        <div class="pl-col"><div class="pl-num" style="color:var(--muted-fg);">2,034万</div></div>
+      </div>
+      <div class="pl-row" style="border-top:none;">
+        <div class="pl-col header"><div class="pl-label" style="font-size:12px; margin:0; color:var(--primary-dark);">営業損益</div></div>
+        <div class="pl-col loss"><div class="pl-num">▲338万</div></div>
+        <div class="pl-col profit"><div class="pl-num">+206万</div></div>
+        <div class="pl-col profit"><div class="pl-num">+776万</div></div>
+      </div>
+    </div>
+
+    <!-- Year 1 Q別 -->
+    <div class="reveal">
+      <h3 style="margin-bottom:16px;">Year 1：Q別詳細</h3>
+      <table>
+        <thead>
+          <tr><th></th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>年計</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>有料会員（平均）</td><td style="color:var(--fg);">10名</td><td style="color:var(--fg);">25名</td><td style="color:var(--fg);">60名</td><td style="color:var(--fg);">130名</td><td style="color:var(--fg);"></td></tr>
+          <tr><td>サブスク収益</td><td style="color:var(--fg);">3万</td><td style="color:var(--fg);">7万</td><td style="color:var(--fg);">17万</td><td style="color:var(--fg);">37万</td><td style="color:var(--fg); font-weight:700;">64万</td></tr>
+          <tr><td>セッション収益</td><td style="color:var(--fg);">15万</td><td style="color:var(--fg);">42万</td><td style="color:var(--fg);">69万</td><td style="color:var(--fg);">94万</td><td style="color:var(--fg); font-weight:700;">220万</td></tr>
+          <tr><td>売上合計</td><td style="color:var(--fg); font-weight:700;">18万</td><td style="color:var(--fg); font-weight:700;">49万</td><td style="color:var(--fg); font-weight:700;">86万</td><td style="color:var(--fg); font-weight:700;">131万</td><td style="color:var(--primary); font-weight:800;">284万</td></tr>
+          <tr><td>費用合計</td><td style="color:var(--fg);">148万</td><td style="color:var(--fg);">152万</td><td style="color:var(--fg);">159万</td><td style="color:var(--fg);">163万</td><td style="color:var(--fg); font-weight:700;">622万</td></tr>
+          <tr><td>営業損益</td><td style="color:#dc6b6b; font-weight:700;">▲130万</td><td style="color:#dc6b6b; font-weight:700;">▲103万</td><td style="color:#dc6b6b; font-weight:700;">▲73万</td><td style="color:#dc6b6b; font-weight:700;">▲32万</td><td style="color:#dc6b6b; font-weight:800;">▲338万</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Year 1 費用内訳 -->
+    <div class="reveal" style="margin-top:32px;">
+      <h3 style="margin-bottom:16px;">Year 1：費用内訳</h3>
+      <table>
+        <thead>
+          <tr><th>項目</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>年計</th><th>月換算</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>人件費（合計）</td><td>120万</td><td>120万</td><td>120万</td><td>120万</td><td style="font-weight:700;">480万</td><td style="color:var(--muted-fg);">40万/月</td></tr>
+          <tr><td>インフラ・ツール</td><td>12万</td><td>12万</td><td>15万</td><td>15万</td><td style="font-weight:700;">54万</td><td style="color:var(--muted-fg);">4〜5万/月</td></tr>
+          <tr><td>マーケティング</td><td>9万</td><td>12万</td><td>15万</td><td>18万</td><td style="font-weight:700;">54万</td><td style="color:var(--muted-fg);">3〜6万/月</td></tr>
+          <tr><td>Stripe手数料</td><td>1万</td><td>2万</td><td>3万</td><td>4万</td><td style="font-weight:700;">10万</td><td style="color:var(--muted-fg);">変動</td></tr>
+          <tr><td>雑費</td><td>6万</td><td>6万</td><td>6万</td><td>6万</td><td style="font-weight:700;">24万</td><td style="color:var(--muted-fg);">2万/月</td></tr>
+          <tr style="background:hsl(var(--secondary)/0.4);"><td style="font-weight:700;">費用合計</td><td style="font-weight:700;">148万</td><td style="font-weight:700;">152万</td><td style="font-weight:700;">159万</td><td style="font-weight:700;">163万</td><td style="color:var(--primary); font-weight:800;">622万</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 黒字化の鍵 -->
+    <div class="kpi-row reveal" style="margin-top:40px;">
+      <div class="kpi-box">
+        <div class="big-num">350名</div>
+        <div class="small-label">Year2黒字化に必要な有料会員数</div>
+      </div>
+      <div class="kpi-box">
+        <div class="big-num">10件</div>
+        <div class="small-label">Level 2価格改定（¥90,000）の条件となる事例数</div>
+      </div>
+      <div class="kpi-box">
+        <div class="big-num">400万</div>
+        <div class="small-label">Year1を乗り越えるために必要なランウェイ目安</div>
+      </div>
+    </div>
+
+    <div class="note-text reveal">
+      ※ 本計画は現時点の前提条件に基づく試算。市場環境・獲得速度により変動する。<br>
+      ※ Year1の赤字はスタートアップとして想定内の水準。<br>
+      ※ 業務委託者の追加はQ3以降・条件達成後に段階的に実施。
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 開発優先度 -->
+<section class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Development Agenda</span>
+      <h2>開発優先度</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="reveal">
+      <div class="dev-row">
+        <div class="dev-num">P1 最優先</div>
+        <div>
+          <h4>SNSシェア機能（持ち味レポート・WCM・診断結果）</h4>
+          <p style="font-size:13px; margin-top:4px;">アプリ自体を広告にする唯一の手段。有料広告に依存しない口コミ・SNS拡散による新規獲得の基盤。1080×1080px画像エクスポート＋UTM計測。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">P2</div>
+        <div>
+          <h4>7日間オンボーディングフロー（進捗表示・持ち味レポートまでの残ステップ表示）</h4>
+          <p style="font-size:13px; margin-top:4px;">アクティベーション率が全体の前提条件。完成前のレポートをぼかして見せる設計を含む。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">P3</div>
+        <div>
+          <h4>リマインドメール自動送信（Day1・3・7・12・21）</h4>
+          <p style="font-size:13px; margin-top:4px;">トライアル期間中の離脱を防ぐ。Day21に1問診断＋回答別導線の分岐を含む。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">P4</div>
+        <div>
+          <h4>セッション者との情報共有動線の整備</h4>
+          <p style="font-size:13px; margin-top:4px;">セッション前にキャリフレのデータ（診断結果・WCM・持ち味レポート等）をコーチと参加者が確認できる導線をよりスムーズにできるよう整える。初回セッションから深い対話に入るための前提条件。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">P5</div>
+        <div>
+          <h4>キャリフレセッション誘導（プロダクト内3箇所）</h4>
+          <p style="font-size:13px; margin-top:4px;">持ち味レポート生成直後・WCM完成時・日記30件達成時。文脈のある提案として配置。押しつけない設計。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">P6</div>
+        <div>
+          <h4>リファラル機能（紹介プログラム）</h4>
+          <p style="font-size:13px; margin-top:4px;">紹介者：サブスク1ヶ月無料 / 被紹介者：トライアル延長。持ち味レポート生成直後に導線設置。紹介URLの発行・報酬の自動付与が必要。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">P7</div>
+        <div>
+          <h4>LINE登録時の公式アカウント友達追加誘導</h4>
+          <p style="font-size:13px; margin-top:4px;">ステップ配信の精度向上。新規登録完了後のフローに組み込む。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER -->
+<footer>
+  <div class="container">
+    <p style="color:rgba(255,255,255,0.4); font-size:13px;">キャリフレ × キャリフレセッション　事業全体設計　2026</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
