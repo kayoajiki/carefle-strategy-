@@ -1500,97 +1500,105 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
     </div>
 
     <div class="reveal">
-      <div class="dev-row">
-        <div class="dev-num">P1</div>
-        <div>
-          <h4>SNSシェア機能（持ち味レポート・WCM・診断結果）</h4>
-          <p style="font-size:13px; margin-top:4px;">アプリ自体を広告にする唯一の手段。有料広告に依存しない口コミ・SNS拡散による新規獲得の基盤。1080×1080px画像エクスポート＋UTM計測。</p>
-        </div>
+      <div class="card-muted" style="margin-bottom:18px;">
+        <p style="font-size:12px;"><strong>優先実行順（現時点）：</strong> まずは <strong>7日試用で核体感を成立</strong>させる機能（P3/P4/P7/P6）を先行し、その後に獲得効率（P2/P1/P13）、継続深化（P5/P8/P11/P10）、中期拡張（P9/P12）へ進む。</p>
       </div>
-      <div class="dev-row">
-        <div class="dev-num">P2</div>
-        <div>
-          <h4>ログインなし診断フロー（登録前お試し体験）</h4>
-          <p style="font-size:13px; margin-top:4px;">「重そう」という第一印象を解消する最優先施策。アカウント作成なしで職業満足度診断を1回体験でき、結果表示後に登録を促す。初回の離脱ポイントを登録前に前倒しして取り除く。</p>
-        </div>
-      </div>
+
       <div class="dev-row">
         <div class="dev-num">P3</div>
         <div>
           <h4>オンボーディングフロー（進捗表示・持ち味レポートまでの残ステップ）</h4>
-          <p style="font-size:13px; margin-top:4px;">アクティベーション率が全体の前提条件。ここの品質がプロダクト起点モデルの成否を決める。完成前のレポートをぼかして見せる設計・最初の一歩を最小化する導線設計を含む。</p>
+          <p style="font-size:13px; margin-top:4px;">7日試用で体感の核（診断→取説→日記FB→持ち味初版）を落とし切る最重要施策。最初の一歩の軽さ、残ステップの見せ方、離脱復帰導線を中心に設計する。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">P4</div>
         <div>
           <h4>持ち味レポート即時生成（診断・MBTI入力完了時点で初版出力）</h4>
-          <p style="font-size:13px; margin-top:4px;">7日間待たずに「自分のレポートが出た」体験を登録直後に提供する。情報が増えるほどレポートがリッチになる設計で、追加入力のインセンティブを生む。現状の「7日後生成」から「最低限入力→即出力」へ設計を刷新。</p>
-        </div>
-      </div>
-      <div class="dev-row">
-        <div class="dev-num">P5</div>
-        <div>
-          <h4>人生史入力の設問ブレイクダウン（白紙入力からの脱却）</h4>
-          <p style="font-size:13px; margin-top:4px;">「人生史を書いてください」という白紙入力を廃止。「価値観形成に影響した出来事を2つ書く」など具体的な設問に分解し、入力ハードルを大幅に下げる。入力内容がそのまま持ち味レポートに反映され、「書くほど自分のことがわかる」体験を作る。</p>
-        </div>
-      </div>
-      <div class="dev-row">
-        <div class="dev-num">P6</div>
-        <div>
-          <h4>「当たってる」フィードバックループの設計</h4>
-          <p style="font-size:13px; margin-top:4px;">入力するたびにレポートや診断結果がリアルタイムで更新され、「これ合ってる」と感じさせる即時フィードバックを返す仕組み。この「当たってる感」がさらに入力するモチベーションになり、オンボーディング期間中の離脱を防ぐ。</p>
+          <p style="font-size:13px; margin-top:4px;">「7日待つ」体験をやめ、登録直後に薄い初版を返す。入力が増えるほどレポートがリッチ化する設計で、継続入力の動機を作る。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">P7</div>
         <div>
           <h4>リマインドメール自動送信（Day1・3・5・7＋入会記念）</h4>
-          <p style="font-size:13px; margin-top:4px;">トライアル期間中の離脱を防ぐ。試用終了（7日時点）に1問診断＋回答別導線。サインアップ翌月同日の記念レポートとは別トリガで設計。</p>
+          <p style="font-size:13px; margin-top:4px;">試用期間中の離脱を防ぐ。Day7で1問診断→回答別導線（サブスク/セッション）を実施し、翌月同日の記念レポートは別トリガで運用する。</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">P8</div>
+        <div class="dev-num">P6</div>
         <div>
-          <h4>AI問い自動生成（過去ログ×AI → パーソナライズされた問い提案）</h4>
-          <p style="font-size:13px; margin-top:4px;">日記・診断・WCMの蓄積データをもとに、今その人に最も刺さる問いをAIが自動生成。「今日何を書くか迷う」を解消し、継続率・日記記入頻度を向上させる。</p>
+          <h4>「当たってる」フィードバックループの設計</h4>
+          <p style="font-size:13px; margin-top:4px;">入力のたびに「合ってる感」を返す即時フィードバックを実装。オンボーディング中の納得感と再訪率の底上げに直結させる。</p>
+        </div>
+      </div>
+
+      <div class="dev-row">
+        <div class="dev-num">P2</div>
+        <div>
+          <h4>ログインなし診断フロー（登録前お試し体験）</h4>
+          <p style="font-size:13px; margin-top:4px;">「重そう」という第一印象を解消し、登録前離脱を減らす。診断体験後にアカウント作成へ滑らかに接続する。</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">P9</div>
+        <div class="dev-num">P1</div>
         <div>
-          <h4>書類アップロード → 人生史自動生成（履歴書・職務経歴書）</h4>
-          <p style="font-size:13px; margin-top:4px;">登録直後の人生史入力コストを大幅削減。履歴書・職務経歴書をアップロードするだけでAIが人生史の骨格を生成し、編集・肉付けするフローに切り替える。初期離脱の第二の関門を撤去。</p>
-        </div>
-      </div>
-      <div class="dev-row">
-        <div class="dev-num">P10</div>
-        <div>
-          <h4>セッション者との情報共有動線の整備</h4>
-          <p style="font-size:13px; margin-top:4px;">セッション前にキャリフレのデータ（診断結果・WCM・持ち味レポート等）をコーチと参加者が確認できる導線をよりスムーズにできるよう整える。初回セッションから深い対話に入るための前提条件。</p>
-        </div>
-      </div>
-      <div class="dev-row">
-        <div class="dev-num">P11</div>
-        <div>
-          <h4>キャリフレセッション誘導（プロダクト内3箇所）</h4>
-          <p style="font-size:13px; margin-top:4px;">持ち味レポート生成直後・WCM完成時・日記30件達成時。文脈のある提案として配置。押しつけない設計。</p>
-        </div>
-      </div>
-      <div class="dev-row">
-        <div class="dev-num">P12</div>
-        <div>
-          <h4>リファラル機能（紹介プログラム）</h4>
-          <p style="font-size:13px; margin-top:4px;">紹介者：サブスク1ヶ月無料 / 被紹介者：トライアル延長。持ち味レポート生成直後に導線設置。紹介URLの発行・報酬の自動付与が必要。</p>
+          <h4>SNSシェア機能（持ち味レポート・WCM・診断結果）</h4>
+          <p style="font-size:13px; margin-top:4px;">有機獲得を伸ばす主要手段。1080×1080画像エクスポートとUTM計測で、口コミと流入効率を可視化する。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">P13</div>
         <div>
           <h4>LINE登録時の公式アカウント友達追加誘導</h4>
-          <p style="font-size:13px; margin-top:4px;">ステップ配信の精度向上。新規登録完了後のフローに組み込む。</p>
+          <p style="font-size:13px; margin-top:4px;">ステップ配信の到達率を高める。新規登録完了フロー内で、迷わず友だち追加できる導線を整える。</p>
         </div>
       </div>
+
+      <div class="dev-row">
+        <div class="dev-num">P5</div>
+        <div>
+          <h4>人生史入力の設問ブレイクダウン（白紙入力からの脱却）</h4>
+          <p style="font-size:13px; margin-top:4px;">白紙入力を廃止し、具体設問に分解。書くほど持ち味レポートが深くなるループをつくり、満足度を上げる。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">P8</div>
+        <div>
+          <h4>AI問い自動生成（過去ログ×AI → パーソナライズされた問い提案）</h4>
+          <p style="font-size:13px; margin-top:4px;">「何を書けばいいかわからない」を解消。蓄積ログに基づく問いで日記継続率を引き上げる。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">P11</div>
+        <div>
+          <h4>キャリフレセッション誘導（プロダクト内3箇所）</h4>
+          <p style="font-size:13px; margin-top:4px;">持ち味直後・WCM完了・日記30件達成時など文脈のある提案で実装。希望者を広く受け入れる方針のまま、押しつけない表示条件に最適化する。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">P10</div>
+        <div>
+          <h4>セッション者との情報共有動線の整備</h4>
+          <p style="font-size:13px; margin-top:4px;">セッション前に診断・WCM・持ち味を双方が確認できる導線を整え、初回から本題に入れる状態を作る。</p>
+        </div>
+      </div>
+
+      <div class="dev-row">
+        <div class="dev-num">P9</div>
+        <div>
+          <h4>書類アップロード → 人生史自動生成（履歴書・職務経歴書）</h4>
+          <p style="font-size:13px; margin-top:4px;">入力コストを大幅に下げる中期拡張。履歴書/職務経歴書から骨格を生成し、編集型フローへ移行する。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">P12</div>
+        <div>
+          <h4>リファラル機能（紹介プログラム）</h4>
+          <p style="font-size:13px; margin-top:4px;">紹介者：サブスク1ヶ月無料 / 被紹介者：試用延長で継続。持ち味レポート直後の導線と、紹介URL・報酬自動付与を実装する。</p>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </section>
