@@ -17,6 +17,8 @@
   --muted-fg: #3A6878;
   --white: #ffffff;
   --radius: 0.75rem;
+  --brand-amber: #b8752a;
+  --brand-amber-light: #fdf6ea;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -290,6 +292,108 @@ td:first-child { color: var(--muted-fg); font-size: 13px; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0; }
+
+/* ── Experience & Revenue Story セクション ── */
+.priority-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 28px 0 8px;
+}
+.priority-pills span {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 100px;
+  background: var(--secondary);
+  color: var(--primary-dark);
+}
+.priority-pills span:nth-child(1) { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; }
+
+.story-intro p { margin-bottom: 14px; font-size: 14px; }
+
+.diagram-svg {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  margin: 28px auto 8px;
+  filter: drop-shadow(0 8px 24px rgba(26, 96, 112, 0.08));
+}
+
+.diagram-caption {
+  font-size: 12px;
+  color: var(--muted-fg);
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 36px;
+  line-height: 1.85;
+}
+
+.gift-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 24px;
+}
+@media (max-width: 720px) {
+  .gift-split { grid-template-columns: 1fr; }
+}
+.gift-box {
+  background: var(--white);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 24px;
+  position: relative;
+}
+.gift-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 24px; right: 24px;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+}
+.gift-box.a::before { background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+.gift-box.b::before { background: linear-gradient(90deg, var(--primary-dark), var(--primary)); }
+.gift-box h4 { font-size: 14px; color: var(--primary-dark); margin-bottom: 10px; }
+.gift-box ul { margin: 0; padding-left: 1.1em; font-size: 13px; color: var(--muted-fg); }
+.gift-box li { margin-bottom: 6px; }
+
+.freemap {
+  margin-top: 28px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--secondary);
+}
+.freemap-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--muted);
+}
+.freemap-header div {
+  padding: 12px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--primary-dark);
+}
+.freemap-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--secondary);
+}
+.freemap-row div {
+  padding: 14px 18px;
+  font-size: 13px;
+}
+.freemap-row:nth-child(even) { background: rgba(200,232,240, 0.25); }
+.freemap .ok { color: var(--primary-dark); font-weight: 600; }
+.freemap .lock { color: var(--muted-fg); }
+@media (max-width: 560px) {
+  .freemap-header, .freemap-row { grid-template-columns: 1fr; }
+  .freemap-header div:first-child,
+  .freemap-row div:first-child { border-bottom: 1px solid var(--secondary); font-size: 11px; background: var(--muted); padding: 10px 18px 4px; }
+}
 </style>
 </head>
 <body>
@@ -346,7 +450,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
         <hr class="light">
         <div style="display:flex; flex-direction:column; gap:8px;">
           <div style="display:flex; justify-content:space-between; font-size:13px;">
-            <span style="color:var(--muted-fg);">無料トライアル</span><strong>14日間（全機能）</strong>
+            <span style="color:var(--muted-fg);">無料トライアル</span><strong>7日間（全機能）</strong>
           </div>
           <div style="display:flex; justify-content:space-between; font-size:13px;">
             <span style="color:var(--muted-fg);">月額プラン</span><strong>¥980 / 月</strong>
@@ -369,7 +473,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
             <span style="color:var(--muted-fg);">Level 1<br><span style="font-size:11px;">整理セッション・単発</span></span>
             <div style="text-align:right;">
               <strong>¥15,000</strong><br>
-              <span style="font-size:11px; color:hsl(var(--brand-amber));">先着10名 ¥10,000</span>
+              <span style="font-size:11px; color:var(--brand-amber);">先着10名 ¥10,000</span>
             </div>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:flex-start; font-size:13px;">
@@ -407,7 +511,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
         <div style="min-width:36px; height:36px; border-radius:50%; background:hsl(var(--primary)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;">1</div>
         <div>
           <h4 style="margin-bottom:6px;">信頼の自動構築</h4>
-          <p style="font-size:13px; color:var(--muted-fg);">コーチが話す前に、プロダクトが14日間かけてユーザーの信頼を獲得する。無料相談は人が動かなければ信頼が生まれないが、プロダクトは24時間・何百人に対しても同時に機能する。</p>
+          <p style="font-size:13px; color:var(--muted-fg);">コーチが話す前に、プロダクトが7日間など短期の試用を通じて信頼の芽を自動で育てられる。無料相談は人が動かなければ信頼が生まれないが、プロダクトは24時間・何百人に対しても同時に機能する。</p>
         </div>
       </div>
 
@@ -415,7 +519,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
         <div style="min-width:36px; height:36px; border-radius:50%; background:hsl(var(--primary)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;">2</div>
         <div>
           <h4 style="margin-bottom:6px;">成約率の構造的な担保</h4>
-          <p style="font-size:13px; color:var(--muted-fg);">無料相談の来訪者は「買うか迷っている人」。14日使い込んだ人は「変わりたいという意欲」を行動で証明した人。セッションへの転換は説得ではなく、自然な次のステップになる。</p>
+          <p style="font-size:13px; color:var(--muted-fg);">無料相談の来訪者は「買うか迷っている人」。試用を通じてプロダクトに触れた人は、「変わりたい意欲」をログと行動で示した状態に寄っていける。セッションへの転換は説得ではなく、自然な次のステップになる。</p>
         </div>
       </div>
 
@@ -455,6 +559,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <h2>3シナリオ比較</h2>
       <div class="divider"></div>
       <p>入り口設計の違いが、3年間でどう損益に影響するか。</p>
+      <p class="note-text" style="margin-top:16px;">※ 試用日数を7日に変更した場合、下表の試算とは前提が異なる。<a href="#experience-revenue-story" style="color:var(--primary-dark); font-weight:600;">「収益化ストーリー」節</a>との整合レビューを推奨。</p>
     </div>
 
     <!-- シナリオ説明 -->
@@ -467,7 +572,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <div class="card" style="border-top:3px solid #2A9BB0;">
         <span class="tag" style="background:#d4eef5; color:#2A9BB0;">B</span>
         <h4 style="margin:12px 0 6px;">プロダクトのみ（推奨）</h4>
-        <p style="font-size:12px; color:var(--muted-fg);">キャリフレ14日トライアルが入り口。転換率8%だが質が高い。時間コストゼロ。</p>
+        <p style="font-size:12px; color:var(--muted-fg);">キャリフレの試用が入り口（現資料の試算は14日試用前提。※7日への変更時は転換・継続仮説の再モデリング）。転換率8%だが質が高い。時間コストゼロ。</p>
       </div>
       <div class="card" style="border-top:3px solid #E8973A;">
         <span class="tag" style="background:#fdf0e0; color:#E8973A;">C</span>
@@ -655,6 +760,174 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
   </div>
 </section>
 
+<!-- ============================================================ 体験戦略〜収益化ストーリー（2026 合意ドラフト） -->
+<section class="white" id="experience-revenue-story">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Experience & Revenue Story</span>
+      <h2>内省プロダクトを起点とした収益化ストーリー</h2>
+      <div class="divider"></div>
+      <p>試用7日／サインアップ日基点の記念レポート／累積ギフトという「運用できる約束」を、一枚の物語として可視化する。</p>
+    </div>
+
+    <div class="priority-pills reveal">
+      <span>① サブスク（MRR）最優先</span>
+      <span>③ 継続・習慣の土台</span>
+      <span>② セッションはオプション高単価</span>
+    </div>
+    <p class="note-text reveal" style="margin-top:0;">優先順位は <strong>MRR → 続けて戻ってくる人が増えること → セッション</strong>。セッションは「人と話したい」がある方を広く迎えるスタンスだが、主軸の売上モデルとは切り離して設計する。</p>
+
+    <div class="story-intro reveal">
+      <p>Cheapでスケールする<strong>キャリフレ（記録・内省）</strong>を母艦とし、利用者が<strong>自分で続ける意思</strong>を持ったタイミングで<strong>¥980級のサブスク</strong>に進んでもらう。対人の<strong>キャリフレセッション</strong>は、プロダクトで整理できた状態を深掘りするレイヤとして接続する。</p>
+      <p><strong>習慣の目指す像：</strong>毎日開いてくれることが理想。また現実には、およそ<strong>3日に1回はプロダクトに戻れる</strong>ユーザーを増やすことを主要指標側のイメージに置く。</p>
+      <p><strong>課金トリガーの主戦場：</strong>試用の<strong>終了・終了間際</strong>における機能・体験の「なくなる」感覚。補助的に、「もっと入力したい」「日記FBが楽しい」「問いにも答えたい」という<strong>体験の蓄積</strong>を重ねる。</p>
+    </div>
+
+    <!-- メインフロー図 -->
+    <figure class="reveal">
+      <svg class="diagram-svg" viewBox="0 0 920 340" xmlns="http://www.w3.org/2000/svg" aria-labelledby="diagram1-title diagram1-desc" role="img">
+        <title id="diagram1-title">認知から課金・継続までの主要フロー</title>
+        <desc id="diagram1-desc">認知から課金、無料復帰、セッション分岐への流れ</desc>
+        <defs>
+          <linearGradient id="sf-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#E4F2F6"/>
+            <stop offset="100%" style="stop-color:#ffffff"/>
+          </linearGradient>
+          <filter id="sf-shadow"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1a6070" flood-opacity=".12"/></filter>
+          <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0 8 3 0 6" fill="#2A9BB0"/></marker>
+        </defs>
+        <!-- 上流 -->
+        <rect x="20" y="40" rx="14" ry="14" width="150" height="88" fill="url(#sf-grad1)" stroke="#C8E8F0" stroke-width="1.5" filter="url(#sf-shadow)"/>
+        <text x="95" y="78" text-anchor="middle" fill="#071C22" font-size="13" font-weight="700" font-family="Noto Sans JP, sans-serif">認知〜診断導線</text>
+        <text x="95" y="100" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">CTA統一：</text>
+        <text x="95" y="116" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">「まず無料診断」</text>
+
+        <path d="M 185 84 L 210 84" stroke="#2A9BB0" stroke-width="3" marker-end="url(#ar)"/>
+        <!-- 試用 -->
+        <rect x="210" y="28" rx="14" ry="14" width="190" height="112" fill="#ffffff" stroke="#2A9BB0" stroke-width="2" filter="url(#sf-shadow)"/>
+        <text x="305" y="62" text-anchor="middle" fill="#1A6070" font-size="13" font-weight="800" font-family="Noto Sans JP, sans-serif">試用開始</text>
+        <text x="305" y="86" text-anchor="middle" fill="#071C22" font-size="12" font-weight="700" font-family="Noto Sans JP, sans-serif">7日間（全機能相当）</text>
+        <text x="305" y="108" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">核の体感・小ギフト連打</text>
+        <text x="305" y="128" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">入力が薄くても出す約束も</text>
+
+        <path d="M 405 84 L 430 84" stroke="#2A9BB0" stroke-width="3" marker-end="url(#ar)"/>
+
+        <!-- 核体感 -->
+        <rect x="430" y="32" rx="14" ry="14" width="210" height="104" fill="url(#sf-grad1)" stroke="#C8E8F0" stroke-width="1.5" filter="url(#sf-shadow)"/>
+        <text x="535" y="64" text-anchor="middle" fill="#1A6070" font-size="13" font-weight="800" font-family="Noto Sans JP, sans-serif">体感の「核」（試用内）</text>
+        <text x="535" y="88" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">診断 → 入力 → 自分の取説</text>
+        <text x="535" y="106" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">日記FB → 持ち味（初回は薄くてOK）</text>
+        <text x="535" y="124" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">WCM／人生史は全体誘導せず選択層へ</text>
+
+        <path d="M 645 84 L 670 84" stroke="#2A9BB0" stroke-width="3" marker-end="url(#ar)"/>
+
+        <!-- 転換 -->
+        <rect x="670" y="28" rx="14" ry="14" width="230" height="112" fill="#ffffff" stroke="#1A6070" stroke-width="2" filter="url(#sf-shadow)"/>
+        <text x="785" y="60" text-anchor="middle" fill="#1A6070" font-size="13" font-weight="800" font-family="Noto Sans JP, sans-serif">試用終了〜転換</text>
+        <text x="785" y="84" text-anchor="middle" fill="#071C22" font-size="12" font-weight="700" font-family="Noto Sans JP, sans-serif">主トリガー：締め切り</text>
+        <text x="785" y="104" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">＋入力・FBへの感情のひっかかり</text>
+        <text x="785" y="126" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">1問だけ本人に状態確認（サブスク／話したい）</text>
+
+        <!-- 下段：分岐 -->
+        <path d="M 785 146 L 785 164" stroke="#2A9BB0" stroke-width="2"/>
+        <path d="M 785 164 L 160 164 L 160 178" stroke="#2A9BB0" stroke-width="2" fill="none"/>
+        <path d="M 785 164 L 785 178" stroke="#2A9BB0" stroke-width="2"/>
+        <path d="M 785 164 L 820 164 L 820 178" stroke="#2A9BB0" stroke-width="2" fill="none"/>
+
+        <!-- サブスク -->
+        <rect x="40" y="188" rx="12" ry="12" width="240" height="92" fill="#2A9BB0" fill-opacity=".12" stroke="#2A9BB0" stroke-width="1.5"/>
+        <text x="160" y="222" text-anchor="middle" fill="#1A6070" font-size="13" font-weight="800" font-family="Noto Sans JP, sans-serif">サブスク継続</text>
+        <text x="160" y="246" text-anchor="middle" fill="#071C22" font-size="12" font-weight="700" font-family="Noto Sans JP, sans-serif">¥980 / 月（＋年額）</text>
+        <text x="160" y="266" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">累積ギフト＋記念日レポートの本番</text>
+
+        <!-- 無料戻り -->
+        <rect x="340" y="188" rx="12" ry="12" width="240" height="92" fill="#ffffff" stroke="#C8E8F0" stroke-width="1.5"/>
+        <text x="460" y="222" text-anchor="middle" fill="#1A6070" font-size="13" font-weight="800" font-family="Noto Sans JP, sans-serif">試用後・未課金（無料側）</text>
+        <text x="460" y="244" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">診断・日記（書く）は可</text>
+        <text x="460" y="262" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">AI FB・取説・持ち味はロック</text>
+
+        <!-- セッション -->
+        <rect x="640" y="188" rx="12" ry="12" width="260" height="92" fill="#ffffff" stroke="#1A6070" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="770" y="222" text-anchor="middle" fill="#1A6070" font-size="13" font-weight="800" font-family="Noto Sans JP, sans-serif">セッション（任意・高単価）</text>
+        <text x="770" y="246" text-anchor="middle" fill="#071C22" font-size="12" font-family="Noto Sans JP, sans-serif">「話したい」感情を広く迎える</text>
+        <text x="770" y="266" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">プロダクトで溜まれば品質↑（必須条件ではない）</text>
+
+        <!-- ループ -->
+        <path d="M 160 290 Q 460 332 785 292" stroke="#C8E8F0" stroke-width="2" fill="none" stroke-dasharray="5 6"/>
+        <text x="470" y="322" text-anchor="middle" fill="#3A6878" font-size="11" font-family="Noto Sans JP, sans-serif">必要に応じてプロダクトへ回帰・データが累積</text>
+      </svg>
+      <figcaption class="diagram-caption">母艦のプロダクトに集め、7日試用で価値の「体感」と「なくなる」を重ね、その後も無料で土台だけ残して再訪を支える。セッションは感情起点の逃げ道ではなく、深掘りのオプションとして接続する。</figcaption>
+    </figure>
+
+    <!-- ギフト二層 -->
+    <div class="section-header reveal" style="margin-top:48px;">
+      <h3 style="font-size:1.15rem;">「プレゼント」の二層構造</h3>
+      <div class="divider" style="margin:16px 0;"></div>
+      <p>初週は<strong>薄くてよいが回数</strong>。そのうえで、<strong>サインアップ日基準の「節」</strong>に厚みと差分を約束してMRR側の説明を支える。</p>
+    </div>
+
+    <div class="gift-split reveal">
+      <div class="gift-box a">
+        <h4>日常〜試用中以降｜累積トリガーの小ギフト</h4>
+        <ul>
+          <li>日記などの<strong>累積日数・件数</strong>に応じて、軽い成果物やFBを増やす</li>
+          <li>ユーザーごとのペース（例：3日に1回ログインでも）でも「たまれば届く」設計が可能</li>
+        </ul>
+      </div>
+      <div class="gift-box b">
+        <h4>節目レポート｜サインアップ日を起点</h4>
+        <ul>
+          <li><strong>入会＝サインアップ日</strong>。そこから<strong>翌月の同一日</strong>を原則とする（存在しない日は<strong>前日など</strong>に丸めるルールを固定）</li>
+          <li>前回版との<strong>違い・推移</strong>を含む、中央の「月刊」に近い報告を届ける</li>
+          <li>データが薄い月も<strong>あるデータだけで必ず生成</strong>し、次に厚くなるための示唆を添える</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="reveal" style="margin-top:32px;">
+      <svg class="diagram-svg" viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" aria-labelledby="diagram2-title" role="img">
+        <title id="diagram2-title">累積ギフトと記念日レポートの二層</title>
+        <defs>
+          <linearGradient id="sf-grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#E4F2F6"/>
+            <stop offset="100%" style="stop-color:#ffffff"/>
+          </linearGradient>
+        </defs>
+        <rect x="24" y="36" rx="16" ry="16" width="260" height="148" fill="#ffffff" stroke="#C8E8F0" stroke-width="1.5"/>
+        <text x="154" y="72" text-anchor="middle" fill="#1A6070" font-size="14" font-weight="800" font-family="Noto Sans JP, sans-serif">累積ベース</text>
+        <text x="154" y="102" text-anchor="middle" fill="#3A6878" font-size="12" font-family="Noto Sans JP, sans-serif">○日 / ○件で</text>
+        <text x="154" y="122" text-anchor="middle" fill="#3A6878" font-size="12" font-family="Noto Sans JP, sans-serif">小さなプレゼント</text>
+        <text x="154" y="152" text-anchor="middle" fill="#2A9BB0" font-size="11" font-weight="700" font-family="Noto Sans JP, sans-serif">頻度・モメンタム</text>
+
+        <text x="320" y="114" text-anchor="middle" fill="#2A9BB0" font-size="28" font-weight="300">+</text>
+
+        <rect x="356" y="36" rx="16" ry="16" width="260" height="148" fill="url(#sf-grad2)" stroke="#2A9BB0" stroke-width="2"/>
+        <text x="486" y="72" text-anchor="middle" fill="#1A6070" font-size="14" font-weight="800" font-family="Noto Sans JP, sans-serif">サインアップ起点</text>
+        <text x="486" y="98" text-anchor="middle" fill="#3A6878" font-size="12" font-family="Noto Sans JP, sans-serif">翌月同日（調整ルール）</text>
+        <text x="486" y="118" text-anchor="middle" fill="#3A6878" font-size="12" font-family="Noto Sans JP, sans-serif">差分の厚い節目レポート</text>
+        <text x="486" y="152" text-anchor="middle" fill="#1A6070" font-size="11" font-weight="700" font-family="Noto Sans JP, sans-serif">薄データでも必ず1本</text>
+      </svg>
+      <figcaption class="diagram-caption">「たまさに届く喜び」と「月節の箱」で、習慣とサブスクの説明責任を分担する。</figcaption>
+    </figure>
+
+    <!-- 無料線 -->
+    <div class="section-header reveal" style="margin-top:32px;">
+      <h3 style="font-size:1.15rem;">試用終了後の無料ライン（境界）</h3>
+      <div class="divider" style="margin:16px 0;"></div>
+    </div>
+    <div class="freemap reveal">
+      <div class="freemap-header"><div>無料で継続</div><div>課金で解放</div></div>
+      <div class="freemap-row"><div class="ok">キャリア満足度診断</div><div class="lock">（従来どおり無料利用）</div></div>
+      <div class="freemap-row"><div class="ok">日記の記入</div><div class="lock">（テキストは書ける）</div></div>
+      <div class="freemap-row"><div class="lock">日記のAIフィードバック</div><div class="ok">Premium</div></div>
+      <div class="freemap-row"><div class="lock">自分の取説・持ち味レポート</div><div class="ok">Premium</div></div>
+      <div class="freemap-row"><div class="ok">自分が蓄積したログの閲覧</div><div class="lock">主に閲覧中心（編集は仕様で定義）</div></div>
+    </div>
+
+    <p class="note-text reveal">本セクションはチャット合意に基づく<strong>体験戦略ドラフト</strong>。下記「3シナリオ比較」の数値は<strong>14日試用前提の試算</strong>のまま残しており、試用7日へ寄せた場合は<strong>転換率・継続の再仮説</strong>が必要。</p>
+  </div>
+</section>
+
 <!-- ============================================================ ユーザージャーニー -->
 <section>
   <div class="container">
@@ -680,11 +953,11 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
             <div>
               <span class="tag">STEP 1</span>
               <h3 style="margin-top:10px;">キャリフレ（プロダクト）</h3>
-              <p style="font-size:13px; margin-top:6px;">21日トライアル → 7日間アクティベーションフローで持ち味レポート生成まで到達させる</p>
+              <p style="font-size:13px; margin-top:6px;">7日無料試用 → 体感の「核」（診断・取説・日記FB・持ち味）と小さなギフトを重ね、アクティブ化〜転換まで一気貫通</p>
             </div>
             <div style="text-align:right;">
               <div class="price-num">¥0</div>
-              <div class="price-sub">21日間</div>
+              <div class="price-sub">試用 7日間</div>
             </div>
           </div>
         </div>
@@ -768,7 +1041,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <span class="label">Activation</span>
       <h2>アクティベーション設計</h2>
       <div class="divider"></div>
-      <p>登録後7日以内に「持ち味レポート」を生成させることが最重要。これがキャリフレ最大のaha moment。14日トライアル終了時に1問だけ問い、状態に応じてサブスクまたはセッションへ誘導する。</p>
+      <p>登録後<strong>7日の試用</strong>とオンボーディングを同期させ、核の体感（診断→取説→日記FB→持ち味の初回は薄くても可）を届ける。試用<strong>終了時</strong>に1問だけ問い、状態に応じてサブスクまたはセッションへ誘導する（通知は試用長に合わせて再設計）。</p>
     </div>
 
     <div class="grid-2 reveal" style="margin-bottom:32px;">
@@ -789,8 +1062,8 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
             <tr><td>翌日</td><td style="color:var(--fg); font-size:13px;">日記への誘導</td></tr>
             <tr><td>3日後</td><td style="color:var(--fg); font-size:13px;">持ち味レポートまであと〇ステップ</td></tr>
             <tr><td>7日後</td><td style="color:var(--fg); font-size:13px;">持ち味レポート生成を促す</td></tr>
-            <tr><td>Day 12</td><td style="color:var(--fg); font-size:13px;">進捗サマリー表示（トライアル終了2日前予告）</td></tr>
-            <tr><td>Day 14</td><td style="color:var(--fg); font-size:13px;">1問診断 → 回答別導線に分岐（サブスク or Level 1）</td></tr>
+            <tr><td>Day 5</td><td style="color:var(--fg); font-size:13px;">進捗サマリー＋試用終了2日前予告（7日試用の場合）</td></tr>
+            <tr><td>Day 7</td><td style="color:var(--fg); font-size:13px;">試用終了：1問診断 → 回答別導線に分岐（サブスク or Level 1）</td></tr>
             <tr><td>30日後</td><td style="color:var(--fg); font-size:13px;">再診断誘導</td></tr>
             <tr><td>90日後</td><td style="color:var(--fg); font-size:13px;">診断を一時解放（feature_flags活用）</td></tr>
           </tbody>
@@ -799,7 +1072,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
     </div>
 
     <div class="card reveal" style="border-left:3px solid var(--primary);">
-      <h4 style="margin-bottom:12px;">Day 14（トライアル終了）：1問だけ問う</h4>
+      <h4 style="margin-bottom:12px;">Day 7（トライアル終了）：1問だけ問う</h4>
       <p style="font-size:13px; margin-bottom:16px;">ペイウォールを直接提示するのではなく、状態を本人に確認させる。ブランドと一致する設計。</p>
       <div class="grid-3" style="gap:12px;">
         <div class="card-muted" style="text-align:center;">
@@ -837,7 +1110,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
         <div class="price-num">¥15,000</div>
         <div class="price-sub">1回 × 60分</div>
         <div class="price-include">＋ キャリフレ 1ヶ月無料</div>
-        <div style="margin-top:8px; font-size:11px; background:hsl(var(--brand-amber-light)); color:hsl(var(--brand-amber)); padding:4px 10px; border-radius:20px; display:inline-block;">ローンチ記念・先着10名 ¥10,000</div>
+        <div style="margin-top:8px; font-size:11px; background:var(--brand-amber-light); color:var(--brand-amber); padding:4px 10px; border-radius:20px; display:inline-block;">ローンチ記念・先着10名 ¥10,000</div>
         <hr class="light">
         <p style="font-size:12px; color:var(--fg);">「今、何に詰まっているか」が自分の言葉になる状態へ。答えを出す場ではない。</p>
       </div>
@@ -904,7 +1177,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
           <tr>
             <td><strong style="color:var(--fg);">スタート期</strong></td>
             <td style="color:var(--fg);">事例 0〜10件</td>
-            <td style="color:var(--fg);">¥15,000<br><span style="font-size:11px; color:hsl(var(--brand-amber));">先着10名 ¥10,000</span></td>
+            <td style="color:var(--fg);">¥15,000<br><span style="font-size:11px; color:var(--brand-amber);">先着10名 ¥10,000</span></td>
             <td style="color:var(--fg);">¥60,000</td>
             <td style="color:var(--fg);">¥20,000/月</td>
           </tr>
@@ -1272,8 +1545,8 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <div class="dev-row">
         <div class="dev-num">P7</div>
         <div>
-          <h4>リマインドメール自動送信（Day1・3・7・12・21）</h4>
-          <p style="font-size:13px; margin-top:4px;">トライアル期間中の離脱を防ぐ。Day21に1問診断＋回答別導線の分岐を含む。</p>
+          <h4>リマインドメール自動送信（Day1・3・5・7＋入会記念）</h4>
+          <p style="font-size:13px; margin-top:4px;">トライアル期間中の離脱を防ぐ。試用終了（7日時点）に1問診断＋回答別導線。サインアップ翌月同日の記念レポートとは別トリガで設計。</p>
         </div>
       </div>
       <div class="dev-row">
