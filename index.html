@@ -276,6 +276,19 @@ td:first-child { color: var(--muted-fg); font-size: 13px; }
   border-bottom: 1px solid var(--secondary);
 }
 .dev-row:last-child { border-bottom: none; }
+.dev-status {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.status-done    { background: #D1FAE5; color: #065F46; }
+.status-partial { background: #FEF3C7; color: #92400E; }
+.status-deferred{ background: #F1F5F9; color: #64748B; }
+.status-dropped { background: #F1F5F9; color: #94A3B8; text-decoration: line-through; }
 .dev-num {
   font-size: 11px;
   font-weight: 700;
@@ -1047,11 +1060,11 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
     <div class="grid-2 reveal" style="margin-bottom:32px;">
       <div>
         <h3 style="margin-bottom:20px;">7日間オンボーディングフロー</h3>
-        <div class="step-row"><div class="step-num">0</div><div><strong style="font-size:14px;">診断完了・レーダーチャート表示</strong><p style="font-size:12px;">即時価値。登録直後にここまで届ける</p></div></div>
-        <div class="step-row"><div class="step-num">1</div><div><strong style="font-size:14px;">日記1件目（3行でいい）</strong><p style="font-size:12px;">低ハードルで最初の記録習慣をつくる</p></div></div>
-        <div class="step-row"><div class="step-num">3</div><div><strong style="font-size:14px;">AIフィードバック体験</strong><p style="font-size:12px;">2回目のaha。AIが返してくれる感動</p></div></div>
-        <div class="step-row"><div class="step-num">5</div><div><strong style="font-size:14px;">WCMシート入力開始</strong><p style="font-size:12px;">診断結果を見ながら書ける設計</p></div></div>
-        <div class="step-row"><div class="step-num" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));">7</div><div><strong style="font-size:14px; color:var(--primary);">WCM完成→持ち味レポート生成</strong><p style="font-size:12px;">最大のaha moment。ここまで必ず届ける</p></div></div>
+        <div class="step-row"><div class="step-num">0</div><div><strong style="font-size:14px;">診断完了・結果の全体像を確認</strong><p style="font-size:12px;">重視×満足の読みと「次の一歩」まで、最初の手応えをここで掴む</p></div></div>
+        <div class="step-row"><div class="step-num">1</div><div><strong style="font-size:14px;">内省チャットをクイック開始</strong><p style="font-size:12px;">「とりあえず話してみる」から低ハードルで開始し、日記1件目につなぐ</p></div></div>
+        <div class="step-row"><div class="step-num">3</div><div><strong style="font-size:14px;">AIフィードバック体験</strong><p style="font-size:12px;">2回目のaha。チャット/日記の蓄積にAIの返答が重なる</p></div></div>
+        <div class="step-row"><div class="step-num">5</div><div><strong style="font-size:14px;">持ち味レポートの準備開始（5日目以降）</strong><p style="font-size:12px;">登録から5日目以降に解放。入力が薄くても初版を返し、更新で深まる設計</p></div></div>
+        <div class="step-row"><div class="step-num" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));">7</div><div><strong style="font-size:14px; color:var(--primary);">WCM入力と次の一歩の具体化</strong><p style="font-size:12px;">診断結果・取説・日記をつなぎ、試用終了時の判断（継続/相談）に自然接続</p></div></div>
       </div>
 
       <div>
@@ -1497,108 +1510,210 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <span class="label">Development Agenda</span>
       <h2>開発優先度</h2>
       <div class="divider"></div>
+      <p>重複を整理し、リリース判断に必要な未完了タスクを再構成した最新版。</p>
     </div>
 
     <div class="reveal">
       <div class="card-muted" style="margin-bottom:18px;">
-        <p style="font-size:12px;"><strong>優先実行順（現時点）：</strong> まずは <strong>7日試用で核体感を成立</strong>させる機能（P3/P4/P7/P6）を先行し、その後に獲得効率（P2/P1/P13）、継続深化（P5/P8/P11/P10）、中期拡張（P9/P12）へ進む。</p>
+        <p style="font-size:12px;"><strong>優先実行順（現時点）：</strong> まずは <strong>A. リリース必須基盤</strong>、次に <strong>B. 体験導線</strong>、最後に <strong>C. 成長施策</strong> を実行する。</p>
+      </div>
+
+      <div class="card-muted" style="margin-bottom:12px;">
+        <p style="font-size:12px; color:var(--primary-dark); font-weight:700;">A. リリース必須基盤（Must）</p>
       </div>
 
       <div class="dev-row">
-        <div class="dev-num">P3</div>
+        <div class="dev-num">R1</div>
         <div>
-          <h4>オンボーディングフロー（進捗表示・持ち味レポートまでの残ステップ）</h4>
-          <p style="font-size:13px; margin-top:4px;">7日試用で体感の核（診断→取説→日記FB→持ち味初版）を落とし切る最重要施策。最初の一歩の軽さ、残ステップの見せ方、離脱復帰導線を中心に設計する。</p>
+          <h4>法務ページの本番確定（terms / privacy / 特商法）<span class="dev-status status-partial">⚡ ほぼ完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">ドラフト表記を解消し、公開版として文言・導線・リンク整合を確定する。</p>
+          <p style="font-size:12px; color:#065F46; margin-top:4px;">✔ 事業者情報・制定日・連絡先記入済み、ドラフトバナー削除済み（2026-05-14）。利用規約の免責・管轄注記は弁護士確認後に最終化。</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">P4</div>
+        <div class="dev-num">R2</div>
         <div>
-          <h4>持ち味レポート即時生成（診断・MBTI入力完了時点で初版出力）</h4>
-          <p style="font-size:13px; margin-top:4px;">「7日待つ」体験をやめ、登録直後に薄い初版を返す。入力が増えるほどレポートがリッチ化する設計で、継続入力の動機を作る。</p>
+          <h4>Stripeの本番運用整備<span class="dev-status status-partial">⚡ ほぼ完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">価格ID、Webhook、決済失敗時動線、運用手順を本番前提で固める。</p>
+          <p style="font-size:12px; color:#92400E; margin-top:4px;">✔ コード完了：webhook に subscription.created・invoice.payment_failed 追加（2026-05-14）<br>残：① Stripeダッシュボードで商品「キャリフレ サブスクリプション」作成（¥980/月・¥9,800/年）　② webhookエンドポイント登録　③ Vercelに STRIPE_SECRET_KEY / STRIPE_WEBHOOK_SECRET 設定　→ docs/STRIPE_SETUP.md 参照</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">P7</div>
+        <div class="dev-num">R3</div>
         <div>
-          <h4>リマインドメール自動送信（Day1・3・5・7＋入会記念）</h4>
-          <p style="font-size:13px; margin-top:4px;">試用期間中の離脱を防ぐ。Day7で1問診断→回答別導線（サブスク/セッション）を実施し、翌月同日の記念レポートは別トリガで運用する。</p>
+          <h4>LINE連携の導線復活 + env整備</h4>
+          <p style="font-size:13px; margin-top:4px;">連携UIを再開し、必要環境変数・設定手順を運用ドキュメントまで揃える。</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">P6</div>
+        <div class="dev-num">R4</div>
         <div>
-          <h4>「当たってる」フィードバックループの設計</h4>
-          <p style="font-size:13px; margin-top:4px;">入力のたびに「合ってる感」を返す即時フィードバックを実装。オンボーディング中の納得感と再訪率の底上げに直結させる。</p>
+          <h4>LINE API連携とステップ配信、予約画面（エルメッセージ）</h4>
+          <p style="font-size:13px; margin-top:4px;">配信シナリオと予約導線を含め、LINE上の継続接点を実運用できる状態にする。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R5</div>
+        <div>
+          <h4>監視・障害検知の整備<span class="dev-status status-done">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">API失敗・Webhook失敗・LINE送信失敗が即時に見える監視と通知を用意する。</p>
+          <p style="font-size:12px; color:#065F46; margin-top:4px;">✔ Vercel Speed Insights・Analytics を layout.tsx に追加（2026-05-14）<br>✔ Vercelダッシュボードの Observability・Analytics タブで有効化すれば完全稼働</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R6</div>
+        <div>
+          <h4>サーバー側バリデーション見直し<span class="dev-status status-done">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">課金同意などをUI依存にせず、サーバー側で検証・担保する。</p>
+          <p style="font-size:12px; color:#065F46; margin-top:4px;">✔ lib/api/errors.ts 作成・認証エラーを500→401に統一（2026-05-14）<br>✔ life-events・milestones・wcm-sheets に必須チェック・文字数制限を追加</p>
         </div>
       </div>
 
-      <div class="dev-row">
-        <div class="dev-num">P2</div>
-        <div>
-          <h4>ログインなし診断フロー（登録前お試し体験）</h4>
-          <p style="font-size:13px; margin-top:4px;">「重そう」という第一印象を解消し、登録前離脱を減らす。診断体験後にアカウント作成へ滑らかに接続する。</p>
-        </div>
-      </div>
-      <div class="dev-row">
-        <div class="dev-num">P1</div>
-        <div>
-          <h4>SNSシェア機能（持ち味レポート・WCM・診断結果）</h4>
-          <p style="font-size:13px; margin-top:4px;">有機獲得を伸ばす主要手段。1080×1080画像エクスポートとUTM計測で、口コミと流入効率を可視化する。</p>
-        </div>
-      </div>
-      <div class="dev-row">
-        <div class="dev-num">P13</div>
-        <div>
-          <h4>LINE登録時の公式アカウント友達追加誘導</h4>
-          <p style="font-size:13px; margin-top:4px;">ステップ配信の到達率を高める。新規登録完了フロー内で、迷わず友だち追加できる導線を整える。</p>
-        </div>
+      <div class="card-muted" style="margin:18px 0 12px;">
+        <p style="font-size:12px; color:var(--primary-dark); font-weight:700;">B. 体験導線（Activation）</p>
       </div>
 
       <div class="dev-row">
-        <div class="dev-num">P5</div>
+        <div class="dev-num">R7</div>
         <div>
-          <h4>人生史入力の設問ブレイクダウン（白紙入力からの脱却）</h4>
-          <p style="font-size:13px; margin-top:4px;">白紙入力を廃止し、具体設問に分解。書くほど持ち味レポートが深くなるループをつくり、満足度を上げる。</p>
+          <h4>ジャーニーマップ（スタートガイド含む）をトップ導線に統合<span class="dev-status status-done">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">初回ユーザーが迷わないよう、入口から次アクションまでをトップで一気通貫に見せる。</p>
+          <p style="font-size:12px; color:#065F46; margin-top:4px;">✔ SVGマップ実装・次ステップフッター追加・OnboardingProgressBar/MappingProgressBar廃止（2026-05-14）</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">P8</div>
+        <div class="dev-num">R8</div>
         <div>
-          <h4>AI問い自動生成（過去ログ×AI → パーソナライズされた問い提案）</h4>
-          <p style="font-size:13px; margin-top:4px;">「何を書けばいいかわからない」を解消。蓄積ログに基づく問いで日記継続率を引き上げる。</p>
+          <h4>取説（オンボコンテンツ）導入<span class="dev-status status-done">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">診断→内省→次の一歩の理解を支える取説コンテンツをオンボ導線に組み込む。</p>
+          <p style="font-size:12px; color:#065F46; margin-top:4px;">✔ 取説・持ち味レポページに「← ホームに戻る」リンク追加。次の一歩はマップに集約（2026-05-14）</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">P11</div>
+        <div class="dev-num">R9</div>
         <div>
-          <h4>キャリフレセッション誘導（プロダクト内3箇所）</h4>
-          <p style="font-size:13px; margin-top:4px;">持ち味直後・WCM完了・日記30件達成時など文脈のある提案で実装。希望者を広く受け入れる方針のまま、押しつけない表示条件に最適化する。</p>
+          <h4>Quick manual/オンボ文言の「準備中」解消<span class="dev-status status-done">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">未完成印象を与える表示を最終仕上げし、公開品質の文言へ統一する。</p>
+          <p style="font-size:12px; color:#065F46; margin-top:4px;">✔ 取説・持ち味レポの「準備中」ラベル削除（2026-05-14）</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">P10</div>
+        <div class="dev-num">R10</div>
         <div>
-          <h4>セッション者との情報共有動線の整備</h4>
-          <p style="font-size:13px; margin-top:4px;">セッション前に診断・WCM・持ち味を双方が確認できる導線を整え、初回から本題に入れる状態を作る。</p>
+          <h4>オンボーディングフロー（進捗表示・持ち味レポートまでの残ステップ）<span class="dev-status status-done">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">7日試用で体感の核（診断→取説→日記FB→持ち味初版）を迷わず到達させる。</p>
+          <p style="font-size:12px; color:#065F46; margin-top:4px;">✔ WelcomeModal文言更新・不使用コンポーネント削除・マップで代替（2026-05-14）</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R11</div>
+        <div>
+          <h4>持ち味レポート即時生成（診断・MBTI入力完了時点で初版出力）<span class="dev-status status-dropped">— 削除</span></h4>
+          <p style="font-size:13px; margin-top:4px;">初回価値体験を前倒しし、継続動機を早期に形成する。</p>
+          <p style="font-size:12px; color:#94A3B8; margin-top:4px;">トークンコスト・UXを考慮し、ユーザー操作での生成に統一（2026-05-14）</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R12</div>
+        <div>
+          <h4>ログインなし診断フロー（登録前お試し体験）<span class="dev-status status-deferred">⏸ ローンチ後</span></h4>
+          <p style="font-size:13px; margin-top:4px;">登録前に価値を体験させ、離脱を減らして新規転換率を高める。</p>
+          <p style="font-size:12px; color:#64748B; margin-top:4px;">認証フロー改修が大きいためローンチ後に持ち越し（2026-05-14）</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R13</div>
+        <div>
+          <h4>LINE登録時の公式アカウント友達追加誘導<span class="dev-status status-done">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">登録直後の接続率を高め、継続導線を取りこぼさない状態にする。</p>
+          <p style="font-size:12px; color:#065F46; margin-top:4px;">✔ LineLinkNudgeBanner（診断後強調・登録2日間）既実装済み。LINEログインはSupabase制約で断念（2026-05-14）</p>
         </div>
       </div>
 
+      <div class="card-muted" style="margin:18px 0 12px;">
+        <p style="font-size:12px; color:var(--primary-dark); font-weight:700;">C. 成長施策（Growth）</p>
+      </div>
+
       <div class="dev-row">
-        <div class="dev-num">P9</div>
+        <div class="dev-num">R14</div>
         <div>
-          <h4>書類アップロード → 人生史自動生成（履歴書・職務経歴書）</h4>
-          <p style="font-size:13px; margin-top:4px;">入力コストを大幅に下げる中期拡張。履歴書/職務経歴書から骨格を生成し、編集型フローへ移行する。</p>
+          <h4>リマインドメール自動送信（Day1〜7 毎日）<span class="dev-status status-partial">⚡ ほぼ完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">初期離脱を防ぎ、利用習慣を定着させる再訪導線を自動化する。</p>
+          <p style="font-size:12px; color:#92400E; margin-top:4px;">✔ コード完了：Resend + Vercel Cron（毎朝9時JST）Day1〜7の日本語レスポンシブHTMLメール（2026-05-14）<br>✔ 配信停止リンク（HMAC署名トークン）・List-Unsubscribeヘッダー・配信停止確認ページ実装済み<br>残：① Resendアカウント作成・carefle.comドメイン認証・APIキー発行　② Vercelに RESEND_API_KEY / RESEND_FROM_EMAIL 設定　③ DBマイグレーション実行（trial_email_enabled カラム追加）　→ docs/TRIAL_EMAIL_SETUP.md 参照</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">P12</div>
+        <div class="dev-num">R15</div>
         <div>
-          <h4>リファラル機能（紹介プログラム）</h4>
-          <p style="font-size:13px; margin-top:4px;">紹介者：サブスク1ヶ月無料 / 被紹介者：試用延長で継続。持ち味レポート直後の導線と、紹介URL・報酬自動付与を実装する。</p>
+          <h4>人生史入力の設問ブレイクダウン（白紙入力からの脱却）<span class="dev-status status-done">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">入力心理負荷を下げて、人生史コンテンツ完成率を引き上げる。</p>
+          <p style="font-size:12px; color:#065F46; margin-top:4px;">✔ LifeHistoryForm をウィザード形式（4ステップ）に改修（2026-05-14）<br>✔ カテゴリ別出来事サジェスト（学業・仕事・人間関係・転機・ライフ）・各ステップにAIガイド問いかけ表示・「すべて表示」で詳細モード切替</p>
         </div>
       </div>
-    </div>
+      <div class="dev-row">
+        <div class="dev-num">R16</div>
+        <div>
+          <h4>AI問い自動生成（過去ログ×AI → パーソナライズされた問い提案）<span class="dev-status status-deferred">⏸ ローンチ後</span></h4>
+          <p style="font-size:13px; margin-top:4px;">振り返りの深さと継続率を高める個別最適な内省体験を提供する。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R17</div>
+        <div>
+          <h4>「当たってる」フィードバックループの設計<span class="dev-status status-deferred">⏸ ローンチ後</span></h4>
+          <p style="font-size:13px; margin-top:4px;">体験結果の納得感を可視化し、継続利用の自己強化ループをつくる。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R18</div>
+        <div>
+          <h4>セッション者との情報共有動線の整備<span class="dev-status status-deferred">⏸ ローンチ後</span></h4>
+          <p style="font-size:13px; margin-top:4px;">プロダクト利用と有人支援を接続し、伴走価値を最大化する。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R19</div>
+        <div>
+          <h4>キャリフレセッション誘導（プロダクト内3箇所）<span class="dev-status status-done">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">高意欲ユーザーを適切なタイミングで有人セッションへ送客する。</p>
+          <p style="font-size:12px; color:#065F46; margin-top:4px;">✔ ホーム・サイドナビ・診断結果ページ・取説ページの計4箇所に設置（2026-05-14）</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R20</div>
+        <div>
+          <h4>SNSシェア機能（持ち味レポート・WCM・診断結果）<span class="dev-status status-deferred">⏸ ローンチ後</span></h4>
+          <p style="font-size:13px; margin-top:4px;">体験価値を外部可視化し、自然流入と口コミ拡散を生む。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R21</div>
+        <div>
+          <h4>リファラル機能（紹介プログラム）<span class="dev-status status-deferred">⏸ ローンチ後</span></h4>
+          <p style="font-size:13px; margin-top:4px;">既存ユーザー経由で低コスト獲得チャネルを育成する。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R22</div>
+        <div>
+          <h4>書類アップロード → 人生史自動生成（履歴書・職務経歴書）<span class="dev-status status-deferred">⏸ ローンチ後</span></h4>
+          <p style="font-size:13px; margin-top:4px;">入力工数を削減し、価値体験までの時間を短縮する。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R23</div>
+        <div>
+          <h4>ネイティブアプリ化、Apple申請<span class="dev-status status-deferred">⏸ ローンチ後</span></h4>
+          <p style="font-size:13px; margin-top:4px;">中期拡張としてモバイル接点を強化し、継続利用基盤を広げる。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R24</div>
+        <div>
+          <h4>careerpartner.jp/carehugforI ページの改訂</h4>
+          <p style="font-size:13px; margin-top:4px;">プロダクト内のセッション誘導リンク先として機能するよう、ページ内容・デザイン・LINE導線を整備する。</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
