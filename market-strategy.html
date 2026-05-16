@@ -1591,16 +1591,78 @@ footer {
           <div class="q-title">何人獲得できれば「戦略が機能している」と判断するか？</div>
           <span class="q-badge badge-disc">今日議論</span>
         </div>
-        <div class="q-body">6ヶ月後・1年後の有料ユーザー数の目標値を合意しておく。数字がなければPDCAが回らない。</div>
+        <div class="q-body">
+          <p style="font-size:13px; margin-bottom:14px;">有料転換ユーザー数を主指標とする。以下をたたき台として議論する。</p>
+          <table style="font-size:12px; margin-bottom:12px;">
+            <thead>
+              <tr><th>期間</th><th>月間新規登録</th><th>有料転換率</th><th>累積有料ユーザー</th><th>月次MRR（目安）</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color:var(--fg); font-weight:700;">3ヶ月後（8月末）</td>
+                <td>50〜80人</td><td>20%</td><td>30〜50人</td><td>¥3〜5万</td>
+              </tr>
+              <tr>
+                <td style="color:var(--fg); font-weight:700;">6ヶ月後（11月末）</td>
+                <td>100〜150人</td><td>25%</td><td>100〜150人</td><td>¥10〜15万</td>
+              </tr>
+              <tr>
+                <td style="color:var(--fg); font-weight:700;">1年後（2027年5月）</td>
+                <td>150〜200人</td><td>30%</td><td>300〜500人</td><td>¥30〜50万</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size:12px; color:var(--primary-dark); font-weight:600;">※ 上記はたたき台。3ヶ月後の数字を合意し、そこから逆算して獲得・転換の施策優先度を決める。</p>
+        </div>
       </div>
 
       <div class="q-block">
         <div class="q-header">
           <div class="q-num">3</div>
-          <div class="q-title">市場規模の推計を見て、現在の投資水準は適切か？</div>
+          <div class="q-title">このサービスのKGI・KPIをどう定義するか？</div>
           <span class="q-badge badge-disc">今日議論</span>
         </div>
-        <div class="q-body">推計800〜1,000万人の潜在層、有料転換後の売上試算に対して、投資を増やすか・維持か・絞るかを判断する。</div>
+        <div class="q-body">
+          <p style="font-size:11px; font-weight:700; color:var(--primary-dark); letter-spacing:0.08em; margin-bottom:10px;">KGI案（最終目標）</p>
+          <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:16px;">
+            <div style="border:2px solid var(--primary); border-radius:8px; padding:10px 14px;">
+              <p style="font-size:13px; font-weight:700; color:var(--fg);">転職成功（内定獲得・入社完了）</p>
+              <p style="font-size:12px; margin-top:3px;">最もわかりやすいが、計測にはユーザーの自己申告が必要。アンケート・フォローアップで把握する。</p>
+            </div>
+            <div style="border:1px solid var(--secondary); border-radius:8px; padding:10px 14px;">
+              <p style="font-size:13px; font-weight:700; color:var(--fg);">「転職しない」という前向きな意思決定の完了</p>
+              <p style="font-size:12px; margin-top:3px;">現職に留まる選択を、流されてではなく自分で決めた状態もKGI達成と定義できる。</p>
+            </div>
+          </div>
+          <p style="font-size:11px; font-weight:700; color:var(--primary-dark); letter-spacing:0.08em; margin-bottom:10px;">KPI案（先行指標）</p>
+          <table style="font-size:12px;">
+            <thead>
+              <tr><th>指標</th><th>定義</th><th>目標値（案）</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:700; color:var(--fg);">活動開始率</td>
+                <td>エージェント登録・求人応募・面接設定など具体的行動を起こしたユーザー比率</td>
+                <td>有料ユーザーの40%以上</td>
+              </tr>
+              <tr>
+                <td style="font-weight:700; color:var(--fg);">有料転換率</td>
+                <td>トライアル開始→課金への転換率</td>
+                <td>20〜30%</td>
+              </tr>
+              <tr>
+                <td style="font-weight:700; color:var(--fg);">コア体験到達率</td>
+                <td>取説・持ち味・転職軸レポートのいずれかを生成したユーザー比率</td>
+                <td>トライアル中60%以上</td>
+              </tr>
+              <tr>
+                <td style="font-weight:700; color:var(--fg);">継続率</td>
+                <td>トライアル期間中に3日以上ログインしたユーザー比率</td>
+                <td>50%以上</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <!-- ビジネスモデル -->
