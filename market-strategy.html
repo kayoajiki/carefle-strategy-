@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キャリフレ｜ターゲット戦略・経営会議資料</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F0F8FA;
+  --fg: #071C22;
+  --primary: #2A9BB0;
+  --primary-dark: #1A6070;
+  --secondary: #C8E8F0;
+  --muted: #E4F2F6;
+  --muted-fg: #3A6878;
+  --white: #ffffff;
+  --radius: 0.75rem;
+  --brand-amber: #b8752a;
+  --brand-amber-light: #fdf6ea;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Manrope', 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.75;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; line-height: 1.3; }
+h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; }
+h4 { font-size: 0.95rem; font-weight: 700; color: var(--fg); }
+p { color: var(--muted-fg); }
+
+.container { max-width: 860px; margin: 0 auto; padding: 0 28px; }
+
+section { padding: 80px 0; }
+section.white { background: var(--white); }
+section.muted { background: var(--muted); }
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.divider { width: 36px; height: 2px; background: var(--primary); margin: 20px 0 28px; }
+
+.section-header { margin-bottom: 48px; }
+.section-header p { margin-top: 12px; font-size: 1rem; max-width: 560px; }
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  border: 1px solid var(--secondary);
+}
+
+.card-muted {
+  background: var(--muted);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+@media(max-width:640px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th {
+  background: var(--muted);
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-align: left;
+  padding: 11px 16px;
+}
+td { padding: 13px 16px; border-bottom: 1px solid var(--secondary); color: var(--fg); }
+tr:last-child td { border-bottom: none; }
+td:first-child { color: var(--muted-fg); font-size: 13px; }
+
+.tag {
+  display: inline-block;
+  background: var(--secondary);
+  color: var(--primary-dark);
+  padding: 3px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.big-num {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.note-text {
+  font-size: 12px;
+  color: var(--muted-fg);
+  border-left: 2px solid var(--secondary);
+  padding-left: 12px;
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+.quote {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 500;
+  color: var(--primary-dark);
+  line-height: 1.9;
+  border-left: 3px solid var(--primary);
+  padding-left: 20px;
+  margin: 28px 0;
+}
+
+.step-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+}
+
+@media(max-width:600px) { .kpi-row { grid-template-columns: 1fr; } }
+
+.kpi-box {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  text-align: center;
+  border: 1px solid var(--secondary);
+}
+
+.kpi-box .small-label { font-size: 11px; color: var(--muted-fg); margin-top: 6px; letter-spacing: 0.05em; }
+
+.highlight-box {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: var(--radius);
+  padding: 48px 40px;
+  text-align: center;
+  color: white;
+}
+
+.highlight-box h2 { color: white; }
+.highlight-box p { color: rgba(255,255,255,0.8); margin-top: 12px; font-size: 1rem; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+hr.light { border: none; border-top: 1px solid var(--secondary); margin: 28px 0; }
+
+/* ナビゲーション */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--secondary);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-brand {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.nav-back {
+  font-size: 12px;
+  color: var(--muted-fg);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-back:hover { color: var(--primary); }
+
+.nav-tag {
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--secondary);
+  color: var(--primary-dark);
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.08em;
+}
+
+/* フロー */
+.flow-block {
+  background: var(--white);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  position: relative;
+}
+
+.flow-phase {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.flow-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.flow-item {
+  font-size: 13px;
+  color: var(--muted-fg);
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.flow-item::before {
+  content: '—';
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.flow-connector {
+  text-align: center;
+  color: var(--primary);
+  font-size: 20px;
+  margin: 4px 0;
+  line-height: 1;
+}
+
+/* 問い */
+.q-block {
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.q-header {
+  background: var(--muted);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.q-num {
+  font-size: 10px;
+  font-weight: 800;
+  background: var(--primary);
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.q-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.q-body {
+  padding: 14px 20px;
+  font-size: 13px;
+  color: var(--muted-fg);
+  line-height: 1.85;
+}
+
+.q-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.badge-now { background: #FEE2E2; color: #991B1B; }
+.badge-disc { background: #FEF3C7; color: #92400E; }
+.badge-later { background: var(--secondary); color: var(--primary-dark); }
+
+/* コピー選択肢 */
+.copy-card {
+  border: 2px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+}
+
+.copy-card:hover { border-color: var(--primary); }
+
+.copy-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--muted-fg);
+  margin-bottom: 12px;
+}
+
+.copy-main {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 800;
+  color: var(--fg);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.copy-sub {
+  font-size: 13px;
+  color: var(--muted-fg);
+  margin-top: 10px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* プラン比較 */
+.plan-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media(max-width:600px) { .plan-compare { grid-template-columns: 1fr; } }
+
+.plan-col {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--secondary);
+}
+
+.plan-col.recommended { border-color: var(--primary); border-width: 2px; }
+
+.plan-head {
+  padding: 16px 20px;
+  background: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plan-col.recommended .plan-head {
+  background: var(--primary);
+  color: white;
+}
+
+.plan-col.recommended .plan-head h4 { color: white; }
+.plan-col.recommended .plan-head .plan-rec { color: rgba(255,255,255,0.85); font-size: 11px; }
+
+.plan-rec { font-size: 11px; color: var(--muted-fg); }
+
+.plan-body { padding: 20px; }
+
+.plan-item {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted-fg);
+  margin-bottom: 10px;
+  align-items: baseline;
+}
+
+.plan-item .pi-day {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 11px;
+  min-width: 32px;
+}
+
+/* アップセルフロー */
+.upsell-trigger {
+  background: var(--brand-amber-light);
+  border: 1px solid #e6c88a;
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin-bottom: 10px;
+}
+
+.upsell-trigger .ut-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--brand-amber);
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+
+.upsell-trigger p { font-size: 13px; color: #7c4f1a; line-height: 1.7; }
+
+footer {
+  background: var(--primary-dark);
+  padding: 32px 0;
+  margin-top: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- ナビゲーション -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-back">← 事業全体設計へ戻る</a>
+    <span class="nav-brand">Carefle</span>
+    <span class="nav-tag">経営会議資料</span>
+  </div>
+</nav>
+
+<!-- ヒーロー -->
+<section style="padding:72px 0 56px; background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 100%);">
+  <div class="container">
+    <span class="label" style="color:rgba(255,255,255,0.6);">Market Strategy</span>
+    <h1 style="color:white; margin-bottom:16px;">
+      ターゲット戦略<br>経営会議資料
+    </h1>
+    <div class="divider" style="background:rgba(255,255,255,0.4);"></div>
+    <p style="color:rgba(255,255,255,0.75); font-size:1rem; max-width:520px; line-height:1.9;">
+      ターゲットを「キャリアモヤモヤ以上、転職活動未満」に絞り込んだうえで、<br>
+      誰の何を解決し、どう見せ、どう収益化するかを整理した議論の土台。
+    </p>
+  </div>
+</section>
+
+<!-- 目次 -->
+<section class="white" style="padding:40px 0;">
+  <div class="container reveal">
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <a href="#problem" style="text-decoration:none;"><span class="tag">1. 課題定義</span></a>
+      <a href="#persona" style="text-decoration:none;"><span class="tag">2. ペルソナ</span></a>
+      <a href="#market" style="text-decoration:none;"><span class="tag">3. 市場規模</span></a>
+      <a href="#journey" style="text-decoration:none;"><span class="tag">4. カスタマージャーニー</span></a>
+      <a href="#alternatives" style="text-decoration:none;"><span class="tag">5. 代替品の限界</span></a>
+      <a href="#solution" style="text-decoration:none;"><span class="tag">6. キャリフレの解決</span></a>
+      <a href="#messaging" style="text-decoration:none;"><span class="tag">7. 入口・コピー</span></a>
+      <a href="#pricing" style="text-decoration:none;"><span class="tag">8. 無料/有料設計</span></a>
+      <a href="#retention" style="text-decoration:none;"><span class="tag">9. 継続価値</span></a>
+      <a href="#upsell" style="text-decoration:none;"><span class="tag">10. アップセル</span></a>
+      <a href="#competitive" style="text-decoration:none;"><span class="tag">11. 競合差別化</span></a>
+      <a href="#questions" style="text-decoration:none;"><span class="tag" style="background:var(--primary);color:white;">12. 経営陣への問い</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 1. 課題定義 -->
+<section id="problem">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">01 · Problem Definition</span>
+      <h2>誰の、どんな課題を解決するか</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="reveal">
+      <div class="highlight-box" style="margin-bottom:32px;">
+        <h2 style="font-size:clamp(1.1rem,2.5vw,1.5rem); line-height:1.8;">
+          転職活動と、転職を考えることの間に<br>伴走してくれる場所が、今まで存在しなかった。
+        </h2>
+        <p>キャリフレはその空白地帯を埋める。</p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <h3 style="margin-bottom:20px;">ターゲット</h3>
+      <p style="margin-bottom:24px; font-size:1rem;">転職が頭にぼんやりあるが、転職活動を始めていない人。キャリアへの違和感・モヤモヤを抱えながら、誰にも相談できず、一人で抱えている。</p>
+
+      <h3 style="margin-bottom:16px;">解決する4つの課題</h3>
+      <table>
+        <thead><tr><th>課題</th><th>具体的な状態</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>モヤモヤを言語化できない</td>
+            <td>「何が嫌なのか」が自分でも分からない。不満の輪郭がない。</td>
+          </tr>
+          <tr>
+            <td>安心して考える場所がない</td>
+            <td>職場には言えない。家族・友人に繰り返すのが申し訳ない。</td>
+          </tr>
+          <tr>
+            <td>転職軸（判断基準）がない</td>
+            <td>求人を見ても「これでいいのか」が判断できない。</td>
+          </tr>
+          <tr>
+            <td>決断できない</td>
+            <td>転職すべきか・今のままでいいかが永遠に堂々巡りになる。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="quote" style="margin-top:32px;">
+        「転職エージェントに行くと転職しなきゃいけないモードになる気がして、行けない。」<br>
+        「ビズリーチのオファーは、眺めているだけ。」
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 2. ペルソナ -->
+<section id="persona" class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">02 · Persona</span>
+      <h2>ターゲットペルソナ（3パターン）</h2>
+      <div class="divider"></div>
+      <p>同じターゲット層の中にある3つの異なる「止まり方」。初期に集中するペルソナを経営判断として選択する。</p>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:20px;" class="reveal">
+
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <span class="tag" style="background:var(--primary);color:white;">A</span>
+          <h3>慢性モヤモヤ型</h3>
+          <span style="font-size:12px; color:var(--muted-fg); margin-left:auto;">30代前半・会社員5〜7年目</span>
+        </div>
+        <p style="font-size:13px; margin-bottom:12px;">仕事はこなせる、特別嫌ではないが充実感がない。同期の転職ニュースで焦りを感じる。ビズリーチに登録しているが眺めるだけ。</p>
+        <div style="background:var(--muted); border-radius:8px; padding:14px 18px; margin-top:8px;">
+          <p style="font-size:12px; color:var(--primary-dark); font-weight:600;">この層の本質的な障壁</p>
+          <p style="font-size:12px; margin-top:4px;">「具体的な不満が言えない」から誰にも相談しにくい。コーチングは「まだそこまでじゃない」と感じている。</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <span class="tag" style="background:var(--primary-dark);color:white;">B</span>
+          <h3>転機待ち型</h3>
+          <span style="font-size:12px; color:var(--muted-fg); margin-left:auto;">30代後半・専門職</span>
+        </div>
+        <p style="font-size:13px; margin-bottom:12px;">今の会社に5年以上いて成長の限界を感じている。「転職するなら今かも」と思っているが踏み出せない。年収・ポジション・安定のトレードオフが頭から離れない。</p>
+        <div style="background:var(--muted); border-radius:8px; padding:14px 18px; margin-top:8px;">
+          <p style="font-size:12px; color:var(--primary-dark); font-weight:600;">この層の本質的な障壁</p>
+          <p style="font-size:12px; margin-top:4px;">家族がいる・ライフイベントが近い。エージェントに相談したら「転職する方向」で話が進んでしまいそうで怖い。</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <span class="tag">C</span>
+          <h3>自己理解不足型</h3>
+          <span style="font-size:12px; color:var(--muted-fg); margin-left:auto;">20代後半・第二新卒から3〜5年目</span>
+        </div>
+        <p style="font-size:13px; margin-bottom:12px;">今の職種・会社が自分に合っているか確信が持てない。強みや価値観が言語化できず「どんな仕事に向いているか」が分からない。</p>
+        <div style="background:var(--muted); border-radius:8px; padding:14px 18px; margin-top:8px;">
+          <p style="font-size:12px; color:var(--primary-dark); font-weight:600;">この層の本質的な障壁</p>
+          <p style="font-size:12px; margin-top:4px;">求人を見ても選ぶ基準がない。「若いうちに動くべき」という焦りと「もう少し頑張るべき」の間で止まっている。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 3. 市場規模 -->
+<section id="market" class="muted">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">03 · Market Size</span>
+      <h2>課題の質と市場規模</h2>
+      <div class="divider"></div>
+      <p>数値は公開統計・業界調査からの推計。実数は変動する。</p>
+    </div>
+
+    <div class="reveal">
+      <div class="kpi-row">
+        <div class="kpi-box">
+          <div class="big-num">6,800<span style="font-size:1rem;">万</span></div>
+          <div class="small-label">日本の就業人口</div>
+        </div>
+        <div class="kpi-box">
+          <div class="big-num">2,700<span style="font-size:1rem;">万</span></div>
+          <div class="small-label">転職潜在層（推計40%）</div>
+        </div>
+        <div class="kpi-box" style="border-color:var(--primary); border-width:2px;">
+          <div class="big-num" style="color:var(--primary-dark);">800〜<br>1,000<span style="font-size:1rem;">万</span></div>
+          <div class="small-label">モヤモヤ以上・活動未満（推計）</div>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom:16px;">収益ポテンシャル試算</h3>
+      <table style="margin-bottom:32px;">
+        <thead><tr><th>シナリオ</th><th>獲得ユーザー数</th><th>年間売上（¥980/月換算）</th></tr></thead>
+        <tbody>
+          <tr><td>保守的</td><td style="color:var(--fg);">3万人</td><td style="color:var(--fg); font-weight:700;">約 3.5億円</td></tr>
+          <tr><td>中間</td><td style="color:var(--fg);">10万人</td><td style="color:var(--fg); font-weight:700;">約 12億円</td></tr>
+          <tr><td>積極的</td><td style="color:var(--fg);">30万人</td><td style="color:var(--fg); font-weight:700;">約 35億円</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-bottom:16px;">課題の質の評価</h3>
+      <table>
+        <thead><tr><th>評価軸</th><th>評価</th><th>理由</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>痛みの強度</td>
+            <td><strong style="color:#1A6070;">高</strong></td>
+            <td>キャリア不満は生活の質・メンタルに直結する慢性的な痛み</td>
+          </tr>
+          <tr>
+            <td>頻度</td>
+            <td><strong style="color:#1A6070;">高</strong></td>
+            <td>毎日・毎週感じる</td>
+          </tr>
+          <tr>
+            <td>支払意欲</td>
+            <td><strong style="color:#b8752a;">中</strong></td>
+            <td>自己啓発書・診断ツールには課金実績あり。¥980/月は許容範囲内</td>
+          </tr>
+          <tr>
+            <td>緊急性</td>
+            <td><strong style="color:#b8752a;">中〜低</strong></td>
+            <td>慢性的で「今すぐ」でないと感じやすい。入口設計で補う必要がある</td>
+          </tr>
+          <tr>
+            <td>競合強度</td>
+            <td><strong style="color:#1A6070;">低〜中</strong></td>
+            <td>このゾーン専用の支配的プレイヤーが存在しない</td>
+          </tr>
+          <tr>
+            <td>市場トレンド</td>
+            <td><strong style="color:#1A6070;">成長</strong></td>
+            <td>転職市場の拡大・自己理解への関心の高まりが継続中</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note-text" style="margin-top:24px;">
+        総評：市場規模は大きく競合が薄い空白地帯。緊急性の低さをオンボーディングとコピー設計で補うことが最大の課題。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 4. カスタマージャーニー -->
+<section id="journey" class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">04 · Customer Journey</span>
+      <h2>カスタマージャーニー</h2>
+      <div class="divider"></div>
+      <p>「観察期」が長期化しやすいのがこのターゲットの特徴。キャリフレはその出口になる。</p>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:6px;" class="reveal">
+
+      <div class="flow-block">
+        <div class="flow-phase">Phase 1 · 気づき</div>
+        <div class="flow-items">
+          <div class="flow-item">月曜の朝が憂鬱・同期の転職ニュース・ビズリーチにオファーが来る</div>
+          <div class="flow-item">「なんか違う」という感覚が続く</div>
+        </div>
+      </div>
+
+      <div class="flow-connector">↓</div>
+
+      <div class="flow-block">
+        <div class="flow-phase">Phase 2 · 葛藤</div>
+        <div class="flow-items">
+          <div class="flow-item">転職したいわけじゃないかも。でも今のままも嫌。</div>
+          <div class="flow-item">誰にも言えない。エージェントは怖い。</div>
+          <div class="flow-item">「もうちょっと考えてから」を繰り返す。</div>
+        </div>
+      </div>
+
+      <div class="flow-connector">↓</div>
+
+      <div class="flow-block" style="border-color:#f59e0b; border-left:3px solid #f59e0b;">
+        <div class="flow-phase" style="color:#b8752a;">Phase 3 · 観察期（長期化しやすい）</div>
+        <div class="flow-items">
+          <div class="flow-item">ビズリーチのオファーを眺める。転職系の記事を読む。</div>
+          <div class="flow-item">同僚・友人の転職体験談を聞く。</div>
+          <div class="flow-item" style="color:#b8752a;">でも動かない。ここで止まり続けるケースが最も多い。</div>
+        </div>
+      </div>
+
+      <div class="flow-connector">↓</div>
+
+      <div class="flow-block" style="border-color:var(--primary); border-left:3px solid var(--primary);">
+        <div class="flow-phase">Phase 4 · キャリフレとの出会い</div>
+        <div class="flow-items">
+          <div class="flow-item">「転職しなくても使えそう」「誰にも知られない」「気軽に診断だけ受けてみる」</div>
+        </div>
+      </div>
+
+      <div class="flow-connector">↓</div>
+
+      <div class="flow-block">
+        <div class="flow-phase">Phase 5 · 内省・蓄積</div>
+        <div class="flow-items">
+          <div class="flow-item">満足度診断 → モヤモヤに輪郭が出る</div>
+          <div class="flow-item">内省チャット → なぜ不満かが言葉になる（診断直後に自動起動）</div>
+          <div class="flow-item">人生史 → 充実していた時期のパターンが見える</div>
+          <div class="flow-item">日記 → 感情の波が可視化される</div>
+        </div>
+      </div>
+
+      <div class="flow-connector">↓</div>
+
+      <div class="flow-block">
+        <div class="flow-phase">Phase 6 · 言語化・完成</div>
+        <div class="flow-items">
+          <div class="flow-item">WCMシート → ありたい姿が具体化</div>
+          <div class="flow-item">取説・持ち味レポート → 「自分はこういう人間」が言語化</div>
+          <div class="flow-item">転職軸レポート → 「次の職場に何を求めるか」が整理される</div>
+        </div>
+      </div>
+
+      <div class="flow-connector">↓</div>
+
+      <div class="flow-block" style="background:var(--muted);">
+        <div class="flow-phase">Phase 7 · 自分で決める</div>
+        <div class="grid-2" style="margin-top:8px; gap:12px;">
+          <div style="background:var(--white); border-radius:8px; padding:14px 18px; border:1px solid var(--secondary);">
+            <p style="font-size:12px; font-weight:700; color:var(--primary-dark); margin-bottom:6px;">転職する</p>
+            <p style="font-size:12px;">転職軸を持ってエージェントへ。初回面談の質が上がる。</p>
+          </div>
+          <div style="background:var(--white); border-radius:8px; padding:14px 18px; border:1px solid var(--secondary);">
+            <p style="font-size:12px; font-weight:700; color:var(--primary-dark); margin-bottom:6px;">今は転職しない</p>
+            <p style="font-size:12px;">現状改善の具体的行動が生まれる。</p>
+          </div>
+        </div>
+        <p style="font-size:12px; margin-top:12px; color:var(--primary-dark); font-weight:600;">どちらにしても「自分で決めた」という納得感がある。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 5. 代替品の限界 -->
+<section id="alternatives" class="muted">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">05 · Alternatives</span>
+      <h2>現状の代替品と、なぜ解決されないか</h2>
+      <div class="divider"></div>
+      <p>共通の限界：「転職するかどうか」という前段の問いに、伴走してくれるものがない。</p>
+    </div>
+
+    <div class="reveal">
+      <table>
+        <thead><tr><th>代替品</th><th>なぜ使われているか</th><th>なぜ解決されないか</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>転職エージェント</td>
+            <td style="color:var(--fg);">無料・求人紹介あり</td>
+            <td style="color:var(--fg);">KPIが転職成功。「転職しない」という結論を一緒に考えない</td>
+          </tr>
+          <tr>
+            <td>ビズリーチ等スカウト型</td>
+            <td style="color:var(--fg);">受け身で情報収集できる</td>
+            <td style="color:var(--fg);">求人を評価する自己理解がない。眺めるだけで終わる</td>
+          </tr>
+          <tr>
+            <td>友人・家族への相談</td>
+            <td style="color:var(--fg);">無料・気軽</td>
+            <td style="color:var(--fg);">守秘性なし・同じ話の繰り返しへの申し訳なさ・客観性なし</td>
+          </tr>
+          <tr>
+            <td>ChatGPT等汎用AI</td>
+            <td style="color:var(--fg);">無料・何でも聞ける</td>
+            <td style="color:var(--fg);">フレームワークなし・前の会話を覚えない・ログ蓄積なし</td>
+          </tr>
+          <tr>
+            <td>キャリアコーチング</td>
+            <td style="color:var(--fg);">専門家・深い対話</td>
+            <td style="color:var(--fg);">数十万円・週1面談・コミット重い。この段階には入口が高すぎる</td>
+          </tr>
+          <tr>
+            <td>自己啓発本・診断ツール</td>
+            <td style="color:var(--fg);">安価・手軽</td>
+            <td style="color:var(--fg);">一般論で終わる。「自分の場合は？」に答えてくれない</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 6. キャリフレによる解決 -->
+<section id="solution" class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">06 · Solution</span>
+      <h2>キャリフレによる解決</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="reveal">
+      <table style="margin-bottom:32px;">
+        <thead><tr><th>痛み</th><th>キャリフレの解決</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>モヤモヤを言語化できない</td>
+            <td style="color:var(--fg);">満足度診断＋内省チャット自動起動で輪郭と原因を言葉にする</td>
+          </tr>
+          <tr>
+            <td>相談できる場所がない</td>
+            <td style="color:var(--fg);">AIなのでジャッジされない・誰にも知られない・何度でも話せる</td>
+          </tr>
+          <tr>
+            <td>転職エージェント恐怖</td>
+            <td style="color:var(--fg);">「転職するかどうかを考える場所」として機能。転職を前提にしない</td>
+          </tr>
+          <tr>
+            <td>転職軸・判断基準がない</td>
+            <td style="color:var(--fg);">WCM＋取説＋転職軸レポートで選択基準が言語化される</td>
+          </tr>
+          <tr>
+            <td>一人で堂々巡りになる</td>
+            <td style="color:var(--fg);">AIが問いを立て、フレームワークで思考を構造化する</td>
+          </tr>
+          <tr>
+            <td>決断への恐怖</td>
+            <td style="color:var(--fg);">内省の蓄積から「自分で気づく」設計。納得感のある決断が生まれる</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <h2 style="font-size:clamp(1rem,2.5vw,1.4rem); line-height:1.8;">
+          転職する・しないに関わらず、<br>「自分で決めた」という納得感を届ける。
+        </h2>
+        <p>それがキャリフレの提供する状態。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 7. 入口・コピー・オンボーディング -->
+<section id="messaging" class="muted">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">07 · Messaging</span>
+      <h2>入口・コピー・オンボーディングの変更</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="reveal">
+
+      <!-- サービス定義 -->
+      <h3 style="margin-bottom:12px;">サービスの一言定義（確定案）</h3>
+      <div class="card" style="margin-bottom:32px; border-color:var(--primary); border-width:2px;">
+        <p style="font-size:1.3rem; font-weight:800; color:var(--primary-dark); line-height:1.7; text-align:center; padding:8px 0;">
+          キャリアのことを、ともに考える場所。
+        </p>
+        <p style="font-size:12px; text-align:center; margin-top:8px;">AIとの内省＋セッション（人）の両方を示唆。孤独感を解消しながら、ツールではなく「場所」として機能させる。</p>
+      </div>
+
+      <!-- 転職の言葉 -->
+      <h3 style="margin-bottom:12px;">「転職」という言葉の扱い方（ルール）</h3>
+      <div class="grid-2" style="margin-bottom:32px;">
+        <div style="background:#FEE2E2; border-radius:var(--radius); padding:18px 22px;">
+          <p style="font-size:11px; font-weight:700; color:#991B1B; margin-bottom:8px; letter-spacing:0.12em;">NG ワード</p>
+          <p style="font-size:13px; color:#7f1d1d;">「転職支援」「転職活動」</p>
+        </div>
+        <div style="background:#D1FAE5; border-radius:var(--radius); padding:18px 22px;">
+          <p style="font-size:11px; font-weight:700; color:#065F46; margin-bottom:8px; letter-spacing:0.12em;">OK ワード</p>
+          <p style="font-size:13px; color:#064e3b;">「転職が頭にある」「転職するかどうか」「転職する前に」</p>
+        </div>
+      </div>
+
+      <!-- コピー選択肢 -->
+      <h3 style="margin-bottom:16px;">メインコピー（選択肢）</h3>
+      <p style="font-size:13px; margin-bottom:20px;">5案から1案を選択、または組み合わせる。</p>
+
+      <div class="copy-card">
+        <div class="copy-label">案 1 · 内心の声をそのまま</div>
+        <div class="copy-main">転職、するべきかな。</div>
+        <div class="copy-sub">その答えを、自分で出すために。
+エージェントに行く前の7日間。</div>
+      </div>
+
+      <div class="copy-card">
+        <div class="copy-label">案 2 · 状況描写で共感</div>
+        <div class="copy-main">ビズリーチは、眺めているだけ。</div>
+        <div class="copy-sub">「まだいいか」が続いている人と、
+ともに考えたい。</div>
+      </div>
+
+      <div class="copy-card">
+        <div class="copy-label">案 3 · 言えない孤独に刺さる</div>
+        <div class="copy-main">誰にも言っていないけど、
+転職、考えてる。</div>
+        <div class="copy-sub">その気持ちを、ここで整理しよう。</div>
+      </div>
+
+      <div class="copy-card">
+        <div class="copy-label">案 4 · エージェント恐怖を正面突破</div>
+        <div class="copy-main">エージェントに行くと、
+転職しなきゃいけない気がする。</div>
+        <div class="copy-sub">その前に、自分と話してみませんか。</div>
+      </div>
+
+      <div class="copy-card">
+        <div class="copy-label">案 5 · 決断の主語を自分に</div>
+        <div class="copy-main">転職するかどうか、
+自分で決めよう。</div>
+        <div class="copy-sub">誰かに決めてもらわなくていい。</div>
+      </div>
+
+      <!-- オンボーディング -->
+      <h3 style="margin-top:36px; margin-bottom:16px;">オンボーディング設計（確定）</h3>
+      <div class="card" style="border-color:var(--primary);">
+        <div class="flow-items">
+          <div style="display:flex; gap:16px; align-items:center; padding:12px 0; border-bottom:1px solid var(--secondary);">
+            <span class="step-num">1</span>
+            <div>
+              <p style="font-size:13px; font-weight:700; color:var(--fg);">満足度診断（約10分）</p>
+              <p style="font-size:12px;">現在地・モヤモヤの輪郭を可視化する</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; align-items:center; padding:12px 0; border-bottom:1px solid var(--secondary);">
+            <span class="step-num" style="background:var(--primary-dark);">2</span>
+            <div>
+              <p style="font-size:13px; font-weight:700; color:var(--fg);">結果表示</p>
+              <p style="font-size:12px;">低い領域がグラフで可視化される</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; align-items:center; padding:12px 0;">
+            <span class="step-num" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));">3</span>
+            <div>
+              <p style="font-size:13px; font-weight:700; color:var(--fg);">内省チャットが自動起動 ← 最重要実装ポイント</p>
+              <p style="font-size:12px;">「人間関係が低めでした。どんな場面でそれを感じますか？」数字が「自分の言葉」に変わる最初の体験がここで生まれる。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 8. 無料/有料設計 -->
+<section id="pricing" class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">08 · Pricing Model</span>
+      <h2>無料／有料設計</h2>
+      <div class="divider"></div>
+      <p>設計思想：入力は無料、出力は有料。</p>
+    </div>
+
+    <div class="reveal">
+
+      <div class="grid-2" style="margin-bottom:40px; gap:16px;">
+        <div class="card">
+          <span class="tag" style="margin-bottom:12px; display:inline-block;">永続無料</span>
+          <h4 style="margin-bottom:12px;">体験できる最小単位</h4>
+          <div class="flow-items">
+            <div class="flow-item">満足度診断（月1回）</div>
+            <div class="flow-item">内省チャット（月10回）</div>
+          </div>
+        </div>
+        <div class="card" style="border-color:var(--primary); border-width:2px; position:relative;">
+          <div style="position:absolute; top:-11px; left:50%; transform:translateX(-50%); background:var(--primary); color:white; font-size:10px; font-weight:700; padding:3px 12px; border-radius:100px; white-space:nowrap;">有料（サブスク）</div>
+          <span class="tag" style="margin-bottom:12px; display:inline-block; background:var(--primary); color:white;">¥980/月・¥9,800/年</span>
+          <h4 style="margin-bottom:12px;">成果物が生まれるフル機能</h4>
+          <div class="flow-items">
+            <div class="flow-item">診断の繰り返し・変化の追跡</div>
+            <div class="flow-item">内省チャット無制限</div>
+            <div class="flow-item">日記・人生史・WCM無制限</div>
+            <div class="flow-item">取説・持ち味レポート生成</div>
+            <div class="flow-item">転職軸レポート生成</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom:20px;">トライアル期間：7日 vs 14日</h3>
+      <p style="font-size:13px; margin-bottom:20px;">「魔法の瞬間（転職軸レポートが出た瞬間）」に到達できるかどうかが判断軸。</p>
+
+      <div class="plan-compare">
+        <div class="plan-col">
+          <div class="plan-head">
+            <h4>7日間（現状）</h4>
+            <span class="plan-rec">現行設定</span>
+          </div>
+          <div class="plan-body">
+            <div class="plan-item"><span class="pi-day">Day1</span>診断＋チャット</div>
+            <div class="plan-item"><span class="pi-day">Day3</span>人生史</div>
+            <div class="plan-item"><span class="pi-day">Day5〜</span>日記（持ち味レポートに5件必要）</div>
+            <div class="plan-item" style="color:#991B1B;"><span class="pi-day" style="color:#991B1B;">Day7</span>持ち味・転職軸レポートに到達できない可能性が高い</div>
+            <hr class="light">
+            <p style="font-size:12px; color:#991B1B;">魔法の瞬間を体験する前にトライアルが終わるリスクがある</p>
+          </div>
+        </div>
+
+        <div class="plan-col recommended">
+          <div class="plan-head">
+            <h4>14日間</h4>
+            <span class="plan-rec">推奨</span>
+          </div>
+          <div class="plan-body">
+            <div class="plan-item"><span class="pi-day">Day1</span>診断＋チャット自動起動</div>
+            <div class="plan-item"><span class="pi-day">Day3</span>人生史</div>
+            <div class="plan-item"><span class="pi-day">Day5〜9</span>日記5件蓄積</div>
+            <div class="plan-item"><span class="pi-day">Day10</span>取説・持ち味レポート生成 ← 魔法の瞬間</div>
+            <div class="plan-item"><span class="pi-day">Day11</span>WCM・転職軸レポート完成</div>
+            <div class="plan-item"><span class="pi-day">Day12〜14</span>体験を振り返り・課金判断</div>
+            <hr class="light">
+            <p style="font-size:12px; color:var(--primary-dark); font-weight:600;">体験 → 価値の実感 → 課金検討のサイクルが自然に回る</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-text" style="margin-top:24px;">
+        実装コストは設定変更のみ。既存ユーザーへの影響と課金転換率の変化を経営判断として確認が必要。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 9. サブスク継続価値 -->
+<section id="retention" class="muted">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">09 · Retention Value</span>
+      <h2>サブスク継続価値</h2>
+      <div class="divider"></div>
+      <p>キャリフレの価値は時間とともに複利で増える。転職して終わりではない。</p>
+    </div>
+
+    <div class="reveal">
+
+      <div class="grid-2" style="margin-bottom:32px;">
+        <div class="card">
+          <h4 style="margin-bottom:12px; color:var(--primary);">登録する価値（短期）</h4>
+          <div class="flow-items">
+            <div class="flow-item">転職軸が言語化された状態になれる</div>
+            <div class="flow-item">自分の言葉でキャリアを語れるようになる</div>
+            <div class="flow-item">エージェント・面接で使える自己理解の素材が揃う</div>
+          </div>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:12px; color:var(--primary-dark);">1年継続する価値（長期）</h4>
+          <div class="flow-items">
+            <div class="flow-item">キャリアの年次レビューができる</div>
+            <div class="flow-item">転職後の新環境への適応にも使える</div>
+            <div class="flow-item">感情・充実のパターンが長期で見えてくる</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom:16px;">蓄積による価値の成長</h3>
+      <table>
+        <thead><tr><th>期間</th><th>蓄積される価値</th></tr></thead>
+        <tbody>
+          <tr><td>1〜3ヶ月</td><td style="color:var(--fg);">自己理解の基盤が形成される</td></tr>
+          <tr><td>3〜6ヶ月</td><td style="color:var(--fg);">どんな仕事で充実するか、感情のパターンが見えてくる</td></tr>
+          <tr><td>6〜12ヶ月</td><td style="color:var(--fg);">「3ヶ月前の自分と今」の変化が客観的に分かる</td></tr>
+          <tr><td>1年〜</td><td style="color:var(--fg);">キャリアの年次レビューができる。新しい職場での内省にも使い続ける</td></tr>
+        </tbody>
+      </table>
+
+      <div class="card" style="margin-top:28px; border-color:var(--primary);">
+        <div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div class="big-num">¥9,800</div>
+            <div style="font-size:11px; color:var(--muted-fg); margin-top:4px;">年額プラン</div>
+          </div>
+          <div style="flex:1; min-width:200px;">
+            <p style="font-size:14px; font-weight:700; color:var(--fg); margin-bottom:6px;">「1年分の自己理解の記録が、¥9,800」</p>
+            <p style="font-size:13px;">月払い換算より約2ヶ月お得。年単位での内省継続を後押しする価格設計。</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 10. アップセル -->
+<section id="upsell" class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">10 · Upsell</span>
+      <h2>セッションへのアップセル</h2>
+      <div class="divider"></div>
+      <p>AIで内省を深め、必要なタイミングで人に繋がる。</p>
+    </div>
+
+    <div class="reveal">
+
+      <h3 style="margin-bottom:16px;">アップセル対象となる顧客像</h3>
+      <table style="margin-bottom:32px;">
+        <thead><tr><th>タイプ</th><th>状態</th><th>アップセルのトリガー</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>決断前サポート型</td>
+            <td style="color:var(--fg);">転職軸は見えたが「本当にこれで合っているか」不安</td>
+            <td style="color:var(--fg);">転職軸レポート生成直後</td>
+          </tr>
+          <tr>
+            <td>行動移行型</td>
+            <td style="color:var(--fg);">内省は終わったが書類・面接のサポートが必要</td>
+            <td style="color:var(--fg);">WCM完成・エージェント検討段階</td>
+          </tr>
+          <tr>
+            <td>深掘り型</td>
+            <td style="color:var(--fg);">AIの問いで出てきた気づきを人間と深めたい</td>
+            <td style="color:var(--fg);">内省チャットで複雑な課題が浮上した時</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-bottom:16px;">AIとセッションの役割分担</h3>
+      <div class="grid-2" style="margin-bottom:32px;">
+        <div class="card">
+          <span class="tag" style="margin-bottom:12px; display:inline-block;">AI（キャリフレ）</span>
+          <div class="flow-items">
+            <div class="flow-item">毎日の内省・記録・パターン把握</div>
+            <div class="flow-item">言語化・フレームワーク整理</div>
+            <div class="flow-item">24時間いつでも・記録が蓄積される</div>
+          </div>
+        </div>
+        <div class="card" style="border-color:var(--brand-amber);">
+          <span class="tag" style="margin-bottom:12px; display:inline-block; background:var(--brand-amber-light); color:var(--brand-amber);">セッション（人）</span>
+          <div class="flow-items">
+            <div class="flow-item">AIでは気づけない盲点の指摘</div>
+            <div class="flow-item">重要な決断前のセカンドオピニオン</div>
+            <div class="flow-item">複雑なキャリア課題への専門的アドバイス</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom:16px;">アップセルのタイミングと文言</h3>
+
+      <div class="upsell-trigger">
+        <div class="ut-label">転職軸レポート生成後</div>
+        <p>「この内容を専門家と30分確認しませんか？あなたの転職軸に、見落としがないか一緒に見ます。」</p>
+      </div>
+
+      <div class="upsell-trigger">
+        <div class="ut-label">WCMシート完成後</div>
+        <p>「ありたい姿が言葉になりました。次の一手を、プロと一緒に考えてみませんか？」</p>
+      </div>
+
+      <div class="upsell-trigger">
+        <div class="ut-label">内省チャットで複雑な課題が浮上した時</div>
+        <p>「この悩み、AIより人間と話した方が深まりそうです。セッションを試してみますか？」</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 11. 競合差別化 -->
+<section id="competitive" class="muted">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">11 · Competitive Advantage</span>
+      <h2>競合差別化</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="reveal">
+
+      <div class="quote">
+        「転職エージェントとの間に、誰もいなかった。」<br>
+        キャリフレはその空白地帯に唯一いる。
+      </div>
+
+      <h3 style="margin-bottom:16px;">差別化の3本柱</h3>
+
+      <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:32px;">
+        <div class="card">
+          <h4 style="color:var(--primary); margin-bottom:8px;">① 唯一のポジション</h4>
+          <p style="font-size:13px;">転職エージェントの「前」、コーチングの「手前」にいる。「転職するかどうかを考える」ゾーンに、支配的プレイヤーがいない。</p>
+        </div>
+        <div class="card">
+          <h4 style="color:var(--primary); margin-bottom:8px;">② AIの差別化（ChatGPTとの違い）</h4>
+          <table style="margin-top:8px;">
+            <thead><tr><th></th><th>ChatGPT</th><th>キャリフレ</th></tr></thead>
+            <tbody>
+              <tr><td>フレームワーク</td><td style="color:var(--fg);">なし</td><td style="color:var(--fg); font-weight:600;">WCM・診断・持ち味等の独自構造</td></tr>
+              <tr><td>記憶</td><td style="color:var(--fg);">セッション内のみ</td><td style="color:var(--fg); font-weight:600;">キャリアログが蓄積される</td></tr>
+              <tr><td>パーソナライズ</td><td style="color:var(--fg);">なし</td><td style="color:var(--fg); font-weight:600;">過去の日記・診断と比較した提案</td></tr>
+              <tr><td>出力</td><td style="color:var(--fg);">テキスト</td><td style="color:var(--fg); font-weight:600;">転職軸レポート・取説・持ち味レポート</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h4 style="color:var(--primary); margin-bottom:8px;">③ 人（セッション）への接続</h4>
+          <p style="font-size:13px;">AIで内省を深め、必要なタイミングで人に繋がれる。この「AIと人の組み合わせ」は他の単体サービスにはない。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 12. 経営陣への問い -->
+<section id="questions" class="white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">12 · Discussion Questions</span>
+      <h2>経営陣への確認事項・問い</h2>
+      <div class="divider"></div>
+      <p>意思決定のために確認が必要な問い。優先度別に整理。</p>
+    </div>
+
+    <div class="reveal">
+
+      <!-- 優先度凡例 -->
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px;">
+        <span class="q-badge badge-now" style="font-size:11px; padding:4px 12px; border-radius:100px;">今日必ず決める</span>
+        <span class="q-badge badge-disc" style="font-size:11px; padding:4px 12px; border-radius:100px;">今日議論・方向感を出す</span>
+        <span class="q-badge badge-later" style="font-size:11px; padding:4px 12px; border-radius:100px;">次回以降</span>
+      </div>
+
+      <!-- 戦略前提 -->
+      <h3 style="margin-bottom:16px; margin-top:8px;">戦略の前提確認</h3>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">1</div>
+          <div class="q-title">ターゲットの絞り込みに全員合意できるか？</div>
+          <span class="q-badge badge-now">今日必ず決める</span>
+        </div>
+        <div class="q-body">「キャリアに悩む人全般」から「転職が頭にある人」に絞ることで、今まで使っていたユーザー層との関係はどう整理するか。捨てるのか、並走するのか。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">2</div>
+          <div class="q-title">「転職しない」という結論のユーザーを、成功と定義できるか？</div>
+          <span class="q-badge badge-now">今日必ず決める</span>
+        </div>
+        <div class="q-body">キャリフレを使って「今の会社に残る」と決めたユーザーは、ビジネス上の成功か。ここが曖昧だと、コピーもオンボーディングも中途半端になる。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">3</div>
+          <div class="q-title">このサービスを「誰として」届けるか？</div>
+          <span class="q-badge badge-disc">今日議論</span>
+        </div>
+        <div class="q-body">ツール・AIコーチ・場所——どれを前面に出すかで、信頼の作り方が変わる。「ともに考える場所」という定義に全員が腹落ちしているか。</div>
+      </div>
+
+      <!-- ターゲット -->
+      <h3 style="margin-bottom:16px; margin-top:28px;">ターゲット・ペルソナ</h3>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">4</div>
+          <div class="q-title">3つのペルソナのうち、最初に集中するのはどれか？</div>
+          <span class="q-badge badge-disc">今日議論</span>
+        </div>
+        <div class="q-body">A（慢性モヤモヤ型）・B（転機待ち型）・C（自己理解不足型）を同時に追うのはリソース的に難しい。初期はどこに絞るか。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">5</div>
+          <div class="q-title">身近に「このターゲット」がいるか？インタビューできるか？</div>
+          <span class="q-badge badge-later">次回以降</span>
+        </div>
+        <div class="q-body">戦略の仮説を検証するために、ペルソナに近い人へのインタビューを3〜5人できるか。誰が担うか。</div>
+      </div>
+
+      <!-- 市場・投資 -->
+      <h3 style="margin-bottom:16px; margin-top:28px;">市場規模・投資判断</h3>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">6</div>
+          <div class="q-title">何人獲得できれば「戦略が機能している」と判断するか？</div>
+          <span class="q-badge badge-disc">今日議論</span>
+        </div>
+        <div class="q-body">6ヶ月後・1年後の有料ユーザー数の目標値を合意しておく。数字がなければPDCAが回らない。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">7</div>
+          <div class="q-title">市場規模の推計を見て、現在の投資水準は適切か？</div>
+          <span class="q-badge badge-disc">今日議論</span>
+        </div>
+        <div class="q-body">推計800〜1,000万人の潜在層、有料転換後の売上試算に対して、投資を増やすか・維持か・絞るかを判断する。</div>
+      </div>
+
+      <!-- コピー・入口 -->
+      <h3 style="margin-bottom:16px; margin-top:28px;">コピー・入口</h3>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">8</div>
+          <div class="q-title">5つのコピー案のうち、「社長が言いたいこと」に最も近いのはどれか？</div>
+          <span class="q-badge badge-disc">今日議論</span>
+        </div>
+        <div class="q-body">トーン（共感型・対比型・宣言型）の好みを経営陣で揃える。決めた後にABテストで検証するか否かも合わせて確認。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">9</div>
+          <div class="q-title">「エージェントに行く前」という表現を使ってよいか？</div>
+          <span class="q-badge badge-disc">今日議論</span>
+        </div>
+        <div class="q-body">将来的にエージェントとの連携・パートナーシップを考えているなら、対立軸にしない方が良い場合がある。どちらを優先するか。</div>
+      </div>
+
+      <!-- ビジネスモデル -->
+      <h3 style="margin-bottom:16px; margin-top:28px;">ビジネスモデル</h3>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">10</div>
+          <div class="q-title">「入力は無料、出力は有料」という線引きに合意できるか？</div>
+          <span class="q-badge badge-now">今日必ず決める</span>
+        </div>
+        <div class="q-body">診断・チャット・日記は無料、取説・持ち味・転職軸レポートは有料。この設計でユーザーへの説明責任を果たせるか。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">11</div>
+          <div class="q-title">トライアル期間は7日か14日か？</div>
+          <span class="q-badge badge-now">今日必ず決める</span>
+        </div>
+        <div class="q-body">14日推奨の根拠：魔法の瞬間（転職軸レポート生成）に到達する前にトライアルが終わるリスク。既存ユーザーへの影響・LTVへの影響を加味して決断する。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">12</div>
+          <div class="q-title">永続無料ティアを設けることで課金転換率が下がるリスクを許容できるか？</div>
+          <span class="q-badge badge-later">次回以降</span>
+        </div>
+        <div class="q-body">無料で使い続けられる設計は入口を広げるが、「ずっと無料でいい」ユーザーを生む可能性もある。フリーミアムの設計思想を経営として持てるか。</div>
+      </div>
+
+      <!-- セッション -->
+      <h3 style="margin-bottom:16px; margin-top:28px;">セッション・アップセル</h3>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">13</div>
+          <div class="q-title">セッションの提供体制は整っているか、または整えられるか？</div>
+          <span class="q-badge badge-disc">今日議論</span>
+        </div>
+        <div class="q-body">提供者・品質・スケジュール管理の体制が必要。現状の体制で受けられる人数の上限はどこか。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">14</div>
+          <div class="q-title">セッションの価格帯をどこに設定するか？</div>
+          <span class="q-badge badge-later">次回以降</span>
+        </div>
+        <div class="q-body">安すぎると「AI+人」の価値が伝わらない。高すぎるとアップセルが起きない。競合（ポジウィル等）との比較でどのポジションを取るか。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">15</div>
+          <div class="q-title">セッション提供者の質をどう担保するか？</div>
+          <span class="q-badge badge-later">次回以降</span>
+        </div>
+        <div class="q-body">資格・研修・評価の仕組みをどう設計するか、またそれはいつまでに整備するか。</div>
+      </div>
+
+      <!-- 競合 -->
+      <h3 style="margin-bottom:16px; margin-top:28px;">競合・差別化</h3>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">16</div>
+          <div class="q-title">転職エージェントと「対立」するポジションを取ることのリスクをどう評価するか？</div>
+          <span class="q-badge badge-later">次回以降</span>
+        </div>
+        <div class="q-body">「エージェントに行く前」という表現は差別化になる一方、将来的なパートナーシップの可能性を狭める可能性がある。どちらを優先するか。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">17</div>
+          <div class="q-title">B2B展開（企業向け）の可能性を今後の選択肢に入れるか？</div>
+          <span class="q-badge badge-later">次回以降</span>
+        </div>
+        <div class="q-body">キャリア面談・1on1の質を上げるツールとして法人向けに展開できる可能性がある。今は考えないのか、視野に入れておくのか。</div>
+      </div>
+
+      <!-- 全体 -->
+      <h3 style="margin-bottom:16px; margin-top:28px;">全体を通した問い（必ず議論する）</h3>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">18</div>
+          <div class="q-title">3ヶ月後、何が起きていれば「この方針転換は正しかった」と言えるか？</div>
+          <span class="q-badge badge-now">今日必ず決める</span>
+        </div>
+        <div class="q-body">数字・ユーザーの声・チームの手応え、何を持って判断するかを合意しておく。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">19</div>
+          <div class="q-title">今日の会議で「決める」ことと「持ち帰る」ことを分けるとしたら何か？</div>
+          <span class="q-badge badge-now">今日必ず決める</span>
+        </div>
+        <div class="q-body">全員が同じ会議にいる間に決めるべき最重要事項を絞り込む。</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-header">
+          <div class="q-num">20</div>
+          <div class="q-title">この方針の意思決定オーナーは誰か？</div>
+          <span class="q-badge badge-now">今日必ず決める</span>
+        </div>
+        <div class="q-body">コピー・価格・オンボーディング変更の最終判断者を明確にしておかないと、次のアクションが止まる。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p style="color:rgba(255,255,255,0.4); font-size:13px;">キャリフレ　ターゲット戦略・経営会議資料　2026</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
