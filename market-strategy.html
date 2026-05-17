@@ -495,7 +495,8 @@ footer {
       <a href="#retention" style="text-decoration:none;"><span class="tag">9. 継続価値</span></a>
       <a href="#upsell" style="text-decoration:none;"><span class="tag">10. アップセル</span></a>
       <a href="#competitive" style="text-decoration:none;"><span class="tag">11. 競合差別化</span></a>
-      <a href="#questions" style="text-decoration:none;"><span class="tag" style="background:var(--primary);color:white;">12. 問い</span></a>
+      <a href="#reports" style="text-decoration:none;"><span class="tag">12. レポート設計</span></a>
+      <a href="#questions" style="text-decoration:none;"><span class="tag" style="background:var(--primary);color:white;">13. 問い</span></a>
     </div>
   </div>
 </section>
@@ -1502,11 +1503,149 @@ footer {
   </div>
 </section>
 
-<!-- ============================================================ 12. 経営陣への問い -->
-<section id="questions" class="white">
+<!-- ============================================================ 12. レポート設計 -->
+<section id="reports" class="white">
   <div class="container">
     <div class="section-header reveal">
-      <span class="label">12 · Discussion Questions</span>
+      <span class="label">12 · Report Design</span>
+      <h2>レポート設計：3つの役割と出すタイミング</h2>
+      <p>現状3種のレポートがある。それぞれの役割・ソース・出すタイミングを整理し、体験設計と実装優先度を判断する。</p>
+    </div>
+
+    <!-- 役割整理テーブル -->
+    <div style="overflow-x:auto; margin-bottom:40px;">
+      <table style="font-size:13px; width:100%;">
+        <thead>
+          <tr>
+            <th></th>
+            <th>取説（トリセツ）</th>
+            <th>持ち味レポート</th>
+            <th>転職軸レポート <span style="font-weight:400; color:#9ca3af;">（未実装）</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700; color:var(--fg);">答える問い</td>
+            <td>「私はどんな人か？」</td>
+            <td>「私はどう動く人か？」</td>
+            <td>「私はどうしたいのか？」</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:var(--fg);">ソース</td>
+            <td>診断 + 自己診断（入力ベース）</td>
+            <td>日記5件以上（行動ベース）</td>
+            <td>上記すべて + WCMシート</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:var(--fg);">性質</td>
+            <td>静的（入力時の断面）</td>
+            <td>動的（行動パターンの蓄積）</td>
+            <td>意思決定支援</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:var(--fg);">出るタイミング</td>
+            <td>早期（Day 3〜5）</td>
+            <td>中期（日記5件達成後）</td>
+            <td>後期（Day 14以降）</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:var(--fg);">更新頻度</td>
+            <td>自己診断に追加入力があったとき</td>
+            <td>日記10件・20件の節目で再生成</td>
+            <td>基本1回（WCM更新時に再生成可）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 論点：3本必要か -->
+    <div style="background:#f8fafc; border-radius:12px; padding:20px 24px; margin-bottom:32px;">
+      <p style="font-size:13px; font-weight:700; color:var(--primary-dark); margin-bottom:8px;">論点：3つは多いか？</p>
+      <p style="font-size:13px; line-height:1.85;">3つは重複ではなく<strong>レイヤーが異なる</strong>。取説は「自分が思っている自分」（自己申告）、持ち味は「行動の中に現れている自分」（AIの観察）、転職軸は「これからの意思決定軸」（統合）。削るより、この対比をキャリフレの差別化として見せ切る方が価値になる。ただし現状は<strong>ユーザーに違いが伝わりにくい</strong>ことが課題。</p>
+    </div>
+
+    <!-- 統合案 -->
+    <h3 style="margin-bottom:16px;">統合案（2択）</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:40px;">
+
+      <div style="border:2px solid var(--primary); border-radius:12px; padding:18px 20px;">
+        <p style="font-size:12px; font-weight:800; color:var(--primary); letter-spacing:0.06em; margin-bottom:8px;">案A ― 3本立て維持・階段として明示（推奨）</p>
+        <p style="font-size:13px; line-height:1.8; margin-bottom:10px;">「知る → 気づく → 決める」の3ステップをオンボーディング画面とホームに明示する。レポートの本数より、流れが見えることが重要。</p>
+        <p style="font-size:12px; color:var(--primary-dark); font-weight:600;">自分を知る（取説）→ 自分を観る（持ち味）→ 自分で決める（転職軸）</p>
+      </div>
+
+      <div style="border:1px solid var(--secondary); border-radius:12px; padding:18px 20px;">
+        <p style="font-size:12px; font-weight:800; color:var(--primary-dark); letter-spacing:0.06em; margin-bottom:8px;">案B ― 取説 + 持ち味を一本化（2本立て）</p>
+        <p style="font-size:13px; line-height:1.8; margin-bottom:10px;">「自己理解レポート」として統合し、日記5件達成で v2 に更新される設計。レポートの本数は減るが、「更新」という概念をユーザーが理解できるかが課題。</p>
+        <p style="font-size:12px; color:#6b7280;">自己理解レポート（v1→v2）→ 転職軸レポート</p>
+      </div>
+
+    </div>
+
+    <!-- タイムライン -->
+    <h3 style="margin-bottom:20px;">出すタイミング・頻度（案A 前提）</h3>
+    <div style="display:flex; flex-direction:column; gap:0;">
+
+      <div style="display:flex; gap:16px; align-items:flex-start; padding-bottom:24px; position:relative;">
+        <div style="flex-shrink:0; width:72px; text-align:center;">
+          <div style="background:var(--primary); color:white; border-radius:100px; font-size:11px; font-weight:800; padding:4px 0;">Day 1</div>
+        </div>
+        <div>
+          <p style="font-size:13px; font-weight:700; color:var(--fg); margin-bottom:4px;">登録・診断</p>
+          <p style="font-size:12px; color:#6b7280; line-height:1.7;">満足度スコアを即時表示。「現在地が数字で見えた」が最初の価値体験。</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:16px; align-items:flex-start; padding-bottom:24px;">
+        <div style="flex-shrink:0; width:72px; text-align:center;">
+          <div style="background:var(--primary); color:white; border-radius:100px; font-size:11px; font-weight:800; padding:4px 0;">Day 2〜3</div>
+        </div>
+        <div>
+          <p style="font-size:13px; font-weight:700; color:var(--fg); margin-bottom:4px;">自己診断の入力 → 取説生成</p>
+          <p style="font-size:12px; color:#6b7280; line-height:1.7;">MBTI・強み・価値観など手元にある結果を入力。完了後すぐ取説を生成。ファーストアウトプットとして最速で価値を返す。</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:16px; align-items:flex-start; padding-bottom:24px;">
+        <div style="flex-shrink:0; width:72px; text-align:center;">
+          <div style="background:var(--primary); color:white; border-radius:100px; font-size:11px; font-weight:800; padding:4px 0;">Day 3〜7</div>
+        </div>
+        <div>
+          <p style="font-size:13px; font-weight:700; color:var(--fg); margin-bottom:4px;">日記・内省チャット</p>
+          <p style="font-size:12px; color:#6b7280; line-height:1.7;">AIフィードバックで「気づき」を積む。毎日でなくて良い。3〜5件で持ち味レポートの解放条件に近づいていることを進捗として見せる。</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:16px; align-items:flex-start; padding-bottom:24px;">
+        <div style="flex-shrink:0; width:72px; text-align:center;">
+          <div style="background:var(--primary); color:white; border-radius:100px; font-size:11px; font-weight:800; padding:4px 0;">Day 7〜10</div>
+        </div>
+        <div>
+          <p style="font-size:13px; font-weight:700; color:var(--fg); margin-bottom:4px;">日記5件達成 → 持ち味レポート解放</p>
+          <p style="font-size:12px; color:#6b7280; line-height:1.7;">「あなたの行動パターンから、AIが持ち味を読み取りました」と通知。取説との対比（自己申告 vs AIの観察）を見せることで納得感が上がる。</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="flex-shrink:0; width:72px; text-align:center;">
+          <div style="background:var(--primary-dark); color:white; border-radius:100px; font-size:11px; font-weight:800; padding:4px 0;">Day 14〜</div>
+        </div>
+        <div>
+          <p style="font-size:13px; font-weight:700; color:var(--fg); margin-bottom:4px;">転職軸レポートへ誘導（有料転換の最大動機）</p>
+          <p style="font-size:12px; color:#6b7280; line-height:1.7;">「取説 × 持ち味 × WCMから、あなたの転職軸を言語化できます」。ここが魔法の瞬間。トライアル期間内に到達させることが有料転換のカギ。</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ 13. 経営陣への問い -->
+<section id="questions" class="white" style="border-top:1px solid #f0f0f0;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">13 · Discussion Questions</span>
       <h2>確認事項・問い</h2>
       <div class="divider"></div>
       <p>意思決定のために確認が必要な問い。優先度別に整理。</p>
