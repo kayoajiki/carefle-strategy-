@@ -1628,7 +1628,38 @@ footer {
             <p style="font-size:13px; font-weight:700; color:var(--fg);">キャリア納得度の向上 ／ 自分の軸で次の一手を決断できた状態</p>
             <p style="font-size:12px; margin-top:6px; line-height:1.8;">転職する・しないに関わらず、「自分がどうしたいか」を言語化し、主体的な行動や意思決定の背中を押せたか。キャリフレが介在できる価値の範囲であり、転職成功（外部環境に左右される）よりも計測可能で本質に近い。</p>
           </div>
-          <p style="font-size:12px; color:#6b7280; margin-bottom:16px;">計測方法（案）：転職軸レポート生成後アンケート「活動を始めようと思いましたか？」／ 退会時アンケート「意思決定は前進しましたか？」</p>
+          <!-- KGI計測 × ユーザー価値の両立 -->
+          <div style="background:#f8fafc; border-radius:10px; padding:16px 18px; margin-bottom:20px;">
+            <p style="font-size:12px; font-weight:700; color:var(--primary-dark); margin-bottom:4px;">論点：「こちら都合のアンケート」ではなく「本人が自分の変化を記録する」設計にできないか？</p>
+            <p style="font-size:12px; color:#6b7280; line-height:1.75;">定点観測データをプラットフォームが取れると同時に、ユーザー自身が軌跡をたどれる体験になるなら、回答継続率も上がる。以下3案を議論する。</p>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
+
+            <!-- 案A -->
+            <div style="border:1px solid var(--secondary); border-radius:10px; padding:14px 16px;">
+              <p style="font-size:12px; font-weight:800; color:var(--primary); margin-bottom:6px; letter-spacing:0.04em;">案A ― キャリア体温計（定期チェックイン × グラフ化）</p>
+              <p style="font-size:12px; line-height:1.75; margin-bottom:8px;">登録時・14日後・30日後・90日後に同じ5問に答える（各0〜10のスライダー）。問い例：転職意欲 ／ 現職への不満 ／ 強みの言語化度 ／ キャリアの方向性の明確さ ／ 行動したい気持ち。ユーザーには「あなたのキャリア体温グラフ」として折れ線で可視化して返す。プラットフォームはBefore→Afterのスコア差でKGIを定量計測できる。</p>
+              <p style="font-size:11px; color:#6b7280;">実装コスト：中。既存診断とは別の簡易チェックインUIが必要。</p>
+            </div>
+
+            <!-- 案B -->
+            <div style="border:1px solid var(--secondary); border-radius:10px; padding:14px 16px;">
+              <p style="font-size:12px; font-weight:800; color:var(--primary); margin-bottom:6px; letter-spacing:0.04em;">案B ― コア体験時リフレクション（マイルストーン型）</p>
+              <p style="font-size:12px; line-height:1.75; margin-bottom:8px;">取説・持ち味レポート・転職軸レポートを生成したタイミングで「今の気持ちを一言」を記録する。入力は任意・100字以内。これが自動的に「軌跡ページ」に時系列で並ぶ。ユーザーは「〇月〇日、転職軸レポートを見て："行動してみようと思った"」という記録が積み上がる体験になる。</p>
+              <p style="font-size:11px; color:#6b7280;">実装コスト：低。レポート生成後に一言メモUIを挟むだけ。自然なタイミングで取れる。</p>
+            </div>
+
+            <!-- 案C -->
+            <div style="border:1px solid var(--secondary); border-radius:10px; padding:14px 16px;">
+              <p style="font-size:12px; font-weight:800; color:var(--primary); margin-bottom:6px; letter-spacing:0.04em;">案C ― 満足度診断の再実施（既存機能の延長）</p>
+              <p style="font-size:12px; line-height:1.75; margin-bottom:8px;">「前回の診断から〇日が経ちました。変化を記録しませんか？」と定期的にリマインド。同じ診断を再度受けるとBefore/Afterのスコア差分が「あなたの変化」として可視化される。追加開発がほぼ不要で、既存のキャリア満足度診断がそのままトラッキングツールになる。</p>
+              <p style="font-size:11px; color:#6b7280;">実装コスト：最小。診断の再実施フローとスコア比較UIのみ。最速で動かせる。</p>
+            </div>
+
+          </div>
+          <p style="font-size:12px; color:var(--primary-dark); font-weight:600;">→ 3案の組み合わせも可能（C を先行、A・B を追加）。どれを優先するか、またユーザー体験として「記録する動機」が持てるかを確認する。</p>
+          <p style="font-size:12px; color:#6b7280; margin-top:8px;">※ いずれの案でも、データはユーザー自身のダッシュボードに「あなたの変化」として開示する設計にする。プラットフォームが一方的に取るのではなく、ユーザーへの価値として返すことが継続回答の前提。</p>
           <p style="font-size:11px; font-weight:700; color:var(--primary-dark); letter-spacing:0.08em; margin-bottom:10px;">KPI案（先行指標）</p>
           <table style="font-size:12px;">
             <thead>
