@@ -496,7 +496,8 @@ footer {
       <a href="#upsell" style="text-decoration:none;"><span class="tag">10. アップセル</span></a>
       <a href="#competitive" style="text-decoration:none;"><span class="tag">11. 競合差別化</span></a>
       <a href="#reports" style="text-decoration:none;"><span class="tag">12. レポート設計</span></a>
-      <a href="questions.html" target="_blank" style="text-decoration:none;"><span class="tag" style="background:var(--primary);color:white;">13. 問い ↗</span></a>
+      <a href="#user-flow" style="text-decoration:none;"><span class="tag">13. フロー図</span></a>
+      <a href="questions.html" target="_blank" style="text-decoration:none;"><span class="tag" style="background:var(--primary);color:white;">14. 問い ↗</span></a>
     </div>
   </div>
 </section>
@@ -1643,11 +1644,225 @@ footer {
   </div>
 </section>
 
-<!-- ============================================================ 13. 問い（別タブ） -->
+<!-- ============================================================ 13. オンボーディング & プランフロー -->
+<section id="user-flow" class="muted">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">13 · User Flow</span>
+      <h2>オンボーディング &amp; プラン導線</h2>
+      <div class="divider"></div>
+      <p>サインアップから有料化・無料継続までの実際のユーザー経路と、ライフサイクルフェーズ別の機能アクセス設計。</p>
+    </div>
+
+    <div class="reveal">
+
+      <h3 style="margin-bottom:20px;">ユーザーライフサイクルフロー</h3>
+
+      <!-- 未認証 -->
+      <div style="text-align:center; margin-bottom:4px;">
+        <span class="tag" style="font-size:13px; padding:8px 20px;">未認証ユーザー</span>
+      </div>
+      <div class="flow-connector">↓</div>
+
+      <!-- サインアップ -->
+      <div class="flow-block" style="background:var(--white); margin-bottom:4px;">
+        <div class="flow-phase">サインアップ / ログイン</div>
+        <div class="flow-items">
+          <div class="flow-item">Google OAuth / LINE / メール</div>
+          <div class="flow-item">users テーブル：plan = 'free'、initialOnboardingCompletedAt = null</div>
+        </div>
+      </div>
+      <div class="flow-connector">↓</div>
+
+      <!-- initial_onboarding フェーズ -->
+      <div class="flow-block" style="border:2px solid #f59e0b; border-left:4px solid #f59e0b; margin-bottom:4px;">
+        <div class="flow-phase" style="color:#b8752a;">フェーズ：initial_onboarding</div>
+        <div style="margin-top:8px; display:flex; flex-direction:column; gap:0;">
+          <div style="display:flex; gap:14px; padding:9px 0; border-bottom:1px solid var(--secondary); align-items:center;">
+            <span class="step-num">1</span>
+            <p style="font-size:13px; color:var(--fg); flex:1; margin:0;">キャリア満足度診断 → 内省チャット自動起動</p>
+            <span style="font-size:10px; font-weight:700; background:var(--primary); color:white; padding:2px 8px; border-radius:100px; white-space:nowrap; flex-shrink:0;">★ 魔法1</span>
+          </div>
+          <div style="display:flex; gap:14px; padding:9px 0; border-bottom:1px solid var(--secondary); align-items:center;">
+            <span class="step-num">2</span>
+            <p style="font-size:13px; color:var(--fg); flex:1; margin:0;">日記記入（1日以上）+ AIフィードバック</p>
+          </div>
+          <div style="display:flex; gap:14px; padding:9px 0; border-bottom:1px solid var(--secondary); align-items:center;">
+            <span class="step-num" style="background:var(--secondary); color:var(--primary-dark);">3</span>
+            <p style="font-size:13px; color:var(--fg); flex:1; margin:0;">自己診断結果の登録</p>
+            <span style="font-size:10px; font-weight:700; background:var(--secondary); color:var(--primary-dark); padding:2px 8px; border-radius:100px; white-space:nowrap; flex-shrink:0;">オプション</span>
+          </div>
+          <div style="display:flex; gap:14px; padding:9px 0; align-items:center;">
+            <span class="step-num" style="background:var(--primary-dark);">4</span>
+            <p style="font-size:13px; font-weight:700; color:var(--fg); flex:1; margin:0;">持ち味レポート生成（オンボーディング完了）</p>
+            <span style="font-size:10px; font-weight:700; background:var(--primary-dark); color:white; padding:2px 8px; border-radius:100px; white-space:nowrap; flex-shrink:0;">★★ 魔法2</span>
+          </div>
+        </div>
+        <div class="note-text" style="margin-top:12px;">このフェーズは AIフィードバック・内省チャットも利用可能（体験フック）</div>
+      </div>
+      <div class="flow-connector">↓</div>
+
+      <!-- Paywall -->
+      <div class="flow-block" style="border:2px solid #dc2626; border-left:4px solid #dc2626; margin-bottom:24px; background:var(--white);">
+        <div class="flow-phase" style="color:#dc2626;">Paywall 選択モーダル（1回のみ・強制ではなく選択）</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+          <div style="background:#fef3c7; border-radius:8px; padding:14px 16px; border:1px solid #f59e0b;">
+            <p style="font-size:11px; font-weight:700; color:#92400E; margin-bottom:6px; letter-spacing:0.08em;">プレミアムで続ける</p>
+            <p style="font-size:12px; color:#7c4f1a;">/pricing → Stripe Checkout へ</p>
+          </div>
+          <div style="background:var(--muted); border-radius:8px; padding:14px 16px; border:1px solid var(--secondary);">
+            <p style="font-size:11px; font-weight:700; color:var(--primary-dark); margin-bottom:6px; letter-spacing:0.08em;">無料で続ける</p>
+            <p style="font-size:12px; color:var(--muted-fg);">/dashboard へ・free_retention に移行</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2分岐：有料 vs 無料 -->
+      <div class="grid-2">
+
+        <!-- 有料パス -->
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <div style="text-align:center;">
+            <div style="display:inline-block; background:var(--primary); color:white; border-radius:100px; padding:5px 14px; font-size:11px; font-weight:700;">プレミアム選択</div>
+          </div>
+          <div class="flow-connector">↓</div>
+          <div class="flow-block" style="border-left:4px solid var(--primary);">
+            <div class="flow-phase">Stripe 決済</div>
+            <div class="flow-items" style="margin-top:4px;">
+              <div class="flow-item">月額 ¥980 / 年額 ¥9,800 を選択</div>
+              <div class="flow-item">決済完了 → webhook で plan = 'subscribed'</div>
+            </div>
+          </div>
+          <div class="flow-connector">↓</div>
+          <div class="flow-block" style="border:1px solid #6ee7b7; border-left:4px solid #059669; background:#f0fdf4;">
+            <div class="flow-phase" style="color:#059669;">フェーズ：paid（全機能解放）</div>
+            <div class="flow-items" style="margin-top:6px;">
+              <div class="flow-item">人生史タイムライン</div>
+              <div class="flow-item">WCM・キャリア軸診断</div>
+              <div class="flow-item">AIフィードバック・内省チャット無制限</div>
+              <div class="flow-item">持ち味レポート再生成</div>
+              <div class="flow-item">マイルストーン管理</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 無料パス -->
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <div style="text-align:center;">
+            <div style="display:inline-block; background:var(--secondary); color:var(--primary-dark); border-radius:100px; padding:5px 14px; font-size:11px; font-weight:700;">無料で続ける選択</div>
+          </div>
+          <div class="flow-connector">↓</div>
+          <div class="flow-block">
+            <div class="flow-phase">フェーズ：free_retention（限定機能）</div>
+            <div class="flow-items" style="margin-top:4px;">
+              <div class="flow-item">診断・日記記入</div>
+              <div class="flow-item">持ち味レポート閲覧（再生成不可）</div>
+              <div class="flow-item" style="color:#9ca3af;">内省チャット・AIフィードバックはロック</div>
+            </div>
+          </div>
+          <div class="flow-connector">↓</div>
+          <div class="flow-block" style="border-left:4px solid #f59e0b; background:#fffbeb;">
+            <div class="flow-phase" style="color:#b8752a;">アップセル誘導（7日間隔でスロットル）</div>
+            <div class="flow-items" style="margin-top:4px;">
+              <div class="flow-item">ロック機能クリック時に /pricing へ</div>
+              <div class="flow-item">localStorage で7日に1回の表示制御</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- フェーズ別機能アクセス表 -->
+    <div class="reveal" style="margin-top:56px;">
+      <h3 style="margin-bottom:16px;">フェーズ別・機能アクセス一覧</h3>
+      <div style="overflow-x:auto;">
+        <table style="font-size:13px;">
+          <thead>
+            <tr>
+              <th>機能</th>
+              <th style="background:#fef3c7; color:#92400E; text-align:center;">initial_onboarding</th>
+              <th style="text-align:center;">free_retention</th>
+              <th style="background:#d1fae5; color:#065F46; text-align:center;">paid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>キャリア診断作成</td>
+              <td style="text-align:center; background:#fefce8;"><strong style="color:var(--primary);">✓</strong></td>
+              <td style="text-align:center;"><strong style="color:var(--primary);">✓</strong></td>
+              <td style="text-align:center; background:#f0fdf4;"><strong style="color:#059669;">✓</strong></td>
+            </tr>
+            <tr>
+              <td>日記記入</td>
+              <td style="text-align:center; background:#fefce8;"><strong style="color:var(--primary);">✓</strong></td>
+              <td style="text-align:center;"><strong style="color:var(--primary);">✓</strong></td>
+              <td style="text-align:center; background:#f0fdf4;"><strong style="color:#059669;">✓</strong></td>
+            </tr>
+            <tr>
+              <td>持ち味レポート閲覧</td>
+              <td style="text-align:center; background:#fefce8;"><strong style="color:var(--primary);">✓</strong></td>
+              <td style="text-align:center;"><strong style="color:var(--primary);">✓</strong></td>
+              <td style="text-align:center; background:#f0fdf4;"><strong style="color:#059669;">✓</strong></td>
+            </tr>
+            <tr>
+              <td>AIフィードバック</td>
+              <td style="text-align:center; background:#fefce8;"><strong style="color:var(--primary);">✓</strong></td>
+              <td style="text-align:center; color:#d1d5db;">—</td>
+              <td style="text-align:center; background:#f0fdf4;"><strong style="color:#059669;">✓</strong></td>
+            </tr>
+            <tr>
+              <td>内省チャット</td>
+              <td style="text-align:center; background:#fefce8;"><strong style="color:var(--primary);">✓</strong></td>
+              <td style="text-align:center; color:#d1d5db;">—</td>
+              <td style="text-align:center; background:#f0fdf4;"><strong style="color:#059669;">✓</strong></td>
+            </tr>
+            <tr>
+              <td>持ち味レポート再生成</td>
+              <td style="text-align:center; background:#fefce8; color:#d1d5db;">—</td>
+              <td style="text-align:center; color:#d1d5db;">—</td>
+              <td style="text-align:center; background:#f0fdf4;"><strong style="color:#059669;">✓</strong></td>
+            </tr>
+            <tr>
+              <td>人生史編集</td>
+              <td style="text-align:center; background:#fefce8; color:#d1d5db;">—</td>
+              <td style="text-align:center; color:#d1d5db;">—</td>
+              <td style="text-align:center; background:#f0fdf4;"><strong style="color:#059669;">✓</strong></td>
+            </tr>
+            <tr>
+              <td>WCM編集</td>
+              <td style="text-align:center; background:#fefce8; color:#d1d5db;">—</td>
+              <td style="text-align:center; color:#d1d5db;">—</td>
+              <td style="text-align:center; background:#f0fdf4;"><strong style="color:#059669;">✓</strong></td>
+            </tr>
+            <tr>
+              <td>キャリア軸診断</td>
+              <td style="text-align:center; background:#fefce8; color:#d1d5db;">—</td>
+              <td style="text-align:center; color:#d1d5db;">—</td>
+              <td style="text-align:center; background:#f0fdf4;"><strong style="color:#059669;">✓</strong></td>
+            </tr>
+            <tr>
+              <td>マイルストーン管理</td>
+              <td style="text-align:center; background:#fefce8; color:#d1d5db;">—</td>
+              <td style="text-align:center; color:#d1d5db;">—</td>
+              <td style="text-align:center; background:#f0fdf4;"><strong style="color:#059669;">✓</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-text" style="margin-top:16px;">
+        initial_onboarding フェーズは AIフィードバック・内省チャットが利用可能。体験フックとして設計されており、無料継続後はロックすることで有料転換を促す。
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ 14. 問い（別タブ） -->
 <section id="questions" class="white" style="border-top:1px solid #f0f0f0;">
   <div class="container">
     <div class="section-header reveal">
-      <span class="label">13 · Discussion Questions</span>
+      <span class="label">14 · Discussion Questions</span>
       <h2>確認事項・問い</h2>
       <div class="divider"></div>
       <p>意思決定のために確認が必要な問いをまとめた別ページです。</p>
