@@ -1200,7 +1200,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <h2>3シナリオ比較</h2>
       <div class="divider"></div>
       <p>入り口設計の違いが、3年間でどう損益に影響するか。</p>
-      <p class="note-text" style="margin-top:16px;">※ 試用日数を7日に変更した場合、下表の試算とは前提が異なる。<a href="#experience-revenue-story" style="color:var(--primary-dark); font-weight:600;">「収益化ストーリー」節</a>との整合レビューを推奨。</p>
+      <p class="note-text" style="margin-top:16px;">※ 下表の試算は当初の14日試用前提のまま残している。現行は<strong>初月無料（30日）</strong>に変更済みのため、転換率・継続の前提が異なる点に留意。</p>
     </div>
 
     <!-- シナリオ説明 -->
@@ -1213,7 +1213,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <div class="card" style="border-top:3px solid #2A9BB0;">
         <span class="tag" style="background:#d4eef5; color:#2A9BB0;">B</span>
         <h4 style="margin:12px 0 6px;">プロダクトのみ（推奨）</h4>
-        <p style="font-size:12px; color:var(--muted-fg);">キャリフレの試用が入り口（現資料の試算は14日試用前提。※7日への変更時は転換・継続仮説の再モデリング）。転換率8%だが質が高い。時間コストゼロ。</p>
+        <p style="font-size:12px; color:var(--muted-fg);">キャリフレの試用が入り口。現行は初月無料（30日）。転換率8%だが質が高い。時間コストゼロ。</p>
       </div>
       <div class="card" style="border-top:3px solid #E8973A;">
         <span class="tag" style="background:#fdf0e0; color:#E8973A;">C</span>
@@ -1565,7 +1565,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <div class="freemap-row"><div class="ok">自分が蓄積したログの閲覧</div><div class="lock">主に閲覧中心（編集は仕様で定義）</div></div>
     </div>
 
-    <p class="note-text reveal">本セクションはチャット合意に基づく<strong>体験戦略ドラフト</strong>。下記「3シナリオ比較」の数値は<strong>14日試用前提の試算</strong>のまま残しており、試用7日へ寄せた場合は<strong>転換率・継続の再仮説</strong>が必要。</p>
+    <p class="note-text reveal">本セクションはチャット合意に基づく<strong>体験戦略ドラフト</strong>。「3シナリオ比較」の数値は<strong>当初の14日試用前提の試算</strong>のまま残している。現行は<strong>初月無料（30日）</strong>に確定済み。</p>
   </div>
 </section>
 
@@ -1682,38 +1682,39 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <span class="label">Activation</span>
       <h2>アクティベーション設計</h2>
       <div class="divider"></div>
-      <p>登録後<strong>プレミアムは初めの1ヶ月無料</strong>。オンボーディングと同期させ、核の体感（診断→取説→日記FB→持ち味の初回は薄くても可）を届ける。試用<strong>終了時</strong>に1問だけ問い、状態に応じてサブスクまたはセッションへ誘導する。</p>
+      <p>登録後<strong>プレミアムは初めの1ヶ月無料</strong>。オンボーディングと同期させ、核の体感（診断→プロフィール→日記→持ち味レポート）を届ける。初月終了時に状態に応じてサブスクまたはセッションへ誘導する。</p>
     </div>
 
     <div class="grid-2 reveal" style="margin-bottom:32px;">
       <div>
-        <h3 style="margin-bottom:20px;">7日間オンボーディングフロー</h3>
-        <div class="step-row"><div class="step-num">0</div><div><strong style="font-size:14px;">診断完了・結果の全体像を確認</strong><p style="font-size:12px;">重視×満足の読みと「次の一歩」まで、最初の手応えをここで掴む</p></div></div>
-        <div class="step-row"><div class="step-num">1</div><div><strong style="font-size:14px;">内省チャットをクイック開始</strong><p style="font-size:12px;">「とりあえず話してみる」から低ハードルで開始し、日記1件目につなぐ</p></div></div>
-        <div class="step-row"><div class="step-num">3</div><div><strong style="font-size:14px;">AIフィードバック体験</strong><p style="font-size:12px;">2回目のaha。チャット/日記の蓄積にAIの返答が重なる</p></div></div>
-        <div class="step-row"><div class="step-num">5</div><div><strong style="font-size:14px;">持ち味レポートの準備開始（5日目以降）</strong><p style="font-size:12px;">登録から5日目以降に解放。入力が薄くても初版を返し、更新で深まる設計</p></div></div>
-        <div class="step-row"><div class="step-num" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));">7</div><div><strong style="font-size:14px; color:var(--primary);">WCM入力と次の一歩の具体化</strong><p style="font-size:12px;">診断結果・取説・日記をつなぎ、試用終了時の判断（継続/相談）に自然接続</p></div></div>
+        <h3 style="margin-bottom:20px;">オンボーディング必須ステップ</h3>
+        <div class="step-row"><div class="step-num">1</div><div><strong style="font-size:14px;">プロフィール入力</strong><p style="font-size:12px;">基本情報を登録し、パーソナライズの土台をつくる</p></div></div>
+        <div class="step-row"><div class="step-num">2</div><div><strong style="font-size:14px;">キャリア満足度診断</strong><p style="font-size:12px;">重視×満足の読みと「次の一歩」まで、最初の手応えをここで掴む</p></div></div>
+        <div class="step-row"><div class="step-num">3</div><div><strong style="font-size:14px;">日記を書く</strong><p style="font-size:12px;">最初の内省体験。書くことで振り返りの習慣が始まる</p></div></div>
+        <div class="step-row"><div class="step-num" style="opacity:0.6;">4</div><div><strong style="font-size:14px; opacity:0.8;">自己診断（任意）</strong><p style="font-size:12px;">MBTI等の自己理解を深める追加ステップ</p></div></div>
+        <div class="step-row"><div class="step-num" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));">5</div><div><strong style="font-size:14px; color:var(--primary);">持ち味レポート生成</strong><p style="font-size:12px;">入力が薄くても初版を返し、更新で深まる設計。価値体験の核</p></div></div>
+        <p class="note-text" style="margin-top:12px;">WCMは有料後のアクティベーションとして案内。</p>
       </div>
 
       <div>
-        <h3 style="margin-bottom:20px;">リマインド通知スケジュール</h3>
+        <h3 style="margin-bottom:20px;">メール・通知（ジャーニーベース）</h3>
         <table>
-          <thead><tr><th>タイミング</th><th>内容</th></tr></thead>
+          <thead><tr><th>ステージ</th><th>内容</th></tr></thead>
           <tbody>
-            <tr><td>翌日</td><td style="color:var(--fg); font-size:13px;">日記への誘導</td></tr>
-            <tr><td>3日後</td><td style="color:var(--fg); font-size:13px;">持ち味レポートまであと〇ステップ</td></tr>
-            <tr><td>7日後</td><td style="color:var(--fg); font-size:13px;">持ち味レポート生成を促す</td></tr>
-            <tr><td>Day 5</td><td style="color:var(--fg); font-size:13px;">進捗サマリー＋試用終了2日前予告（初月無料トライアルの場合）</td></tr>
-            <tr><td>Day 7</td><td style="color:var(--fg); font-size:13px;">試用終了：1問診断 → 回答別導線に分岐（サブスク or Level 1）</td></tr>
-            <tr><td>30日後</td><td style="color:var(--fg); font-size:13px;">再診断誘導</td></tr>
-            <tr><td>90日後</td><td style="color:var(--fg); font-size:13px;">診断を一時解放（feature_flags活用）</td></tr>
+            <tr><td>onboarding</td><td style="color:var(--fg); font-size:13px;">登録直後〜オンボ完了まで。次ステップへの誘導</td></tr>
+            <tr><td>free_education</td><td style="color:var(--fg); font-size:13px;">無料ユーザー向け。価値体験の案内・診断誘導</td></tr>
+            <tr><td>trial_month</td><td style="color:var(--fg); font-size:13px;">初月無料トライアル中。機能体験の促進と終了予告</td></tr>
+            <tr><td>paid_active</td><td style="color:var(--fg); font-size:13px;">有料継続中。習慣定着・累積ギフト・節目レポート</td></tr>
+            <tr><td>paid_dormant</td><td style="color:var(--fg); font-size:13px;">有料だが休眠傾向。再訪のきっかけ</td></tr>
+            <tr><td>churned</td><td style="color:var(--fg); font-size:13px;">解約後。再訪を支える無料土台の案内</td></tr>
           </tbody>
         </table>
+        <p class="note-text" style="margin-top:12px;">旧 Day1〜7 のメール体系から、ユーザー状態ベースの education-steps に移行済み。</p>
       </div>
     </div>
 
     <div class="card reveal" style="border-left:3px solid var(--primary);">
-      <h4 style="margin-bottom:12px;">Day 7（トライアル終了）：1問だけ問う</h4>
+      <h4 style="margin-bottom:12px;">トライアル終了時：1問だけ問う</h4>
       <p style="font-size:13px; margin-bottom:16px;">ペイウォールを直接提示するのではなく、状態を本人に確認させる。ブランドと一致する設計。</p>
       <div class="grid-3" style="gap:12px;">
         <div class="card-muted" style="text-align:center;">
@@ -1891,24 +1892,18 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <span class="label">Launch Schedule</span>
       <h2>ローンチスケジュール</h2>
       <div class="divider"></div>
-      <p>5月20日をローンチ日に定め、3フェーズで展開する。</p>
+      <p>7月7日をローンチ日に定め、3フェーズで展開。</p>
     </div>
 
     <div class="reveal">
       <div class="step-row">
-        <div class="step-num">1</div>
-        <div class="card" style="flex:1;">
+        <div class="step-num" style="opacity:0.5;">1</div>
+        <div class="card" style="flex:1; opacity:0.6;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
             <h3>準備期</h3>
-            <span class="tag">〜5月19日</span>
+            <span class="tag">〜7月6日 ✅ 完了</span>
           </div>
-          <p style="font-size:13px; margin-bottom:12px;">最低限の4点を整えて臨む。Instagram/X/noteはローンチ後に体制が整い次第本格稼働。</p>
-          <div style="display:flex; flex-direction:column; gap:6px;">
-            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">LP最低限の整備（CTA・セッション導線が機能する状態）← みっちー</span></div>
-            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">Stripe有効化・動作確認 ← 中村</span></div>
-            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">Facebookローンチ投稿文面の準備 ← 佐治さん・中村</span></div>
-            <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">LINE配信設定 ← 中村</span></div>
-          </div>
+          <p style="font-size:13px; margin-bottom:12px;">LP整備・Stripe有効化・Facebook投稿準備・LINE配信設定を完了。</p>
         </div>
       </div>
 
@@ -1917,9 +1912,9 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
         <div class="card" style="flex:1; border-color:var(--primary); border-width:2px;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
             <h3>ソフトローンチ</h3>
-            <span class="tag" style="background:var(--primary); color:white;">5月20日</span>
+            <span class="tag" style="background:var(--primary); color:white;">7月7日</span>
           </div>
-          <p style="font-size:13px; margin-bottom:12px;">二十四節気・夏が立つ日。季節の節目に自分のキャリアを見つめ直す、というコンセプトと重なるローンチ日。</p>
+          <p style="font-size:13px; margin-bottom:12px;">七夕。自分のキャリアに願いを込め直す日、というコンセプトと重なるローンチ日。</p>
           <div style="display:flex; flex-direction:column; gap:6px;">
             <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">有料サブスク（¥1,480/月・¥14,800/年）を有効化</span></div>
             <div style="font-size:13px; display:flex; gap:8px;"><span style="color:var(--primary);">—</span><span style="color:var(--fg);">Facebookローンチ発信</span></div>
@@ -1934,7 +1929,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
         <div class="card" style="flex:1; opacity:0.8;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
             <h3>フルローンチ</h3>
-            <span class="tag">6月〜7月</span>
+            <span class="tag">7月〜8月</span>
           </div>
           <p style="font-size:13px; margin-bottom:12px;">開発優先度P1〜P3が揃い次第、全チャネル本格稼働。</p>
           <div style="display:flex; flex-direction:column; gap:6px;">
@@ -1959,7 +1954,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
     </div>
 
     <div class="reveal">
-      <h3 style="margin-bottom:16px;">ローンチ前（〜5月19日）</h3>
+      <h3 style="margin-bottom:16px;">ローンチ前（〜7月6日）</h3>
       <table>
         <thead>
           <tr><th>役割</th><th>担当</th><th>タスク</th></tr>
@@ -1995,7 +1990,7 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
     </div>
 
     <div class="reveal" style="margin-top:40px;">
-      <h3 style="margin-bottom:16px;">ローンチ後（5月20日〜）</h3>
+      <h3 style="margin-bottom:16px;">ローンチ後（7月7日〜）</h3>
       <table>
         <thead>
           <tr><th>役割</th><th>担当</th><th>タスク</th></tr>
@@ -2040,16 +2035,16 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
       <span class="label">Business Plan</span>
       <h2>3年事業計画</h2>
       <div class="divider"></div>
-      <p>Year1 = ローンチ後12ヶ月（2026年5月〜2027年4月）。カレンダー年ではなく事業年として読む。</p>
+      <p>Year1 = ローンチ後12ヶ月（2026年7月〜2027年6月）。カレンダー年ではなく事業年として読む。</p>
     </div>
 
     <!-- P&L Summary -->
     <div class="reveal" style="margin-bottom:40px;">
       <div class="pl-row">
         <div class="pl-col header"><div class="pl-label">項目</div></div>
-        <div class="pl-col header"><div class="pl-label">Year 1<br><span style="font-weight:400; font-size:10px;">〜2027.4</span></div></div>
-        <div class="pl-col header"><div class="pl-label">Year 2<br><span style="font-weight:400; font-size:10px;">〜2028.4</span></div></div>
-        <div class="pl-col header"><div class="pl-label">Year 3<br><span style="font-weight:400; font-size:10px;">〜2029.4</span></div></div>
+        <div class="pl-col header"><div class="pl-label">Year 1<br><span style="font-weight:400; font-size:10px;">〜2027.6</span></div></div>
+        <div class="pl-col header"><div class="pl-label">Year 2<br><span style="font-weight:400; font-size:10px;">〜2028.6</span></div></div>
+        <div class="pl-col header"><div class="pl-label">Year 3<br><span style="font-weight:400; font-size:10px;">〜2029.6</span></div></div>
       </div>
       <div class="pl-row" style="border-top:none;">
         <div class="pl-col header"><div class="pl-label" style="font-size:12px; margin:0;">売上</div></div>
@@ -2126,7 +2121,8 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
     <div class="note-text reveal">
       ※ 本計画は現時点の前提条件に基づく試算。市場環境・獲得速度により変動する。<br>
       ※ Year1の赤字はスタートアップとして想定内の水準。<br>
-      ※ 業務委託者の追加はQ3以降・条件達成後に段階的に実施。
+      ※ 業務委託者の追加はQ3以降・条件達成後に段階的に実施。<br>
+      ※ サブスク収益の試算は当初の¥980/月ベース。現行の¥1,480/月では上振れが見込まれるため、実績に応じて見直す。
     </div>
   </div>
 </section>
@@ -2150,46 +2146,46 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
         <p style="font-size:12px; color:var(--primary-dark); font-weight:700;">A. リリース必須基盤（Must）</p>
       </div>
 
-      <div class="dev-row">
-        <div class="dev-num">R1</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R1</div>
         <div>
-          <h4>法務ページの本番確定（terms / privacy / 特商法）</h4>
-          <p style="font-size:13px; margin-top:4px;">ドラフト表記を解消し、公開版として文言・導線・リンク整合を確定する。</p>
+          <h4>法務ページの本番確定（terms / privacy / 特商法） <span style="color:#3aab6b; font-size:12px;">⚡ ほぼ完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">事業者情報・制定日・連絡先記入済み。利用規約の免責・管轄注記は弁護士確認後に最終化。</p>
+        </div>
+      </div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R2</div>
+        <div>
+          <h4>Stripeの本番運用整備 <span style="color:#3aab6b; font-size:12px;">⚡ ほぼ完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">Webhook に subscription.created・invoice.payment_failed 追加済み。Stripeダッシュボード設定・Vercel env 残。</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">R2</div>
+        <div class="dev-num" style="background:#E8973A;">R3</div>
         <div>
-          <h4>Stripeの本番運用整備</h4>
-          <p style="font-size:13px; margin-top:4px;">価格ID、Webhook、決済失敗時動線、運用手順を本番前提で固める。</p>
-        </div>
-      </div>
-      <div class="dev-row">
-        <div class="dev-num">R3</div>
-        <div>
-          <h4>LINE連携の導線復活 + env整備</h4>
+          <h4>LINE連携の導線復活 + env整備 <span style="color:#E8973A; font-size:12px;">実施中</span></h4>
           <p style="font-size:13px; margin-top:4px;">連携UIを再開し、必要環境変数・設定手順を運用ドキュメントまで揃える。</p>
         </div>
       </div>
       <div class="dev-row">
-        <div class="dev-num">R4</div>
+        <div class="dev-num" style="background:#E8973A;">R4</div>
         <div>
-          <h4>LINE API連携とステップ配信、予約画面（エルメッセージ）</h4>
+          <h4>LINE API連携とステップ配信、予約画面（エルメッセージ） <span style="color:#E8973A; font-size:12px;">実施中</span></h4>
           <p style="font-size:13px; margin-top:4px;">配信シナリオと予約導線を含め、LINE上の継続接点を実運用できる状態にする。</p>
         </div>
       </div>
-      <div class="dev-row">
-        <div class="dev-num">R5</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R5</div>
         <div>
-          <h4>監視・障害検知の整備</h4>
-          <p style="font-size:13px; margin-top:4px;">API失敗・Webhook失敗・LINE送信失敗が即時に見える監視と通知を用意する。</p>
+          <h4>監視・障害検知の整備 <span style="color:#3aab6b; font-size:12px;">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">Vercel Speed Insights・Analytics を layout.tsx に追加済み。</p>
         </div>
       </div>
-      <div class="dev-row">
-        <div class="dev-num">R6</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R6</div>
         <div>
-          <h4>サーバー側バリデーション見直し</h4>
-          <p style="font-size:13px; margin-top:4px;">課金同意などをUI依存にせず、サーバー側で検証・担保する。</p>
+          <h4>サーバー側バリデーション見直し <span style="color:#3aab6b; font-size:12px;">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">lib/api/errors.ts 作成・認証エラーを500→401に統一。必須チェック・文字数制限を追加。</p>
         </div>
       </div>
 
@@ -2197,53 +2193,53 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
         <p style="font-size:12px; color:var(--primary-dark); font-weight:700;">B. 体験導線（Activation）</p>
       </div>
 
-      <div class="dev-row">
-        <div class="dev-num">R7</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R7</div>
         <div>
-          <h4>ジャーニーマップ（スタートガイド含む）をトップ導線に統合</h4>
-          <p style="font-size:13px; margin-top:4px;">初回ユーザーが迷わないよう、入口から次アクションまでをトップで一気通貫に見せる。</p>
+          <h4>ジャーニーマップ（スタートガイド含む）をトップ導線に統合 <span style="color:#3aab6b; font-size:12px;">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">SVGマップ実装・次ステップフッター追加・旧進捗バー廃止。</p>
         </div>
       </div>
-      <div class="dev-row">
-        <div class="dev-num">R8</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R8</div>
         <div>
-          <h4>取説（オンボコンテンツ）導入</h4>
-          <p style="font-size:13px; margin-top:4px;">診断→内省→次の一歩の理解を支える取説コンテンツをオンボ導線に組み込む。</p>
+          <h4>取説（オンボコンテンツ）導入 <span style="color:#3aab6b; font-size:12px;">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">取説・持ち味レポページに「← ホームに戻る」リンク追加。次の一歩はマップに集約。</p>
         </div>
       </div>
-      <div class="dev-row">
-        <div class="dev-num">R9</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R9</div>
         <div>
-          <h4>Quick manual/オンボ文言の「準備中」解消</h4>
-          <p style="font-size:13px; margin-top:4px;">未完成印象を与える表示を最終仕上げし、公開品質の文言へ統一する。</p>
+          <h4>Quick manual/オンボ文言の「準備中」解消 <span style="color:#3aab6b; font-size:12px;">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">取説・持ち味レポの「準備中」ラベル削除。</p>
         </div>
       </div>
-      <div class="dev-row">
-        <div class="dev-num">R10</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R10</div>
         <div>
-          <h4>オンボーディングフロー（進捗表示・持ち味レポートまでの残ステップ）</h4>
-          <p style="font-size:13px; margin-top:4px;">初月無料トライアルで体感の核（診断→取説→日記FB→持ち味初版）を迷わず到達させる。</p>
+          <h4>オンボーディングフロー（進捗表示・持ち味レポートまでの残ステップ） <span style="color:#3aab6b; font-size:12px;">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">WelcomeModal文言更新・不使用コンポーネント削除・マップで代替。</p>
         </div>
       </div>
-      <div class="dev-row">
-        <div class="dev-num">R11</div>
+      <div class="dev-row" style="opacity:0.5; text-decoration:line-through;">
+        <div class="dev-num" style="background:var(--muted-fg);">R11</div>
         <div>
-          <h4>持ち味レポート即時生成（診断・MBTI入力完了時点で初版出力）</h4>
-          <p style="font-size:13px; margin-top:4px;">初回価値体験を前倒しし、継続動機を早期に形成する。</p>
+          <h4>持ち味レポート即時生成 <span style="color:var(--muted-fg); font-size:12px;">— 削除</span></h4>
+          <p style="font-size:13px; margin-top:4px;">トークンコスト・UXを考慮し、ユーザー操作での生成に統一。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">R12</div>
         <div>
-          <h4>ログインなし診断フロー（登録前お試し体験）</h4>
-          <p style="font-size:13px; margin-top:4px;">登録前に価値を体験させ、離脱を減らして新規転換率を高める。</p>
+          <h4>ログインなし診断フロー（登録前お試し体験） <span style="color:var(--muted-fg); font-size:12px;">⏸ ローンチ後</span></h4>
+          <p style="font-size:13px; margin-top:4px;">認証フロー改修が大きいためローンチ後に持ち越し。</p>
         </div>
       </div>
-      <div class="dev-row">
-        <div class="dev-num">R13</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R13</div>
         <div>
-          <h4>LINE登録時の公式アカウント友達追加誘導</h4>
-          <p style="font-size:13px; margin-top:4px;">登録直後の接続率を高め、継続導線を取りこぼさない状態にする。</p>
+          <h4>LINE登録時の公式アカウント友達追加誘導 <span style="color:#3aab6b; font-size:12px;">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">LineLinkNudgeBanner（診断後強調・登録2日間）実装済み。</p>
         </div>
       </div>
 
@@ -2251,74 +2247,81 @@ hr.light { border: none; border-top: 1px solid var(--secondary); margin: 32px 0;
         <p style="font-size:12px; color:var(--primary-dark); font-weight:700;">C. 成長施策（Growth）</p>
       </div>
 
-      <div class="dev-row">
-        <div class="dev-num">R14</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R14</div>
         <div>
-          <h4>リマインドメール自動送信（Day1・3・5・7＋入会記念）</h4>
-          <p style="font-size:13px; margin-top:4px;">初期離脱を防ぎ、利用習慣を定着させる再訪導線を自動化する。</p>
+          <h4>リマインドメール自動送信 <span style="color:#3aab6b; font-size:12px;">⚡ ほぼ完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">ジャーニーベースの education-steps に移行済み。Resendアカウント設定・ドメイン認証が残。</p>
         </div>
       </div>
-      <div class="dev-row">
-        <div class="dev-num">R15</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R15</div>
         <div>
-          <h4>人生史入力の設問ブレイクダウン（白紙入力からの脱却）</h4>
-          <p style="font-size:13px; margin-top:4px;">入力心理負荷を下げて、人生史コンテンツ完成率を引き上げる。</p>
+          <h4>人生史入力の設問ブレイクダウン（白紙入力からの脱却） <span style="color:#3aab6b; font-size:12px;">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">LifeHistoryForm をウィザード形式（4ステップ）に改修。カテゴリ別サジェスト・AIガイド問いかけ搭載。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">R16</div>
         <div>
-          <h4>AI問い自動生成（過去ログ×AI → パーソナライズされた問い提案）</h4>
+          <h4>AI問い自動生成（過去ログ×AI → パーソナライズされた問い提案） <span style="color:var(--muted-fg); font-size:12px;">⏸ ローンチ後</span></h4>
           <p style="font-size:13px; margin-top:4px;">振り返りの深さと継続率を高める個別最適な内省体験を提供する。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">R17</div>
         <div>
-          <h4>「当たってる」フィードバックループの設計</h4>
+          <h4>「当たってる」フィードバックループの設計 <span style="color:var(--muted-fg); font-size:12px;">⏸ ローンチ後</span></h4>
           <p style="font-size:13px; margin-top:4px;">体験結果の納得感を可視化し、継続利用の自己強化ループをつくる。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">R18</div>
         <div>
-          <h4>セッション者との情報共有動線の整備</h4>
+          <h4>セッション者との情報共有動線の整備 <span style="color:var(--muted-fg); font-size:12px;">⏸ ローンチ後</span></h4>
           <p style="font-size:13px; margin-top:4px;">プロダクト利用と有人支援を接続し、伴走価値を最大化する。</p>
         </div>
       </div>
-      <div class="dev-row">
-        <div class="dev-num">R19</div>
+      <div class="dev-row" style="opacity:0.5;">
+        <div class="dev-num" style="background:#3aab6b;">R19</div>
         <div>
-          <h4>キャリフレセッション誘導（プロダクト内3箇所）</h4>
-          <p style="font-size:13px; margin-top:4px;">高意欲ユーザーを適切なタイミングで有人セッションへ送客する。</p>
+          <h4>キャリフレセッション誘導（プロダクト内4箇所） <span style="color:#3aab6b; font-size:12px;">✅ 完了</span></h4>
+          <p style="font-size:13px; margin-top:4px;">ホーム・サイドナビ・診断結果ページ・取説ページの計4箇所に設置。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">R20</div>
         <div>
-          <h4>SNSシェア機能（持ち味レポート・WCM・診断結果）</h4>
+          <h4>SNSシェア機能（持ち味レポート・WCM・診断結果） <span style="color:var(--muted-fg); font-size:12px;">⏸ ローンチ後</span></h4>
           <p style="font-size:13px; margin-top:4px;">体験価値を外部可視化し、自然流入と口コミ拡散を生む。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">R21</div>
         <div>
-          <h4>リファラル機能（紹介プログラム）</h4>
+          <h4>リファラル機能（紹介プログラム） <span style="color:var(--muted-fg); font-size:12px;">⏸ ローンチ後</span></h4>
           <p style="font-size:13px; margin-top:4px;">既存ユーザー経由で低コスト獲得チャネルを育成する。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">R22</div>
         <div>
-          <h4>書類アップロード → 人生史自動生成（履歴書・職務経歴書）</h4>
+          <h4>書類アップロード → 人生史自動生成（履歴書・職務経歴書） <span style="color:var(--muted-fg); font-size:12px;">⏸ ローンチ後</span></h4>
           <p style="font-size:13px; margin-top:4px;">入力工数を削減し、価値体験までの時間を短縮する。</p>
         </div>
       </div>
       <div class="dev-row">
         <div class="dev-num">R23</div>
         <div>
-          <h4>ネイティブアプリ化、Apple申請</h4>
+          <h4>ネイティブアプリ化、Apple申請 <span style="color:var(--muted-fg); font-size:12px;">⏸ ローンチ後</span></h4>
           <p style="font-size:13px; margin-top:4px;">中期拡張としてモバイル接点を強化し、継続利用基盤を広げる。</p>
+        </div>
+      </div>
+      <div class="dev-row">
+        <div class="dev-num">R24</div>
+        <div>
+          <h4>careerpartner.jp/carehugforI ページの改訂 <span style="color:var(--muted-fg); font-size:12px;">⏸ ローンチ後</span></h4>
+          <p style="font-size:13px; margin-top:4px;">セッション誘導リンク先として機能するよう、ページ内容・デザイン・LINE導線を整備する。</p>
         </div>
       </div>
     </div>
