@@ -194,7 +194,8 @@ td:first-child { color: var(--muted-fg); font-size: 13px; }
   margin: 32px 0;
 }
 
-@media(max-width:600px) { .kpi-row { grid-template-columns: 1fr; } }
+@media(max-width:600px) { .kpi-row { grid-template-columns: 1fr !important; } }
+@media(max-width:900px) and (min-width:601px) { .kpi-row { grid-template-columns: 1fr 1fr !important; } }
 
 .kpi-box {
   background: var(--white);
@@ -738,6 +739,32 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
 .mkt-pillar.primary .mp-num { background: var(--primary); color: #fff; }
 .mkt-pillar h4 { font-size: 15px; margin-bottom: 6px; }
 .mkt-pillar p { font-size: 13px; margin: 0; }
+.mp-channels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+.mp-channels .ch-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--muted-fg);
+  margin-right: 2px;
+}
+.mp-channels .ch {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--muted);
+  color: var(--primary-dark);
+}
+.mp-channels .ch.main {
+  background: var(--primary);
+  color: #fff;
+}
 .mkt-owner {
   font-size: 12px;
   color: var(--muted-fg);
@@ -789,6 +816,119 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
 }
 .kpi-brand .old { opacity: 0.7; }
 @media (max-width: 640px) { .kpi-brand { grid-template-columns: 1fr; } }
+
+.mkt-journey {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0;
+  margin: 24px 0 8px;
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+}
+.mkt-journey .mj-step {
+  flex: 1 1 120px;
+  padding: 16px 12px;
+  text-align: center;
+  border-right: 1px solid var(--secondary);
+  min-width: 110px;
+}
+.mkt-journey .mj-step:last-child { border-right: none; }
+.mkt-journey .mj-step .mj-n {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.mkt-journey .mj-step .mj-t {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.4;
+}
+.mkt-journey .mj-step .mj-ch {
+  font-size: 11px;
+  color: var(--muted-fg);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+@media (max-width: 720px) {
+  .mkt-journey { flex-direction: column; }
+  .mkt-journey .mj-step { border-right: none; border-bottom: 1px solid var(--secondary); text-align: left; display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; }
+  .mkt-journey .mj-step .mj-n { grid-row: 1 / 3; align-self: center; }
+}
+
+.prio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 20px 0;
+}
+.prio-item {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--white);
+  border-bottom: 1px solid var(--secondary);
+}
+.prio-item:last-child { border-bottom: none; }
+.prio-item.focus { background: linear-gradient(135deg, rgba(42,155,176,0.1) 0%, rgba(200,232,240,0.3) 100%); }
+.prio-item.light { opacity: 0.72; }
+.prio-item .pi-n {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary);
+}
+.prio-item .pi-name { font-size: 14px; font-weight: 700; color: var(--fg); }
+.prio-item .pi-why { font-size: 12px; color: var(--muted-fg); }
+.prio-item .pi-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--primary);
+  color: #fff;
+  white-space: nowrap;
+}
+.prio-item.light .pi-tag {
+  background: var(--muted);
+  color: var(--muted-fg);
+}
+
+.ch-detail {
+  margin-top: 16px;
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  background: var(--white);
+}
+.ch-detail.hero-ch { border-color: var(--primary); border-width: 2px; }
+.ch-detail h4 { font-size: 16px; margin-bottom: 6px; }
+.ch-detail .cd-role { font-size: 13px; color: var(--primary-dark); font-weight: 600; margin-bottom: 12px; }
+.ch-detail .cd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 12px;
+}
+@media (max-width: 640px) { .ch-detail .cd-grid { grid-template-columns: 1fr; } }
+.ch-detail .cd-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--muted-fg);
+  margin-bottom: 6px;
+}
+.ch-detail ul { margin: 0; padding-left: 1.1em; font-size: 13px; color: var(--muted-fg); }
+.ch-detail li { margin-bottom: 4px; }
 </style>
 </head>
 <body>
@@ -1850,38 +1990,38 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
 <section class="white" id="marketing">
   <div class="container">
     <div class="section-header reveal">
-      <span class="label">Marketing · Culture PR</span>
+      <span class="label">Marketing · Culture Media</span>
       <h2>マーケティング設計</h2>
       <div class="divider"></div>
-      <p>サービスを売るフェーズから、<strong>Career Reflectionという市場（文化）をつくる</strong>フェーズへ。有料広告はYear1では実施しない。</p>
+      <p>キャリフレは SNS会社ではなく、<strong>メディア会社</strong>になる。サービスを売るのではなく、<strong>Career Reflection という文化</strong>を広める。有料広告は Year1 では実施しない。</p>
     </div>
 
     <!-- 視点の転換 -->
     <h3 class="reveal" style="margin-bottom:8px;">視点の転換</h3>
-    <p class="reveal" style="font-size:14px; margin-bottom:4px;">サービスづくりと市場づくりは、全く違う仕事である。</p>
+    <p class="reveal" style="font-size:14px; margin-bottom:4px;">サービスづくりと市場づくりは、全く違う仕事である。SNSはファネルではなく、<strong>役割分担</strong>で考える。</p>
     <div class="mkt-shift reveal">
       <div class="mkt-shift-box from">
-        <div class="ms-label">これまで</div>
-        <h4>サービスを売る</h4>
+        <div class="ms-label">多くのスタートアップ</div>
+        <h4>全部のSNSで同じこと</h4>
         <ul>
-          <li>既存カテゴリに乗る</li>
-          <li>機能・料金・CVを語る</li>
-          <li>「キャリフレ」を売る</li>
+          <li>同じ投稿を横断転載</li>
+          <li>フォロワー・CVだけを追う</li>
+          <li>「サービス」を売る</li>
         </ul>
       </div>
       <div class="mkt-shift-arrow" aria-hidden="true">→</div>
       <div class="mkt-shift-box to">
-        <div class="ms-label">これから</div>
-        <h4>新しい価値観を広める</h4>
+        <div class="ms-label">キャリフレ</div>
+        <h4>SNSごとに役割を分ける</h4>
         <ul>
-          <li>市場そのものをつくる</li>
-          <li>思想・問い・事例を語る</li>
+          <li>知る／深める／積み上げるを分担</li>
+          <li>蓄積型メディアを中心に据える</li>
           <li>「働く軸は育つ」を常識にする</li>
         </ul>
       </div>
     </div>
 
-    <div class="grid-2 reveal" style="margin-bottom:36px;">
+    <div class="grid-2 reveal" style="margin-bottom:28px;">
       <div class="card-muted">
         <p style="font-size:11px; font-weight:700; letter-spacing:0.1em; color:var(--muted-fg); margin-bottom:10px;">今ある市場</p>
         <p style="font-size:13px; color:var(--fg); line-height:1.9;">転職　／　キャリア相談　／　コーチング　／　自己分析　／　適職診断</p>
@@ -1897,21 +2037,160 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
       <div class="mn-label">まず認知してほしいもの</div>
       <div class="mn-main">働く軸は、育つもの。</div>
       <p class="mn-sub">
-        世の中は「自分の軸を見つけよう」。<br>
-        キャリフレは違う。<strong style="color:#fff;">軸は見つけるものではなく、育てるもの。</strong><br>
-        ここが革命。広報も思想から始まる。
+        一番認知してほしいのは「キャリフレ」ではない。<br>
+        <strong style="color:#fff;">働く軸は見つけるものではなく、育てるもの。</strong>——ここが革命。
       </p>
     </div>
-    <p class="note-text reveal" style="margin-bottom:40px;">
-      一番認知してほしいのは「キャリフレ」ではない。<strong>働く軸</strong>——もっと言えば<strong>働く軸は育つもの</strong>——を市場の常識にすること。
-    </p>
+
+    <!-- 全体設計：役割の流れ -->
+    <div class="section-header reveal" style="margin-top:40px; margin-bottom:12px;">
+      <span class="label">Path · Role Map</span>
+      <h3>全体の設計（役割の流れ）</h3>
+      <div class="divider"></div>
+      <p>ファネルではなく、文化が身体に落ちる順番。各SNSはこのどこを担当するかを決める。</p>
+    </div>
+    <div class="mkt-journey reveal">
+      <div class="mj-step">
+        <div class="mj-n">01</div>
+        <div class="mj-t">思想を知る</div>
+        <div class="mj-ch">X · note</div>
+      </div>
+      <div class="mj-step">
+        <div class="mj-n">02</div>
+        <div class="mj-t">共感する</div>
+        <div class="mj-ch">Podcast · IG</div>
+      </div>
+      <div class="mj-step">
+        <div class="mj-n">03</div>
+        <div class="mj-t">振り返ってみる</div>
+        <div class="mj-ch">NL · 問い</div>
+      </div>
+      <div class="mj-step">
+        <div class="mj-n">04</div>
+        <div class="mj-t">キャリフレを使う</div>
+        <div class="mj-ch">プロダクト</div>
+      </div>
+      <div class="mj-step">
+        <div class="mj-n">05</div>
+        <div class="mj-t">セッション</div>
+        <div class="mj-ch">任意・対話</div>
+      </div>
+      <div class="mj-step">
+        <div class="mj-n">06</div>
+        <div class="mj-t">習慣になる</div>
+        <div class="mj-ch">NL · 継続率</div>
+      </div>
+    </div>
+
+    <!-- メディア優先順位 -->
+    <div class="section-header reveal" style="margin-top:48px; margin-bottom:12px;">
+      <span class="label">Priority</span>
+      <h3>メディアの優先順位</h3>
+      <div class="divider"></div>
+      <p>XやIGは「知る」場所。Career Reflection は一度見ただけでは身につかない。<strong>蓄積型</strong>を中心に据える。</p>
+    </div>
+    <div class="prio-list reveal">
+      <div class="prio-item focus">
+        <div class="pi-n">1</div>
+        <div><div class="pi-name">ニュースレター</div><div class="pi-why">問い・考え方・事例を毎週積み上げる。LTVの源泉。</div></div>
+        <span class="pi-tag">最重要</span>
+      </div>
+      <div class="prio-item focus">
+        <div class="pi-n">2</div>
+        <div><div class="pi-name">Podcast</div><div class="pi-why">思想を深く伝えるファン化装置。週20〜30分。</div></div>
+        <span class="pi-tag">重点</span>
+      </div>
+      <div class="prio-item focus">
+        <div class="pi-n">3</div>
+        <div><div class="pi-name">X</div><div class="pi-why">ブランドメディア。思想を毎日、短く広める。</div></div>
+        <span class="pi-tag">重点</span>
+      </div>
+      <div class="prio-item focus">
+        <div class="pi-n">4</div>
+        <div><div class="pi-name">note</div><div class="pi-why">ブランドアーカイブ。検索に強い思想の蓄積。</div></div>
+        <span class="pi-tag">重点</span>
+      </div>
+      <div class="prio-item light">
+        <div class="pi-n">5</div>
+        <div><div class="pi-name">Instagram</div><div class="pi-why">教育・保存。初期は再編集運用で十分。</div></div>
+        <span class="pi-tag">軽量</span>
+      </div>
+      <div class="prio-item light">
+        <div class="pi-n">6</div>
+        <div><div class="pi-name">LinkedIn</div><div class="pi-why">将来の企業向け。初期は再編集程度。</div></div>
+        <span class="pi-tag">軽量</span>
+      </div>
+    </div>
+
+    <!-- 最初の6-12ヶ月 -->
+    <div class="card reveal" style="margin-bottom:40px;">
+      <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; color:var(--primary); margin-bottom:12px;">最初の 6〜12 か月 · やること／やらないこと</p>
+      <div class="grid-2">
+        <div>
+          <p style="font-size:13px; font-weight:700; color:var(--fg); margin-bottom:8px;">やる（継続できる最小セット）</p>
+          <ul style="margin:0; padding-left:1.1em; font-size:13px; color:var(--muted-fg);">
+            <li style="margin-bottom:6px;"><strong style="color:var(--fg);">X</strong>：毎日 1〜3投稿（思想・気づき）</li>
+            <li style="margin-bottom:6px;"><strong style="color:var(--fg);">Podcast</strong>：週1本</li>
+            <li style="margin-bottom:6px;"><strong style="color:var(--fg);">ニュースレター</strong>：週1通</li>
+            <li><strong style="color:var(--fg);">note</strong>：月2本</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:13px; font-weight:700; color:var(--fg); margin-bottom:8px;">やらない／軽量</p>
+          <ul style="margin:0; padding-left:1.1em; font-size:13px; color:var(--muted-fg);">
+            <li style="margin-bottom:6px;">全SNSで同じ投稿をばらまく</li>
+            <li style="margin-bottom:6px;">有料広告（Year1）</li>
+            <li style="margin-bottom:6px;">IG・LinkedInの新規制作を本業にしない（再編集のみ）</li>
+            <li>フォロワー数を主KPIにしない</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 発信者3人格 -->
+    <div class="section-header reveal" style="margin-bottom:16px;">
+      <span class="label">Voices</span>
+      <h3>誰が発信するか（3人格）</h3>
+      <div class="divider"></div>
+      <p>世界観を崩さないための人格分担。チャネル担当とは別レイヤ。</p>
+    </div>
+    <div class="reveal" style="overflow-x:auto; border-radius:var(--radius); border:1px solid var(--secondary); margin-bottom:16px;">
+      <table>
+        <thead>
+          <tr><th>発信者</th><th>役割</th><th>主に担う柱</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--fg); font-weight:700;">共同代表（なかむら）</td>
+            <td style="color:var(--fg);">ブランド思想・開発・未来</td>
+            <td style="color:var(--fg);">①思想（一部）／⑤開発</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg); font-weight:700;">佐治</td>
+            <td style="color:var(--fg);">Xでの思想発信（ブランドメディア）</td>
+            <td style="color:var(--fg);">①思想（X・主）</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg); font-weight:700;">キャリフレ公式</td>
+            <td style="color:var(--fg);">プロダクト・ユーザー事例・イベント</td>
+            <td style="color:var(--fg);">③ストーリー／④教育</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg); font-weight:700;">キャリクマ</td>
+            <td style="color:var(--fg);">問い・振り返り・親しみ</td>
+            <td style="color:var(--fg);">②問い</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note-text reveal" style="margin-bottom:40px;">※ 「3人格」は公式・キャリクマ・共同代表の世界観。佐治は X 思想の確定担当として併記。</p>
 
     <!-- SNS 5本柱 -->
     <div class="section-header reveal" style="margin-bottom:20px;">
       <span class="label">SNS · 5 Pillars</span>
-      <h3>SNSの5本柱</h3>
+      <h3>発信の5本柱 × チャネル</h3>
       <div class="divider"></div>
-      <p>チャネルを増やす前に、発信の型を固定する。担当は後から埋める欄を確保。</p>
+      <p>発信の型を固定し、主／副チャネルを決める。同じ内容を全SNSに流さない。</p>
     </div>
 
     <div class="mkt-pillars reveal">
@@ -1919,15 +2198,29 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
         <div class="mp-num">1</div>
         <div>
           <h4>思想発信（最重要）</h4>
-          <p>テーマは「働く軸」「Career Reflection」だけ。例：仕事がつらい → すぐ転職、ではなく、つらい理由を振り返る。転職が悪いのではなく、「誰かの正解」で転職することが危険。これを毎日。</p>
+          <p>テーマは「働く軸」「Career Reflection」だけ。サービス話は2割で十分。例：つらい→すぐ転職、ではなく、つらい理由を振り返る。</p>
+          <div class="mp-channels">
+            <span class="ch-label">主</span>
+            <span class="ch main">X</span>
+            <span class="ch-label">副</span>
+            <span class="ch">note</span>
+            <span class="ch">Podcast</span>
+          </div>
         </div>
-        <div class="mkt-owner"><strong>佐治</strong>確定</div>
+        <div class="mkt-owner"><strong>佐治</strong>X確定<br><span style="font-size:11px;">共同代表・一部</span></div>
       </div>
       <div class="mkt-pillar">
         <div class="mp-num">2</div>
         <div>
           <h4>問いを届ける</h4>
           <p>毎週、たった一つ。例：「今週、一番自分らしく働けた瞬間は？」シェアを促す。ここがブランドになる。</p>
+          <div class="mp-channels">
+            <span class="ch-label">主</span>
+            <span class="ch main">ニュースレター</span>
+            <span class="ch main">Podcast</span>
+            <span class="ch-label">副</span>
+            <span class="ch">X</span>
+          </div>
         </div>
         <div class="mkt-owner"><strong>キャリクマ</strong>確定</div>
       </div>
@@ -1935,101 +2228,209 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
         <div class="mp-num">3</div>
         <div>
           <h4>ユーザーストーリー</h4>
-          <p>一番伸びる柱。転職成功談ではなく <strong>Reflection成功談</strong>。例：転職したかった→3ヶ月振り返った→転職しなかった。理由は仕事ではなく上司との関係だった。</p>
+          <p>転職成功談ではなく <strong>Reflection成功談</strong>。例：転職したかった→3ヶ月振り返った→転職しなかった。</p>
+          <div class="mp-channels">
+            <span class="ch-label">主</span>
+            <span class="ch main">Podcast</span>
+            <span class="ch main">ニュースレター</span>
+            <span class="ch-label">副</span>
+            <span class="ch">note</span>
+            <span class="ch">Instagram</span>
+          </div>
         </div>
-        <div class="mkt-owner tbd"><strong>担当</strong>未定</div>
+        <div class="mkt-owner"><strong>公式</strong>想定</div>
       </div>
       <div class="mkt-pillar">
         <div class="mp-num">4</div>
         <div>
           <h4>Career Reflectionの教育</h4>
-          <p>カルーセル中心。Reflectionとは？／働く軸とは？／内省って何？／自己分析との違い／毎週1回でいい理由——など。</p>
+          <p>カルーセル中心。Reflectionとは？／働く軸とは？／自己分析との違い——など。初期は他メディアの再編集で可。</p>
+          <div class="mp-channels">
+            <span class="ch-label">主</span>
+            <span class="ch main">Instagram</span>
+            <span class="ch-label">副</span>
+            <span class="ch">note</span>
+            <span class="ch">LinkedIn</span>
+          </div>
         </div>
-        <div class="mkt-owner tbd"><strong>担当</strong>未定</div>
+        <div class="mkt-owner"><strong>公式</strong>想定</div>
       </div>
       <div class="mkt-pillar">
         <div class="mp-num">5</div>
         <div>
           <h4>開発ストーリー</h4>
-          <p>開発日記。問いを100個作った／持ち味レポート改善／ユーザーの声／AIの問いの変化——プロダクトの裏側を見せる。</p>
+          <p>開発で気づいたこと、問いの改善、ユーザーの声。プロダクトの裏側を見せる。</p>
+          <div class="mp-channels">
+            <span class="ch-label">主</span>
+            <span class="ch main">X</span>
+            <span class="ch-label">副</span>
+            <span class="ch">note</span>
+          </div>
         </div>
         <div class="mkt-owner"><strong>なかむら</strong>確定</div>
       </div>
     </div>
 
-    <!-- チャネル役割 -->
-    <div class="section-header reveal" style="margin-top:48px; margin-bottom:20px;">
-      <span class="label">Channels</span>
-      <h3>チャネルごとの役割</h3>
+    <!-- チャネル詳細 -->
+    <div class="section-header reveal" style="margin-top:48px; margin-bottom:12px;">
+      <span class="label">Channel Specs</span>
+      <h3>チャネル別スペック</h3>
       <div class="divider"></div>
     </div>
 
-    <div class="reveal" style="overflow-x:auto; border-radius:var(--radius); border:1px solid var(--secondary);">
-      <table>
-        <thead>
-          <tr>
-            <th>チャネル</th>
-            <th>役割</th>
-            <th>頻度・方針</th>
-            <th>担当</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="color:var(--fg); font-weight:700;">X</td>
-            <td style="color:var(--fg);">思想</td>
-            <td style="color:var(--fg);">毎日。短い。</td>
-            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
-          </tr>
-          <tr>
-            <td style="color:var(--fg); font-weight:700;">Instagram</td>
-            <td style="color:var(--fg);">教育・保存</td>
-            <td style="color:var(--fg);">カルーセル中心。</td>
-            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
-          </tr>
-          <tr>
-            <td style="color:var(--fg); font-weight:700;">Threads</td>
-            <td style="color:var(--fg);">日記・気づき</td>
-            <td style="color:var(--fg);">裏話・日常の振り返り。</td>
-            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
-          </tr>
-          <tr>
-            <td style="color:var(--fg); font-weight:700;">LinkedIn</td>
-            <td style="color:var(--fg);">企業・管理職</td>
-            <td style="color:var(--fg);">Career Reflection／1on1。</td>
-            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
-          </tr>
-          <tr>
-            <td style="color:var(--fg); font-weight:700;">note</td>
-            <td style="color:var(--fg);">思想・長文</td>
-            <td style="color:var(--fg);">ブランドの長編。月数本。</td>
-            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
-          </tr>
-          <tr>
-            <td style="color:var(--fg); font-weight:700;">Podcast</td>
-            <td style="color:var(--fg);">相性最良</td>
-            <td style="color:var(--fg);">毎週「Reflection Radio」想定。問い1つ＋考え方＋事例。</td>
-            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
-          </tr>
-          <tr style="background:rgba(42,155,176,0.08);">
-            <td style="color:var(--primary-dark); font-weight:800;">ニュースレター</td>
-            <td style="color:var(--fg); font-weight:700;">最重要・蓄積</td>
-            <td style="color:var(--fg);">毎週。問い1つ／考え方1つ／事例1つだけ。SNSは流れるが Reflection は積み上がる。</td>
-            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="ch-detail hero-ch reveal">
+      <h4>① ニュースレター（最重要）</h4>
+      <p class="cd-role">役割：Reflection を習慣化する。ここが LTV。</p>
+      <div class="cd-grid">
+        <div>
+          <div class="cd-label">毎週送るもの</div>
+          <ul>
+            <li>問い 1つ</li>
+            <li>考え方 1つ</li>
+            <li>事例 1つ</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cd-label">チャネルKPI</div>
+          <ul>
+            <li>登録者数</li>
+            <li>開封率／クリック率</li>
+            <li>継続率</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:12px; margin-top:14px; color:var(--muted-fg);">担当：<strong style="color:var(--muted-fg);">未定</strong>（編集方針はキャリクマの問い＋思想の要約）</p>
     </div>
-    <p class="note-text reveal" style="margin-top:16px;">
-      ※ LINE・リファラル・アプリ内シェア等のプロダクト連動施策は、文化PRの下支えとして別途維持（詳細は開発優先度・アクティベーション参照）。
-    </p>
+
+    <div class="ch-detail hero-ch reveal">
+      <h4>② Podcast · Reflection Radio</h4>
+      <p class="cd-role">役割：思想を深く伝えるファン化装置。週20〜30分。</p>
+      <div class="cd-grid">
+        <div>
+          <div class="cd-label">テーマ例</div>
+          <ul>
+            <li>なぜ働く軸は育つのか</li>
+            <li>転職より先に振り返る理由</li>
+            <li>Career Reflection とは</li>
+            <li>相談事例（Reflection成功談）</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cd-label">チャネルKPI</div>
+          <ul>
+            <li>完聴率</li>
+            <li>リピーター率</li>
+            <li>ニュースレター登録</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:12px; margin-top:14px; color:var(--muted-fg);">担当：<strong style="color:var(--muted-fg);">未定</strong></p>
+    </div>
+
+    <div class="ch-detail hero-ch reveal">
+      <h4>③ X（ブランドメディア）</h4>
+      <p class="cd-role">役割：「Career Reflection」という思想を広める。サービス話は2割で十分。</p>
+      <div class="cd-grid">
+        <div>
+          <div class="cd-label">発信内容</div>
+          <ul>
+            <li>働く軸／キャリア観</li>
+            <li>AI時代の働き方</li>
+            <li>振り返る意味</li>
+            <li>ユーザーとの気づき（匿名）</li>
+            <li>開発で気づいたこと</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cd-label">チャネルKPI（フォロワーは見ない）</div>
+          <ul>
+            <li>インプレッション</li>
+            <li>保存・ブックマーク</li>
+            <li>プロフィールアクセス</li>
+            <li>ニュースレター登録</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:12px; margin-top:14px; color:var(--muted-fg);">担当：<strong style="color:var(--primary-dark);">佐治</strong>（思想）／共同代表（開発・未来の一部）</p>
+    </div>
+
+    <div class="ch-detail reveal">
+      <h4>④ note（ブランドアーカイブ）</h4>
+      <p class="cd-role">役割：思想を蓄積する。検索にも強い。</p>
+      <div class="cd-grid">
+        <div>
+          <div class="cd-label">記事例 · 月2本</div>
+          <ul>
+            <li>Career Reflection とは</li>
+            <li>働く軸とは</li>
+            <li>なぜ転職活動より振り返りなのか</li>
+            <li>AIと人の役割</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cd-label">チャネルKPI</div>
+          <ul>
+            <li>検索流入</li>
+            <li>読了率</li>
+            <li>ニュースレター登録</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:12px; margin-top:14px; color:var(--muted-fg);">担当：<strong style="color:var(--muted-fg);">未定</strong></p>
+    </div>
+
+    <div class="ch-detail reveal" style="opacity:0.9;">
+      <h4>⑤ Instagram（教育・軽量）</h4>
+      <p class="cd-role">役割：教育・保存。初期は X／Podcast／note の再編集で十分。</p>
+      <div class="cd-grid">
+        <div>
+          <div class="cd-label">例（カルーセル）</div>
+          <ul>
+            <li>働く軸とは？</li>
+            <li>自己分析との違い</li>
+            <li>振り返り方</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cd-label">チャネルKPI</div>
+          <ul>
+            <li>保存率／シェア率</li>
+            <li>プロフィール遷移</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:12px; margin-top:14px; color:var(--muted-fg);">担当：<strong style="color:var(--muted-fg);">未定</strong>（公式想定）</p>
+    </div>
+
+    <div class="ch-detail reveal" style="opacity:0.9;">
+      <h4>⑥ LinkedIn（将来・企業向け・軽量）</h4>
+      <p class="cd-role">役割：管理職・1on1・キャリア自律・組織文化。初期は再編集程度。</p>
+      <div class="cd-grid">
+        <div>
+          <div class="cd-label">発信</div>
+          <ul>
+            <li>管理職と Reflection</li>
+            <li>1on1</li>
+            <li>組織文化</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cd-label">チャネルKPI</div>
+          <ul>
+            <li>人事との接点</li>
+            <li>問い合わせ／セミナー参加</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:12px; margin-top:14px; color:var(--muted-fg);">担当：<strong style="color:var(--muted-fg);">未定</strong></p>
+    </div>
 
     <!-- ブランド語彙 -->
     <div class="section-header reveal" style="margin-top:48px; margin-bottom:12px;">
       <span class="label">Brand Vocabulary</span>
       <h3>ブランドとして育てる言葉</h3>
       <div class="divider"></div>
-      <p>今後100回使う言葉は、この5つだけでいい。他の言葉はいらない。</p>
+      <p>今後100回使う言葉は、この5つだけでいい。</p>
     </div>
     <div class="brand-words reveal">
       <span>Career Reflection</span>
@@ -2039,43 +2440,66 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
       <span>自分で納得して選ぶ</span>
     </div>
 
-    <!-- KPI -->
+    <!-- 半年間のKPI -->
     <div class="section-header reveal" style="margin-top:48px; margin-bottom:12px;">
-      <span class="label">Brand KPI</span>
-      <h3>広報のKPI</h3>
+      <span class="label">Half-year KPI</span>
+      <h3>半年間は、KPIを4つだけ追う</h3>
       <div class="divider"></div>
-      <p>キャリフレは「AIサービス」を広める会社ではない。<strong>Career Reflectionという文化</strong>を広める会社である。</p>
+      <p>SNSの数字は追いすぎない。文化がサービスと習慣につながっているかを見る。</p>
+    </div>
+    <div class="kpi-row reveal" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="kpi-box" style="border-color:var(--primary); border-width:2px;">
+        <div class="big-num" style="font-size:1.4rem;">①</div>
+        <div style="font-size:14px; font-weight:700; margin-top:8px;">ニュースレター登録数</div>
+        <div class="small-label">最重要 · 関係の積み上げ</div>
+      </div>
+      <div class="kpi-box">
+        <div class="big-num" style="font-size:1.4rem;">②</div>
+        <div style="font-size:14px; font-weight:700; margin-top:8px;">Podcastリピーター</div>
+        <div class="small-label">思想が届いているか</div>
+      </div>
+      <div class="kpi-box">
+        <div class="big-num" style="font-size:1.4rem;">③</div>
+        <div style="font-size:14px; font-weight:700; margin-top:8px;">セッション問い合わせ</div>
+        <div class="small-label">文化→サービス接続</div>
+      </div>
+      <div class="kpi-box">
+        <div class="big-num" style="font-size:1.4rem;">④</div>
+        <div style="font-size:14px; font-weight:700; margin-top:8px;">Reflection継続率</div>
+        <div class="small-label">プロダクト内 · 最重要KPI</div>
+      </div>
     </div>
 
-    <div class="kpi-brand reveal">
+    <div class="kpi-brand reveal" style="margin-top:28px;">
       <div class="card-muted old">
-        <p style="font-size:11px; font-weight:700; letter-spacing:0.1em; margin-bottom:12px;">従来のKPI（必要だが十分ではない）</p>
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.1em; margin-bottom:12px;">追わない（主指標にしない）</p>
         <ul style="margin:0; padding-left:1.1em; font-size:13px; color:var(--muted-fg);">
           <li style="margin-bottom:6px;">フォロワー数</li>
-          <li style="margin-bottom:6px;">登録者数</li>
-          <li>CVR</li>
+          <li style="margin-bottom:6px;">いいね数単体</li>
+          <li>全チャネル横断の投稿本数</li>
         </ul>
       </div>
       <div class="card" style="border-color:var(--primary); border-width:2px;">
-        <p style="font-size:11px; font-weight:700; letter-spacing:0.1em; color:var(--primary); margin-bottom:12px;">ブランドKPI（毎月追う）</p>
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.1em; color:var(--primary); margin-bottom:12px;">ブランドKPI（毎月の補助）</p>
         <ul style="margin:0; padding-left:1.1em; font-size:13px; color:var(--fg);">
           <li style="margin-bottom:8px;"><strong>「働く軸」</strong>を何回発信したか</li>
-          <li><strong>「Career Reflection」</strong>という考え方を何人に届けたか</li>
+          <li><strong>「Career Reflection」</strong>を何人に届けたか</li>
         </ul>
       </div>
     </div>
 
-    <div class="card reveal" style="margin-top:24px; text-align:center;">
+    <div class="card reveal" style="margin-top:28px; text-align:center;">
       <p class="quote" style="margin:0; border:none; padding:0; text-align:center;">
-        Appleが「Think Different」を繰り返したように、<br>
-        キャリフレも同じ思想を何度も伝え続ける。<br>
-        <span style="color:var(--primary-dark); font-weight:700;">「働く軸は育てるもの」</span>が、社会の共通認識になるまで。
+        「毎週問いに触れ、考え、自分を振り返る」。<br>
+        その積み重ねで初めて、文化になる。<br>
+        <span style="color:var(--primary-dark); font-weight:700;">だから蓄積型メディアを中心に据える。</span>
       </p>
     </div>
 
     <div class="note-text reveal" style="margin-top:28px;">
-      ※ 担当欄は確定分のみ記入。未定は後から反映する。<br>
-      ※ Year2以降、登録成長が想定を大きく下回った場合は note ブースト（月3〜5万円）等の有料施策を検討する。
+      ※ 担当の「未定」は後から埋める。確定分（佐治・キャリクマ・なかむら）のみ記入済み。<br>
+      ※ Year2以降、登録成長が想定を大きく下回った場合は note ブースト（月3〜5万円）等を検討する。<br>
+      ※ LINE・リファラル・アプリ内シェアはプロダクト連動として別途維持（アクティベーション・開発優先度参照）。
     </div>
   </div>
 </section>
