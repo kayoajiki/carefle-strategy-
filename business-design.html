@@ -642,6 +642,153 @@ nav {
 
 
 section[id], .section-header[id] { scroll-margin-top: 72px; }
+
+/* Marketing redesign */
+.mkt-shift {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: stretch;
+  margin: 28px 0;
+}
+.mkt-shift-box {
+  background: var(--white);
+  border: 1.5px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+}
+.mkt-shift-box.from { opacity: 0.85; }
+.mkt-shift-box.to {
+  border-color: var(--primary);
+  border-width: 2px;
+  background: linear-gradient(135deg, rgba(42,155,176,0.08) 0%, rgba(200,232,240,0.35) 100%);
+}
+.mkt-shift-box .ms-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--muted-fg);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.mkt-shift-box.to .ms-label { color: var(--primary); }
+.mkt-shift-box h4 { font-size: 15px; margin-bottom: 10px; }
+.mkt-shift-box ul { margin: 0; padding-left: 1.1em; font-size: 13px; color: var(--muted-fg); }
+.mkt-shift-box li { margin-bottom: 4px; }
+.mkt-shift-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 22px;
+  font-weight: 700;
+}
+@media (max-width: 640px) {
+  .mkt-shift { grid-template-columns: 1fr; }
+  .mkt-shift-arrow { transform: rotate(90deg); padding: 4px 0; }
+}
+
+.mkt-north {
+  text-align: center;
+  padding: 36px 28px;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #0d3d48 100%);
+  border-radius: var(--radius);
+  color: #fff;
+  margin: 28px 0;
+}
+.mkt-north .mn-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 12px;
+}
+.mkt-north .mn-main {
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 800;
+  line-height: 1.45;
+}
+.mkt-north .mn-sub {
+  margin-top: 14px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+}
+
+.mkt-pillars { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.mkt-pillar {
+  display: grid;
+  grid-template-columns: 52px 1fr 140px;
+  gap: 16px;
+  align-items: start;
+  background: var(--white);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.mkt-pillar.primary { border-color: var(--primary); border-width: 2px; }
+.mkt-pillar .mp-num {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: var(--primary-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 14px;
+}
+.mkt-pillar.primary .mp-num { background: var(--primary); color: #fff; }
+.mkt-pillar h4 { font-size: 15px; margin-bottom: 6px; }
+.mkt-pillar p { font-size: 13px; margin: 0; }
+.mkt-owner {
+  font-size: 12px;
+  color: var(--muted-fg);
+  background: var(--muted);
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+  line-height: 1.5;
+}
+.mkt-owner strong {
+  display: block;
+  color: var(--primary-dark);
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.mkt-owner.tbd {
+  border: 1px dashed var(--secondary);
+  background: transparent;
+  color: var(--muted-fg);
+}
+.mkt-owner.tbd strong { color: var(--muted-fg); font-weight: 600; }
+@media (max-width: 640px) {
+  .mkt-pillar { grid-template-columns: 40px 1fr; }
+  .mkt-owner { grid-column: 1 / -1; }
+}
+
+.brand-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 24px 0 8px;
+}
+.brand-words span {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  background: var(--white);
+  border: 1.5px solid var(--primary);
+  border-radius: 100px;
+  padding: 10px 18px;
+}
+
+.kpi-brand {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.kpi-brand .old { opacity: 0.7; }
+@media (max-width: 640px) { .kpi-brand { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -1702,36 +1849,232 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
 <section class="white" id="marketing">
   <div class="container">
     <div class="section-header reveal">
-      <span class="label">Marketing</span>
+      <span class="label">Marketing · Culture PR</span>
       <h2>マーケティング設計</h2>
       <div class="divider"></div>
-      <p>有料広告はYear1では実施しない。SNS有機運用とアプリのシェア機能でバイラル獲得を目指す。</p>
+      <p>サービスを売るフェーズから、<strong>Career Reflectionという市場（文化）をつくる</strong>フェーズへ。有料広告はYear1では実施しない。</p>
     </div>
 
-    <div class="reveal">
+    <!-- 視点の転換 -->
+    <h3 class="reveal" style="margin-bottom:8px;">視点の転換</h3>
+    <p class="reveal" style="font-size:14px; margin-bottom:4px;">サービスづくりと市場づくりは、全く違う仕事である。</p>
+    <div class="mkt-shift reveal">
+      <div class="mkt-shift-box from">
+        <div class="ms-label">これまで</div>
+        <h4>サービスを売る</h4>
+        <ul>
+          <li>既存カテゴリに乗る</li>
+          <li>機能・料金・CVを語る</li>
+          <li>「キャリフレ」を売る</li>
+        </ul>
+      </div>
+      <div class="mkt-shift-arrow" aria-hidden="true">→</div>
+      <div class="mkt-shift-box to">
+        <div class="ms-label">これから</div>
+        <h4>新しい価値観を広める</h4>
+        <ul>
+          <li>市場そのものをつくる</li>
+          <li>思想・問い・事例を語る</li>
+          <li>「働く軸は育つ」を常識にする</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2 reveal" style="margin-bottom:36px;">
+      <div class="card-muted">
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.1em; color:var(--muted-fg); margin-bottom:10px;">今ある市場</p>
+        <p style="font-size:13px; color:var(--fg); line-height:1.9;">転職　／　キャリア相談　／　コーチング　／　自己分析　／　適職診断</p>
+      </div>
+      <div class="card" style="border-color:var(--primary);">
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.1em; color:var(--primary); margin-bottom:10px;">まだない市場</p>
+        <p style="font-size:15px; color:var(--primary-dark); font-weight:700; line-height:1.7;">Career Reflection<br><span style="font-size:13px; font-weight:500; color:var(--muted-fg);">（キャリアの振り返り）</span></p>
+      </div>
+    </div>
+
+    <!-- 認知の北極星 -->
+    <div class="mkt-north reveal">
+      <div class="mn-label">まず認知してほしいもの</div>
+      <div class="mn-main">働く軸は、育つもの。</div>
+      <p class="mn-sub">
+        世の中は「自分の軸を見つけよう」。<br>
+        キャリフレは違う。<strong style="color:#fff;">軸は見つけるものではなく、育てるもの。</strong><br>
+        ここが革命。広報も思想から始まる。
+      </p>
+    </div>
+    <p class="note-text reveal" style="margin-bottom:40px;">
+      一番認知してほしいのは「キャリフレ」ではない。<strong>働く軸</strong>——もっと言えば<strong>働く軸は育つもの</strong>——を市場の常識にすること。
+    </p>
+
+    <!-- SNS 5本柱 -->
+    <div class="section-header reveal" style="margin-bottom:20px;">
+      <span class="label">SNS · 5 Pillars</span>
+      <h3>SNSの5本柱</h3>
+      <div class="divider"></div>
+      <p>チャネルを増やす前に、発信の型を固定する。担当は後から埋める欄を確保。</p>
+    </div>
+
+    <div class="mkt-pillars reveal">
+      <div class="mkt-pillar primary">
+        <div class="mp-num">1</div>
+        <div>
+          <h4>思想発信（最重要）</h4>
+          <p>テーマは「働く軸」「Career Reflection」だけ。例：仕事がつらい → すぐ転職、ではなく、つらい理由を振り返る。転職が悪いのではなく、「誰かの正解」で転職することが危険。これを毎日。</p>
+        </div>
+        <div class="mkt-owner"><strong>佐治</strong>確定</div>
+      </div>
+      <div class="mkt-pillar">
+        <div class="mp-num">2</div>
+        <div>
+          <h4>問いを届ける</h4>
+          <p>毎週、たった一つ。例：「今週、一番自分らしく働けた瞬間は？」シェアを促す。ここがブランドになる。</p>
+        </div>
+        <div class="mkt-owner"><strong>キャリクマ</strong>確定</div>
+      </div>
+      <div class="mkt-pillar">
+        <div class="mp-num">3</div>
+        <div>
+          <h4>ユーザーストーリー</h4>
+          <p>一番伸びる柱。転職成功談ではなく <strong>Reflection成功談</strong>。例：転職したかった→3ヶ月振り返った→転職しなかった。理由は仕事ではなく上司との関係だった。</p>
+        </div>
+        <div class="mkt-owner tbd"><strong>担当</strong>未定</div>
+      </div>
+      <div class="mkt-pillar">
+        <div class="mp-num">4</div>
+        <div>
+          <h4>Career Reflectionの教育</h4>
+          <p>カルーセル中心。Reflectionとは？／働く軸とは？／内省って何？／自己分析との違い／毎週1回でいい理由——など。</p>
+        </div>
+        <div class="mkt-owner tbd"><strong>担当</strong>未定</div>
+      </div>
+      <div class="mkt-pillar">
+        <div class="mp-num">5</div>
+        <div>
+          <h4>開発ストーリー</h4>
+          <p>開発日記。問いを100個作った／持ち味レポート改善／ユーザーの声／AIの問いの変化——プロダクトの裏側を見せる。</p>
+        </div>
+        <div class="mkt-owner"><strong>なかむら</strong>確定</div>
+      </div>
+    </div>
+
+    <!-- チャネル役割 -->
+    <div class="section-header reveal" style="margin-top:48px; margin-bottom:20px;">
+      <span class="label">Channels</span>
+      <h3>チャネルごとの役割</h3>
+      <div class="divider"></div>
+    </div>
+
+    <div class="reveal" style="overflow-x:auto; border-radius:var(--radius); border:1px solid var(--secondary);">
       <table>
         <thead>
           <tr>
             <th>チャネル</th>
             <th>役割</th>
             <th>頻度・方針</th>
+            <th>担当</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Instagram</td><td style="color:var(--fg);">共感・教育・流入</td><td style="color:var(--fg);">週4〜5投稿。キャリア迷子あるある、WCM解説</td></tr>
-          <tr><td>X（旧Twitter）</td><td style="color:var(--fg);">思考発信・拡散</td><td style="color:var(--fg);">毎日1〜2投稿。代表による価値観の発信</td></tr>
-          <tr><td>note</td><td style="color:var(--fg);">SEO・信頼形成</td><td style="color:var(--fg);">月2〜4本。WCM解説、自己分析テーマ</td></tr>
-          <tr><td>メルマガ</td><td style="color:var(--fg);">育成・転換</td><td style="color:var(--fg);">週1（月曜朝）。8週間ステップメール設計済み</td></tr>
-          <tr><td>LINE公式</td><td style="color:var(--fg);">リマインド・誘導</td><td style="color:var(--fg);">自動ステップ配信（登録〜90日後まで）</td></tr>
-          <tr><td>Facebook</td><td style="color:var(--fg);">繋がりあるネットワークへの直接発信</td><td style="color:var(--fg);">note更新時に連動（月2〜4回）。ローンチ時は一斉発信</td></tr>
-          <tr><td>リファラル</td><td style="color:var(--fg);">既存ユーザーからの紹介</td><td style="color:var(--fg);">紹介者：サブスク1ヶ月無料 / 被紹介者：トライアル延長。持ち味レポート生成直後に導線設置</td></tr>
-          <tr><td>アプリ内シェア</td><td style="color:var(--fg);">バイラル獲得</td><td style="color:var(--fg);">持ち味レポートをSNS画像としてエクスポート（開発予定）</td></tr>
+          <tr>
+            <td style="color:var(--fg); font-weight:700;">X</td>
+            <td style="color:var(--fg);">思想</td>
+            <td style="color:var(--fg);">毎日。短い。</td>
+            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg); font-weight:700;">Instagram</td>
+            <td style="color:var(--fg);">教育・保存</td>
+            <td style="color:var(--fg);">カルーセル中心。</td>
+            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg); font-weight:700;">Threads</td>
+            <td style="color:var(--fg);">日記・気づき</td>
+            <td style="color:var(--fg);">裏話・日常の振り返り。</td>
+            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg); font-weight:700;">LinkedIn</td>
+            <td style="color:var(--fg);">企業・管理職</td>
+            <td style="color:var(--fg);">Career Reflection／1on1。</td>
+            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg); font-weight:700;">note</td>
+            <td style="color:var(--fg);">思想・長文</td>
+            <td style="color:var(--fg);">ブランドの長編。月数本。</td>
+            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg); font-weight:700;">Podcast</td>
+            <td style="color:var(--fg);">相性最良</td>
+            <td style="color:var(--fg);">毎週「Reflection Radio」想定。問い1つ＋考え方＋事例。</td>
+            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
+          </tr>
+          <tr style="background:rgba(42,155,176,0.08);">
+            <td style="color:var(--primary-dark); font-weight:800;">ニュースレター</td>
+            <td style="color:var(--fg); font-weight:700;">最重要・蓄積</td>
+            <td style="color:var(--fg);">毎週。問い1つ／考え方1つ／事例1つだけ。SNSは流れるが Reflection は積み上がる。</td>
+            <td style="color:var(--muted-fg); font-size:12px;">未定</td>
+          </tr>
         </tbody>
       </table>
     </div>
+    <p class="note-text reveal" style="margin-top:16px;">
+      ※ LINE・リファラル・アプリ内シェア等のプロダクト連動施策は、文化PRの下支えとして別途維持（詳細は開発優先度・アクティベーション参照）。
+    </p>
 
-    <div class="note-text reveal">
-      ※ Year2以降、登録成長が想定を大きく下回った場合はnoteブースト（月3〜5万円）を検討する。
+    <!-- ブランド語彙 -->
+    <div class="section-header reveal" style="margin-top:48px; margin-bottom:12px;">
+      <span class="label">Brand Vocabulary</span>
+      <h3>ブランドとして育てる言葉</h3>
+      <div class="divider"></div>
+      <p>今後100回使う言葉は、この5つだけでいい。他の言葉はいらない。</p>
+    </div>
+    <div class="brand-words reveal">
+      <span>Career Reflection</span>
+      <span>働く軸</span>
+      <span>振り返る</span>
+      <span>問い</span>
+      <span>自分で納得して選ぶ</span>
+    </div>
+
+    <!-- KPI -->
+    <div class="section-header reveal" style="margin-top:48px; margin-bottom:12px;">
+      <span class="label">Brand KPI</span>
+      <h3>広報のKPI</h3>
+      <div class="divider"></div>
+      <p>キャリフレは「AIサービス」を広める会社ではない。<strong>Career Reflectionという文化</strong>を広める会社である。</p>
+    </div>
+
+    <div class="kpi-brand reveal">
+      <div class="card-muted old">
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.1em; margin-bottom:12px;">従来のKPI（必要だが十分ではない）</p>
+        <ul style="margin:0; padding-left:1.1em; font-size:13px; color:var(--muted-fg);">
+          <li style="margin-bottom:6px;">フォロワー数</li>
+          <li style="margin-bottom:6px;">登録者数</li>
+          <li>CVR</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--primary); border-width:2px;">
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.1em; color:var(--primary); margin-bottom:12px;">ブランドKPI（毎月追う）</p>
+        <ul style="margin:0; padding-left:1.1em; font-size:13px; color:var(--fg);">
+          <li style="margin-bottom:8px;"><strong>「働く軸」</strong>を何回発信したか</li>
+          <li><strong>「Career Reflection」</strong>という考え方を何人に届けたか</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top:24px; text-align:center;">
+      <p class="quote" style="margin:0; border:none; padding:0; text-align:center;">
+        Appleが「Think Different」を繰り返したように、<br>
+        キャリフレも同じ思想を何度も伝え続ける。<br>
+        <span style="color:var(--primary-dark); font-weight:700;">「働く軸は育てるもの」</span>が、社会の共通認識になるまで。
+      </p>
+    </div>
+
+    <div class="note-text reveal" style="margin-top:28px;">
+      ※ 担当欄は確定分のみ記入。未定は後から反映する。<br>
+      ※ Year2以降、登録成長が想定を大きく下回った場合は note ブースト（月3〜5万円）等の有料施策を検討する。
     </div>
   </div>
 </section>
