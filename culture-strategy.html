@@ -255,16 +255,140 @@ nav {
   .ladder-item { grid-template-columns: 1fr; }
 }
 
-.stack-summary {
+.picture-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.picture-layer {
+  background: var(--white);
+  border: 1.5px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  position: relative;
+}
+.picture-layer.culture {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-color: transparent;
+  color: #fff;
+  text-align: center;
+}
+.picture-layer.culture .pl-label {
+  color: rgba(255,255,255,0.7);
+}
+.picture-layer.culture .pl-title {
+  color: #fff;
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  font-weight: 800;
+  line-height: 1.55;
+}
+.picture-layer.now {
+  border-color: var(--primary);
+  border-width: 2px;
+  background: linear-gradient(135deg, rgba(42,155,176,0.08) 0%, rgba(200,232,240,0.35) 100%);
+}
+.picture-layer.definition {
+  text-align: center;
+}
+.pl-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.pl-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.7;
+}
+.pl-sub {
+  font-size: 13px;
+  color: var(--muted-fg);
+  margin-top: 8px;
+  line-height: 1.75;
+}
+.pl-kpi {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-dark);
   background: var(--white);
   border: 1px solid var(--secondary);
-  border-radius: var(--radius);
-  padding: 28px 32px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 13px;
-  line-height: 1.9;
+  border-radius: 100px;
+  padding: 4px 14px;
+}
+
+.picture-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 0;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.picture-connector .arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.year-chain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.year-step {
+  background: var(--muted);
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
   color: var(--primary-dark);
-  white-space: pre-wrap;
+  text-align: center;
+  min-width: 72px;
+}
+.year-step.current {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.year-step .ys {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-bottom: 2px;
+  letter-spacing: 0.04em;
+}
+.year-arrow {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.picture-caption {
+  font-size: 12px;
+  color: var(--muted-fg);
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+@media (max-width: 560px) {
+  .year-step { min-width: auto; flex: 1 1 calc(50% - 20px); }
+  .year-arrow { display: none; }
 }
 
 .related {
@@ -347,16 +471,68 @@ section[id] { scroll-margin-top: 72px; }
       <span class="label">One Picture</span>
       <h2>一枚絵</h2>
       <div class="divider"></div>
+      <p>下の定義から上の文化へ、逆算して積む。</p>
     </div>
-    <div class="stack-summary reveal">【文化】Career Reflectionが当たり前になる社会
-          ↑
-【毎年一つ】AI → 人 → 定例/コミュニティ → 組織 → Platform
-          ↑
-【今】AIとセッションを磨き、50–100人で
-      「振り返りを続けると変わる」を証明する
-      KPI = Reflection継続率
-          ↑
-【定義】迷うたびにモノサシに立ち返り、自分で選べる蓄積装置</div>
+
+    <div class="picture-stack reveal">
+
+      <!-- 文化（最上） -->
+      <div class="picture-layer culture">
+        <div class="pl-label">Culture · 目指す社会</div>
+        <div class="pl-title">Career Reflectionが<br>当たり前になる社会</div>
+      </div>
+
+      <div class="picture-connector" aria-hidden="true">
+        <span class="arrow">↑</span>
+        <span>逆算</span>
+      </div>
+
+      <!-- 毎年一つ -->
+      <div class="picture-layer">
+        <div class="pl-label">One Per Year · 毎年増やすもの一つ</div>
+        <div class="pl-title">層を一つずつ積む</div>
+        <div class="year-chain">
+          <div class="year-step current"><span class="ys">2026</span>AI</div>
+          <span class="year-arrow">→</span>
+          <div class="year-step"><span class="ys">2027</span>人</div>
+          <span class="year-arrow">→</span>
+          <div class="year-step"><span class="ys">2028</span>定例 / コミュニティ</div>
+          <span class="year-arrow">→</span>
+          <div class="year-step"><span class="ys">2029</span>組織</div>
+          <span class="year-arrow">→</span>
+          <div class="year-step"><span class="ys">2030</span>Platform</div>
+        </div>
+      </div>
+
+      <div class="picture-connector" aria-hidden="true">
+        <span class="arrow">↑</span>
+        <span>今年の証明</span>
+      </div>
+
+      <!-- 今 -->
+      <div class="picture-layer now">
+        <div class="pl-label">Now · 今やること</div>
+        <div class="pl-title">AIとセッションを磨き、50–100人で証明する</div>
+        <div class="pl-sub">「振り返りを続けると変わる」を、少数の深い体験で実証する。</div>
+        <span class="pl-kpi">KPI = Reflection継続率</span>
+      </div>
+
+      <div class="picture-connector" aria-hidden="true">
+        <span class="arrow">↑</span>
+        <span>土台</span>
+      </div>
+
+      <!-- 定義（最下） -->
+      <div class="picture-layer definition">
+        <div class="pl-label">Definition · 北極星</div>
+        <div class="pl-title">迷うたびにモノサシに立ち返り、<br>自分で選べる蓄積装置</div>
+      </div>
+
+    </div>
+
+    <p class="picture-caption reveal">
+      機能や売上から入らない。定義 → 今の証明 → 年次で一つ積む → 文化、の順で読む。
+    </p>
   </div>
 </section>
 
@@ -476,27 +652,27 @@ section[id] { scroll-margin-top: 72px; }
 
     <div class="ladder reveal">
       <div class="ladder-item now">
-        <div class="ladder-stage">個人 × AI</div>
+        <div class="ladder-stage">個人 × AI · 2026</div>
         <div class="ladder-copy">一人で、続けて振り返れる<br><strong>AIで振り返る</strong></div>
       </div>
-      <div class="ladder-item now">
-        <div class="ladder-stage">個人 × 人</div>
+      <div class="ladder-item">
+        <div class="ladder-stage">個人 × 人 · 2027</div>
         <div class="ladder-copy">対話で深められる<br><strong>人と深める</strong>（キャリフレセッション）</div>
       </div>
       <div class="ladder-item">
-        <div class="ladder-stage">習慣・定例</div>
+        <div class="ladder-stage">習慣・定例 · 2028</div>
         <div class="ladder-copy">「振り返る」が生活のリズムになる<br>続けられる仕組み</div>
       </div>
       <div class="ladder-item">
-        <div class="ladder-stage">コミュニティ</div>
+        <div class="ladder-stage">コミュニティ · 2028</div>
         <div class="ladder-copy">人と一緒に振り返るのが当たり前<br>Reflection Club 等</div>
       </div>
       <div class="ladder-item">
-        <div class="ladder-stage">組織</div>
+        <div class="ladder-stage">組織 · 2029</div>
         <div class="ladder-copy">離職・1on1・育成の根っこに Reflection<br>企業版</div>
       </div>
       <div class="ladder-item">
-        <div class="ladder-stage">プラットフォーム</div>
+        <div class="ladder-stage">プラットフォーム · 2030</div>
         <div class="ladder-copy">AI・人・企業・コミュニティがつながる<br>Career Reflection Platform</div>
       </div>
     </div>
@@ -524,23 +700,23 @@ section[id] { scroll-margin-top: 72px; }
       <div class="yh">増やすもの（一つ）</div>
       <div class="yh">増やさないもの（例）</div>
 
-      <div class="yc year">2025</div>
+      <div class="yc year">2026</div>
       <div class="yc"><strong>AIで振り返る</strong>を完成させる</div>
       <div class="yc skip">コミュニティ・企業・大規模コンテンツ拡張</div>
 
-      <div class="yc year">2026</div>
+      <div class="yc year">2027</div>
       <div class="yc"><strong>人と振り返る</strong>を完成させる</div>
       <div class="yc skip">まだ「組織で振り返る」、未成熟な拡散施策</div>
 
-      <div class="yc year">2027</div>
+      <div class="yc year">2028</div>
       <div class="yc"><strong>続けられる仕組み</strong>（定例・コミュニティ）</div>
       <div class="yc skip">企業向けの本格展開</div>
 
-      <div class="yc year">2028</div>
+      <div class="yc year">2029</div>
       <div class="yc"><strong>組織で振り返る</strong></div>
       <div class="yc skip">Platform化の先走り</div>
 
-      <div class="yc year">2029</div>
+      <div class="yc year">2030</div>
       <div class="yc"><strong>Career Reflection Platform</strong></div>
       <div class="yc skip">—</div>
     </div>
@@ -639,11 +815,11 @@ section[id] { scroll-margin-top: 72px; }
           <tr><th>年</th><th>フォーカス</th></tr>
         </thead>
         <tbody>
-          <tr><td style="color:var(--primary); font-weight:800;">2025</td><td>AI完成・セッション完成</td></tr>
-          <tr><td style="color:var(--primary); font-weight:800;">2026</td><td>100人伴走・事例・ブランド確立</td></tr>
-          <tr><td style="color:var(--primary); font-weight:800;">2027</td><td>定例伴走・コミュニティ開始</td></tr>
-          <tr><td style="color:var(--primary); font-weight:800;">2028</td><td>企業版開始</td></tr>
-          <tr><td style="color:var(--primary); font-weight:800;">2029</td><td>Career Reflection Platform</td></tr>
+          <tr><td style="color:var(--primary); font-weight:800;">2026</td><td>AI完成・セッション完成</td></tr>
+          <tr><td style="color:var(--primary); font-weight:800;">2027</td><td>100人伴走・事例・ブランド確立</td></tr>
+          <tr><td style="color:var(--primary); font-weight:800;">2028</td><td>定例伴走・コミュニティ開始</td></tr>
+          <tr><td style="color:var(--primary); font-weight:800;">2029</td><td>企業版開始</td></tr>
+          <tr><td style="color:var(--primary); font-weight:800;">2030</td><td>Career Reflection Platform</td></tr>
         </tbody>
       </table>
     </div>
