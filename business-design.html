@@ -914,6 +914,86 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
 }
 .ch-detail ul { margin: 0; padding-left: 1.1em; font-size: 13px; color: var(--muted-fg); }
 .ch-detail li { margin-bottom: 4px; }
+
+details.pod-panel {
+  margin-top: 16px;
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  background: var(--muted);
+  overflow: hidden;
+}
+details.pod-panel > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  user-select: none;
+}
+details.pod-panel > summary::-webkit-details-marker { display: none; }
+details.pod-panel > summary::after {
+  content: '詳細を開く →';
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+details.pod-panel[open] > summary::after { content: '閉じる ↑'; }
+details.pod-panel .pod-body {
+  padding: 8px 18px 22px;
+  border-top: 1px solid var(--secondary);
+  background: var(--white);
+}
+.pod-season {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--secondary);
+}
+.pod-season:first-child { margin-top: 8px; padding-top: 0; border-top: none; }
+.pod-season h5 {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 6px;
+}
+.pod-season .ps-aim {
+  font-size: 12px;
+  color: var(--muted-fg);
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+.pod-season ol {
+  margin: 0;
+  padding-left: 1.4em;
+  font-size: 13px;
+  color: var(--fg);
+  columns: 2;
+  column-gap: 24px;
+}
+.pod-season ol li {
+  break-inside: avoid;
+  margin-bottom: 6px;
+  color: var(--muted-fg);
+}
+@media (max-width: 640px) {
+  .pod-season ol { columns: 1; }
+}
+.pod-prompt {
+  margin-top: 16px;
+  padding: 16px 18px;
+  background: var(--muted);
+  border-radius: var(--radius);
+  font-size: 12px;
+  line-height: 1.75;
+  color: var(--muted-fg);
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
 </style>
 </head>
 <body>
@@ -2081,7 +2161,7 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
       </div>
       <div class="prio-item">
         <div class="pi-n">2</div>
-        <div><div class="pi-name">Podcast</div><div class="pi-why">思想を深く伝えるファン化装置。各週。内容は note にも転用する。</div></div>
+        <div><div class="pi-name">Podcast · キャリフレ Radio</div><div class="pi-why">各週。思想を深く伝え、Reflection習慣の入口にする。内容は note に転用。</div></div>
       </div>
       <div class="prio-item">
         <div class="pi-n">3</div>
@@ -2117,7 +2197,7 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
           <p style="font-size:13px; font-weight:700; color:var(--fg); margin-bottom:8px;">やる（継続できる最小セット）</p>
           <ul style="margin:0; padding-left:1.1em; font-size:13px; color:var(--muted-fg);">
             <li style="margin-bottom:6px;"><strong style="color:var(--fg);">X</strong>：毎日 1〜3投稿（思想・気づき）</li>
-            <li style="margin-bottom:6px;"><strong style="color:var(--fg);">Podcast</strong>：各週1本</li>
+            <li style="margin-bottom:6px;"><strong style="color:var(--fg);">Podcast（キャリフレ Radio）</strong>：各週1本 → note に記事化</li>
             <li style="margin-bottom:6px;"><strong style="color:var(--fg);">ニュースレター</strong>：週1通</li>
             <li style="margin-bottom:6px;"><strong style="color:var(--fg);">note</strong>：各週（Podcast内容の記事化）</li>
             <li><strong style="color:var(--fg);">LINE</strong>：ステップ配信・問い・リマインド（プロダクト連動）</li>
@@ -2290,17 +2370,17 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
       <p style="font-size:12px; margin-top:14px; color:var(--muted-fg);">担当：<strong style="color:var(--muted-fg);">未定</strong>（編集方針は中村＝キャリクマの問い＋思想の要約）</p>
     </div>
 
-    <div class="ch-detail hero-ch reveal">
-      <h4>② Podcast · Reflection Radio</h4>
-      <p class="cd-role">役割：思想を深く伝えるファン化装置。各週。収録内容は note に転用する。</p>
+    <div class="ch-detail hero-ch reveal" id="podcast">
+      <h4>② Podcast · キャリフレ Radio</h4>
+      <p class="cd-role">役割：思想を深く伝え、「毎週振り返る習慣」の入口にする。各週。収録内容は note に転用。</p>
       <div class="cd-grid">
         <div>
-          <div class="cd-label">テーマ例</div>
+          <div class="cd-label">方針（要約）</div>
           <ul>
-            <li>なぜ働く軸は育つのか</li>
-            <li>転職より先に振り返る理由</li>
-            <li>Career Reflection とは</li>
-            <li>相談事例（Reflection成功談）</li>
+            <li>全53週 · 4シーズン構成</li>
+            <li>出演：キャリアカウンセラー佐治</li>
+            <li>毎回末尾に「今週のReflection Question」</li>
+            <li>「ぜひキャリフレで書いてみてください」で締める</li>
           </ul>
         </div>
         <div>
@@ -2312,7 +2392,176 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
           </ul>
         </div>
       </div>
-      <p style="font-size:12px; margin-top:14px; color:var(--muted-fg);">担当：<strong style="color:var(--muted-fg);">未定</strong></p>
+      <p style="font-size:12px; margin-top:14px; color:var(--muted-fg);">担当：<strong style="color:var(--muted-fg);">未定</strong>（出演は佐治）</p>
+
+      <details class="pod-panel">
+        <summary>キャリフレ Radio · 全53週テーマ・企画・台本プロンプト</summary>
+        <div class="pod-body">
+
+          <div class="pod-season">
+            <h5>シーズン設計</h5>
+            <p class="ps-aim">単なる情報発信ではなく、53週かけて「毎週振り返る習慣」をつくる番組。</p>
+            <div class="reveal" style="overflow-x:auto; border-radius:var(--radius); border:1px solid var(--secondary);">
+              <table>
+                <thead>
+                  <tr><th>Season</th><th>話数</th><th>テーマ</th><th>狙い</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="color:var(--fg); font-weight:700;">1</td>
+                    <td style="color:var(--fg);">1〜13</td>
+                    <td style="color:var(--fg);">働く軸を育てる</td>
+                    <td style="color:var(--muted-fg); font-size:13px;">世界観を共有する</td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--fg); font-weight:700;">2</td>
+                    <td style="color:var(--fg);">14〜26</td>
+                    <td style="color:var(--fg);">自分を知る</td>
+                    <td style="color:var(--muted-fg); font-size:13px;">自分を振り返る習慣をつくる</td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--fg); font-weight:700;">3</td>
+                    <td style="color:var(--fg);">27〜39</td>
+                    <td style="color:var(--fg);">働き方</td>
+                    <td style="color:var(--muted-fg); font-size:13px;">転職・副業・人間関係など具体テーマへ広げる</td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--fg); font-weight:700;">4</td>
+                    <td style="color:var(--fg);">40〜53</td>
+                    <td style="color:var(--fg);">Reflectionを習慣にする</td>
+                    <td style="color:var(--muted-fg); font-size:13px;">振り返りを人生の一部にする</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="pod-season">
+            <h5>Season 1｜働く軸を育てる（1〜13週）</h5>
+            <p class="ps-aim">「働く軸とは何か」——世界観を共有する。</p>
+            <ol start="1">
+              <li>なぜ働く軸は必要なのか</li>
+              <li>働く軸は見つけるものではなく育てるもの</li>
+              <li>Career Reflectionとは</li>
+              <li>振り返りが人生を変える理由</li>
+              <li>モヤモヤは悪いものではない</li>
+              <li>違和感を無視しない</li>
+              <li>「向いている仕事」より「続けられる仕事」</li>
+              <li>自分らしさとは何か</li>
+              <li>キャリアは一本道ではない</li>
+              <li>他人の正解を生きない</li>
+              <li>AI時代だからこそ内省</li>
+              <li>小さな振り返りの積み重ね</li>
+              <li>働く軸を育てる習慣</li>
+            </ol>
+          </div>
+
+          <div class="pod-season">
+            <h5>Season 2｜自分を知る（14〜26週）</h5>
+            <p class="ps-aim">自分を振り返る習慣をつくる。</p>
+            <ol start="14">
+              <li>強みとは何か</li>
+              <li>苦手を受け入れる</li>
+              <li>自分が疲れる理由</li>
+              <li>自分が元気になる仕事</li>
+              <li>人間関係を振り返る</li>
+              <li>上司との関係</li>
+              <li>同僚との関係</li>
+              <li>成功体験を振り返る</li>
+              <li>失敗体験を振り返る</li>
+              <li>子どもの頃を振り返る</li>
+              <li>人生史を書く意味</li>
+              <li>持ち味とは</li>
+              <li>自分を一言で表すと</li>
+            </ol>
+          </div>
+
+          <div class="pod-season">
+            <h5>Season 3｜働き方（27〜39週）</h5>
+            <p class="ps-aim">転職、副業、管理職、人間関係など、具体的なテーマに広げる。</p>
+            <ol start="27">
+              <li>転職する前に考えたいこと</li>
+              <li>辞めるべきか迷ったら</li>
+              <li>今の会社でできること</li>
+              <li>副業という選択</li>
+              <li>管理職になるか</li>
+              <li>フリーランスという働き方</li>
+              <li>お金と働く意味</li>
+              <li>評価されない苦しさ</li>
+              <li>成長とは何か</li>
+              <li>ワークライフバランス</li>
+              <li>キャリアの棚卸し</li>
+              <li>人生100年時代</li>
+              <li>未来は決めなくていい</li>
+            </ol>
+          </div>
+
+          <div class="pod-season">
+            <h5>Season 4｜Reflectionを習慣にする（40〜53週）</h5>
+            <p class="ps-aim">振り返りを習慣にし、人生の一部にする。</p>
+            <ol start="40">
+              <li>なぜ続かないのか</li>
+              <li>週5分でいい理由</li>
+              <li>書けない日の振り返り</li>
+              <li>AIとの対話</li>
+              <li>人と話す意味</li>
+              <li>一人で考えすぎない</li>
+              <li>振り返りが家族を変える</li>
+              <li>働く軸が育った瞬間</li>
+              <li>半年振り返る</li>
+              <li>一年振り返る</li>
+              <li>次の一年を考える</li>
+              <li>あなたにとって働くとは</li>
+              <li>自分で選べる人生</li>
+              <li>一年間振り返って</li>
+            </ol>
+          </div>
+
+          <div class="pod-season">
+            <h5>固定コーナー｜今週の Reflection Question</h5>
+            <p class="ps-aim">毎回の最後に、リスナーへの宿題として固定する。53週続けることで、Podcastは「毎週振り返る習慣」の入口になる。</p>
+            <ul style="margin:0; padding-left:1.2em; font-size:13px; color:var(--muted-fg);">
+              <li style="margin-bottom:6px;">例：「今週、自分らしく働けた瞬間はありましたか？」</li>
+              <li style="margin-bottom:6px;">例：「最近、我慢していることは何ですか？」</li>
+              <li style="margin-bottom:6px;">例：「誰かの期待ではなく、自分の意思で選んだことはありましたか？」</li>
+              <li style="margin-bottom:10px;">締め：「ぜひキャリフレで書いてみてください。」</li>
+            </ul>
+          </div>
+
+          <div class="pod-season">
+            <h5>台本プロンプト</h5>
+            <p class="ps-aim">インタビュアー役。司会ではなく、リスナーの疑問を代弁する。出演は佐治。</p>
+            <div class="pod-prompt">あなたはPodcastのインタビュアーです。
+
+番組は「働く軸を育てるラジオ」（キャリフレ Radio）。
+
+出演者はキャリアカウンセラーの佐治です。
+
+あなたの役割は司会ではありません。
+リスナーが思いそうな疑問を代弁してください。
+
+目的は、Career Reflectionという考え方を自然に理解してもらうことです。
+
+【テーマ】
+（テーマ）
+
+以下を作成してください。
+・オープニングトーク
+・導入質問5個
+・深掘り質問10個
+・リスナー目線の質問5個
+・まとめ質問3個
+・最後のReflection Question3個
+
+質問は「教えてください」ではなく、
+「それってどういうことですか？」
+「私だったらこう思うんですが…」
+「実際、相談ではどういう方が多いですか？」
+など自然な会話にしてください。</div>
+          </div>
+
+        </div>
+      </details>
     </div>
 
     <div class="ch-detail hero-ch reveal">
