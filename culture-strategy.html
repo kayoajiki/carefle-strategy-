@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文化戦略・北極星｜キャリフレ戦略資料</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F0F8FA;
+  --fg: #071C22;
+  --primary: #2A9BB0;
+  --primary-dark: #1A6070;
+  --secondary: #C8E8F0;
+  --muted: #E4F2F6;
+  --muted-fg: #3A6878;
+  --white: #ffffff;
+  --radius: 0.75rem;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Manrope', 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.75;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; line-height: 1.3; }
+h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; }
+p { color: var(--muted-fg); }
+
+.container { max-width: 860px; margin: 0 auto; padding: 0 28px; }
+
+section { padding: 80px 0; }
+section.white { background: var(--white); }
+section.muted { background: var(--muted); }
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.divider { width: 36px; height: 2px; background: var(--primary); margin: 20px 0 28px; }
+
+.section-header { margin-bottom: 40px; }
+.section-header p { margin-top: 12px; font-size: 1rem; max-width: 600px; }
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  border: 1px solid var(--secondary);
+}
+
+.card-muted {
+  background: var(--muted);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th {
+  background: var(--muted);
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-align: left;
+  padding: 11px 16px;
+}
+td { padding: 13px 16px; border-bottom: 1px solid var(--secondary); color: var(--fg); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td:first-child { color: var(--muted-fg); font-size: 13px; font-weight: 600; }
+
+.tag {
+  display: inline-block;
+  background: var(--secondary);
+  color: var(--primary-dark);
+  padding: 3px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.quote {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 500;
+  color: var(--primary-dark);
+  line-height: 1.9;
+  border-left: 3px solid var(--primary);
+  padding-left: 20px;
+  margin: 20px 0;
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  color: white;
+}
+.highlight-box h2,
+.highlight-box h3 { color: white; }
+.highlight-box p { color: rgba(255,255,255,0.88); }
+
+.note-text {
+  font-size: 13px;
+  color: var(--muted-fg);
+  border-left: 2px solid var(--secondary);
+  padding-left: 12px;
+  margin-top: 16px;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--secondary);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-back {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+.nav-back:hover { text-decoration: underline; }
+.nav-brand {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--fg);
+  letter-spacing: 0.04em;
+  margin-left: auto;
+}
+.nav-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted-fg);
+  background: var(--muted);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.toc a { text-decoration: none; }
+
+.flow-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.flow-box {
+  background: var(--white);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fg);
+  text-align: center;
+}
+.flow-arrow { color: var(--primary); font-weight: 700; }
+
+.ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 640px;
+  margin: 28px auto 8px;
+}
+.ladder-item {
+  background: var(--white);
+  border: 1.5px solid var(--secondary);
+  padding: 18px 22px;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+.ladder-item:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+.ladder-item:last-child { border-radius: 0 0 var(--radius) var(--radius); }
+.ladder-item + .ladder-item { border-top: none; }
+.ladder-item.now {
+  border-color: var(--primary);
+  background: linear-gradient(135deg, rgba(42,155,176,0.1) 0%, rgba(200,232,240,0.35) 100%);
+}
+.ladder-stage {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+.ladder-copy { font-size: 14px; color: var(--fg); }
+.ladder-copy strong { color: var(--primary-dark); }
+
+.year-focus {
+  display: grid;
+  grid-template-columns: 72px 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 8px;
+}
+.year-focus .yh {
+  background: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--primary-dark);
+  padding: 12px 16px;
+}
+.year-focus .yc {
+  padding: 14px 16px;
+  font-size: 13px;
+  border-top: 1px solid var(--secondary);
+  background: var(--white);
+}
+.year-focus .yc.year {
+  font-weight: 800;
+  color: var(--primary);
+  background: rgba(200,232,240,0.25);
+}
+.year-focus .yc.skip { color: var(--muted-fg); }
+@media (max-width: 640px) {
+  .year-focus { grid-template-columns: 1fr; }
+  .ladder-item { grid-template-columns: 1fr; }
+}
+
+.stack-summary {
+  background: var(--white);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--primary-dark);
+  white-space: pre-wrap;
+}
+
+.related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+.related a {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--secondary);
+  padding-bottom: 2px;
+}
+.related a:hover { border-color: var(--primary); }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+footer {
+  background: var(--primary-dark);
+  padding: 32px 0;
+}
+footer p {
+  color: rgba(255,255,255,0.45);
+  font-size: 13px;
+  text-align: center;
+}
+
+section[id] { scroll-margin-top: 72px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-back">← ホーム</a>
+    <span class="nav-brand">Carefle</span>
+    <span class="nav-tag">文化戦略</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="padding:72px 0 56px; background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 100%);">
+  <div class="container">
+    <span class="label" style="color:rgba(255,255,255,0.6);">Culture Strategy</span>
+    <h1 style="color:white; margin-bottom:16px;">
+      Career Reflectionを<br>文化にする
+    </h1>
+    <div class="divider" style="background:rgba(255,255,255,0.4);"></div>
+    <p style="color:rgba(255,255,255,0.75); font-size:1rem; max-width:560px; line-height:1.9;">
+      機能や売上から入らない。<br>
+      先に「どんな文化を作るか」を置き、そこから「今年増やすもの」を一つに絞る。
+    </p>
+  </div>
+</section>
+
+<!-- 目次 -->
+<section class="white" style="padding:40px 0;">
+  <div class="container">
+    <div class="toc">
+      <a href="#picture"><span class="tag">一枚絵</span></a>
+      <a href="#premise"><span class="tag">0. 考える順番</span></a>
+      <a href="#north-star"><span class="tag">1. 一言定義</span></a>
+      <a href="#culture"><span class="tag">2. 作る文化</span></a>
+      <a href="#one-per-year"><span class="tag">3. 毎年一つ</span></a>
+      <a href="#phases"><span class="tag">4. フェーズ設計</span></a>
+      <a href="#calendar"><span class="tag">5. カレンダー</span></a>
+      <a href="#focus-now"><span class="tag">6. 今、集中すること</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 一枚絵（冒頭に置く） -->
+<section class="muted" id="picture">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">One Picture</span>
+      <h2>一枚絵</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="stack-summary reveal">【文化】Career Reflectionが当たり前になる社会
+          ↑
+【毎年一つ】AI → 人 → 定例/コミュニティ → 組織 → Platform
+          ↑
+【今】AIとセッションを磨き、50–100人で
+      「振り返りを続けると変わる」を証明する
+      KPI = Reflection継続率
+          ↑
+【定義】迷うたびにモノサシに立ち返り、自分で選べる蓄積装置</div>
+  </div>
+</section>
+
+<!-- 0. 考える順番 -->
+<section class="white" id="premise">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">00 · Premise</span>
+      <h2>考える順番</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="flow-row reveal">
+      <div class="flow-box">どんな文化を作るか</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box" style="border-color:var(--primary);">そのために今何を作るか</div>
+    </div>
+
+    <p class="reveal" style="margin-top:8px;">
+      機能や売上から入らない。先に「振り返りが当たり前になる社会」（Vision）を置き、そこから逆算して「今年増やすもの」を一つに絞る。
+    </p>
+
+    <div class="card reveal" style="margin-top:28px;">
+      <p style="font-size:15px; color:var(--fg); font-weight:600; line-height:1.8;">
+        今のキャリフレは「何でもできる」ように見えやすい。<br>
+        <span style="color:var(--primary-dark);">ブランドは「何を増やさないか」で立つ。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 1. 一言定義 -->
+<section class="muted" id="north-star">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">01 · North Star</span>
+      <h2>一言の定義（北極星）</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="highlight-box reveal" style="margin-bottom:32px;">
+      <p style="color:rgba(255,255,255,0.7); font-size:12px; font-weight:700; letter-spacing:0.12em; margin-bottom:14px;">PRODUCT DEFINITION</p>
+      <h3 style="font-size:clamp(1.05rem,2.4vw,1.35rem); line-height:1.85; font-weight:700;">
+        キャリフレは、迷うたびに「自分のモノサシ」に立ち返り、自分で選べるようになるための、<strong>自己理解の蓄積装置</strong>。
+      </h3>
+    </div>
+
+    <div class="reveal" style="overflow-x:auto; border-radius:var(--radius); border:1px solid var(--secondary); background:var(--white);">
+      <table>
+        <thead>
+          <tr>
+            <th>定義の言葉</th>
+            <th>クレド上の意味</th>
+            <th>解釈</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--fg);">迷うたびに</td>
+            <td>サイクル／母艦</td>
+            <td style="color:var(--muted-fg); font-size:13px;">モヤモヤは一度きりではない。転職でも現職でも、何度も戻る場所</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg);">自分のモノサシに立ち返り</td>
+            <td>働く軸／守り</td>
+            <td style="color:var(--muted-fg); font-size:13px;">世間・他人軸から離れ、人生史・価値観・持ち味・しぼみ条件に戻る。蓄積があるから「立ち返れる」</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg);">自分で選べるようになる</td>
+            <td>BENEFIT：自分で納得して選べる</td>
+            <td style="color:var(--muted-fg); font-size:13px;">答えをもらうのではなく、自己決定できる状態。攻め</td>
+          </tr>
+          <tr>
+            <td style="color:var(--fg);">自己理解の蓄積装置</td>
+            <td>SoR × 複利</td>
+            <td style="color:var(--muted-fg); font-size:13px;">一度きりの相談ではなく、使うほど「自分の取扱説明書」が厚くなる。サブスク継続の本質理由</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flow-row reveal" style="justify-content:center; margin-top:32px;">
+      <div class="flow-box">振り返る</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">言葉にする</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">働く軸が育つ</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box" style="border-color:var(--primary);">納得して選べる</div>
+    </div>
+
+    <p class="note-text reveal">
+      「モノサシ」は、プロダクト上では主に<strong>働く軸レポート</strong>と、その土台になる<strong>日記・人生史・WCM・持ち味レポート</strong>の蓄積を指す。<br>
+      事業設計の「内省の母艦」は比喩。こちらの「蓄積装置」は SoR としての製品定義。
+    </p>
+
+    <div class="related reveal">
+      <a href="business-design.html#definition">事業設計・一文定義 →</a>
+      <a href="business-design.html#brand-credo">ブランド・クレド →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. 作る文化 -->
+<section class="white" id="culture">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">02 · Culture</span>
+      <h2>作る文化（最終像）</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="card-muted reveal" style="margin-bottom:32px;">
+      <span class="tag">Vision</span>
+      <p class="quote" style="margin:16px 0 0;">Career Reflectionが、健康診断のように当たり前になる社会。</p>
+    </div>
+
+    <div class="ladder reveal">
+      <div class="ladder-item now">
+        <div class="ladder-stage">個人 × AI</div>
+        <div class="ladder-copy">一人で、続けて振り返れる<br><strong>AIで振り返る</strong></div>
+      </div>
+      <div class="ladder-item now">
+        <div class="ladder-stage">個人 × 人</div>
+        <div class="ladder-copy">対話で深められる<br><strong>人と深める</strong>（キャリフレセッション）</div>
+      </div>
+      <div class="ladder-item">
+        <div class="ladder-stage">習慣・定例</div>
+        <div class="ladder-copy">「振り返る」が生活のリズムになる<br>続けられる仕組み</div>
+      </div>
+      <div class="ladder-item">
+        <div class="ladder-stage">コミュニティ</div>
+        <div class="ladder-copy">人と一緒に振り返るのが当たり前<br>Reflection Club 等</div>
+      </div>
+      <div class="ladder-item">
+        <div class="ladder-stage">組織</div>
+        <div class="ladder-copy">離職・1on1・育成の根っこに Reflection<br>企業版</div>
+      </div>
+      <div class="ladder-item">
+        <div class="ladder-stage">プラットフォーム</div>
+        <div class="ladder-copy">AI・人・企業・コミュニティがつながる<br>Career Reflection Platform</div>
+      </div>
+    </div>
+
+    <div class="highlight-box reveal" style="margin-top:36px; text-align:center; padding:32px;">
+      <h3 style="font-size:clamp(1rem,2.2vw,1.3rem); line-height:1.8;">
+        AIで振り返る。人と深める。必要なら一緒に歩く。
+      </h3>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 毎年一つ -->
+<section class="muted" id="one-per-year">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">03 · One Per Year</span>
+      <h2>毎年増やすものは「一つだけ」</h2>
+      <div class="divider"></div>
+      <p>ブランドは「何を増やさないか」で立つ。年次のフォーカスを一つに絞る。</p>
+    </div>
+
+    <div class="year-focus reveal">
+      <div class="yh">年</div>
+      <div class="yh">増やすもの（一つ）</div>
+      <div class="yh">増やさないもの（例）</div>
+
+      <div class="yc year">2025</div>
+      <div class="yc"><strong>AIで振り返る</strong>を完成させる</div>
+      <div class="yc skip">コミュニティ・企業・大規模コンテンツ拡張</div>
+
+      <div class="yc year">2026</div>
+      <div class="yc"><strong>人と振り返る</strong>を完成させる</div>
+      <div class="yc skip">まだ「組織で振り返る」、未成熟な拡散施策</div>
+
+      <div class="yc year">2027</div>
+      <div class="yc"><strong>続けられる仕組み</strong>（定例・コミュニティ）</div>
+      <div class="yc skip">企業向けの本格展開</div>
+
+      <div class="yc year">2028</div>
+      <div class="yc"><strong>組織で振り返る</strong></div>
+      <div class="yc skip">Platform化の先走り</div>
+
+      <div class="yc year">2029</div>
+      <div class="yc"><strong>Career Reflection Platform</strong></div>
+      <div class="yc skip">—</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. フェーズ -->
+<section class="white" id="phases">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">04 · Phases</span>
+      <h2>フェーズ設計</h2>
+      <div class="divider"></div>
+      <p>事業設計の3年P&amp;Lとは別レイヤ。こちらは「文化として何を証明するか」の順番。</p>
+    </div>
+
+    <div class="card reveal" style="margin-bottom:24px;">
+      <span class="tag">Phase 1｜今〜1年</span>
+      <h3 style="margin:14px 0 8px;">Career Reflectionとは何かを証明する</h3>
+      <p class="quote" style="margin:12px 0 20px;">人は振り返りを続けると変わる。</p>
+      <ul style="margin:0; padding-left:1.2em; font-size:14px; color:var(--muted-fg);">
+        <li style="margin-bottom:6px;">キャリフレAIを磨く（日記の一言、内省チャット、問い、レポート）</li>
+        <li style="margin-bottom:6px;">キャリフレセッションを磨く（答えを出す場ではなく、働く軸を対話で深める伴走）</li>
+        <li style="margin-bottom:6px;">50〜100人に伴走する</li>
+        <li>成功事例を作る（「迷ったときに立ち返れ、納得して選べた」ストーリー）</li>
+      </ul>
+      <p style="margin-top:20px; font-size:14px; color:var(--fg); font-weight:700;">
+        KPI＝ Reflection継続率<span style="font-weight:500; color:var(--muted-fg);">（登録者数ではない）</span>
+      </p>
+    </div>
+
+    <div class="reveal" style="overflow-x:auto; border-radius:var(--radius); border:1px solid var(--secondary); background:var(--white); margin-bottom:28px;">
+      <table>
+        <thead>
+          <tr><th>指標例</th><th>意味</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:var(--fg);">3ヶ月継続率</td><td style="color:var(--muted-fg); font-size:13px;">振り返りの母艦として残り続けるか</td></tr>
+          <tr><td style="color:var(--fg);">日記継続率</td><td style="color:var(--muted-fg); font-size:13px;">日々の小さな振り返りが続いているか</td></tr>
+          <tr><td style="color:var(--fg);">働く軸レポート作成率</td><td style="color:var(--muted-fg); font-size:13px;">「モノサシ」が言葉になっているか</td></tr>
+          <tr><td style="color:var(--fg);">セッション継続率</td><td style="color:var(--muted-fg); font-size:13px;">人と深める伴走が続いているか</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note-text reveal" style="margin-bottom:36px;">
+      この期の勝ちは売上ではない。蓄積装置としての価値を、少数の深い体験で実証する。
+    </p>
+
+    <div class="grid-2 reveal" style="margin-bottom:20px;">
+      <div class="card">
+        <span class="tag">Phase 2｜1〜2年</span>
+        <h3 style="margin:14px 0 10px;">「習慣」にする</h3>
+        <p style="font-size:14px;">「キャリフレを使う」→ <strong style="color:var(--fg);">「振り返る」を当たり前にする</strong></p>
+        <p style="font-size:13px; margin-top:12px;">例：毎週日曜 Reflection Day / Podcast / ニュースレター / 振り返りライブ</p>
+      </div>
+      <div class="card">
+        <span class="tag">Phase 3｜2〜3年</span>
+        <h3 style="margin:14px 0 10px;">コミュニティ化</h3>
+        <p style="font-size:14px;">例：Reflection Club（振り返り会・読書会・人生史を書く会・価値観ワーク）</p>
+        <p style="font-size:13px; margin-top:12px;">ここで初めて、<strong style="color:var(--fg);">人と一緒に振り返る文化</strong>になる。</p>
+      </div>
+    </div>
+
+    <div class="grid-2 reveal">
+      <div class="card">
+        <span class="tag">Phase 4｜企業</span>
+        <h3 style="margin:14px 0 10px;">いきなり行かない</h3>
+        <p style="font-size:14px;">離職防止・1on1・育成の根っこは Reflection不足。個人で証明したあと、<strong style="color:var(--fg);">キャリフレ企業版</strong>へ。</p>
+      </div>
+      <div class="card">
+        <span class="tag">Phase 5｜Platform</span>
+        <h3 style="margin:14px 0 10px;">Career Reflection Platform</h3>
+        <p style="font-size:14px;">AI・人・企業・コミュニティがつながる到達点。層を積んだ結果としての Platform。</p>
+      </div>
+    </div>
+
+    <div class="related reveal">
+      <a href="business-design.html#business-plan">事業設計・3年事業計画（P&amp;L）→</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. カレンダー -->
+<section class="muted" id="calendar">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">05 · Calendar</span>
+      <h2>カレンダー型ロードマップ</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="reveal" style="overflow-x:auto; border-radius:var(--radius); border:1px solid var(--secondary); background:var(--white);">
+      <table>
+        <thead>
+          <tr><th>年</th><th>フォーカス</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:var(--primary); font-weight:800;">2025</td><td>AI完成・セッション完成</td></tr>
+          <tr><td style="color:var(--primary); font-weight:800;">2026</td><td>100人伴走・事例・ブランド確立</td></tr>
+          <tr><td style="color:var(--primary); font-weight:800;">2027</td><td>定例伴走・コミュニティ開始</td></tr>
+          <tr><td style="color:var(--primary); font-weight:800;">2028</td><td>企業版開始</td></tr>
+          <tr><td style="color:var(--primary); font-weight:800;">2029</td><td>Career Reflection Platform</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 今集中 -->
+<section class="white" id="focus-now">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">06 · Focus Now</span>
+      <h2>今、集中すべきこと</h2>
+      <div class="divider"></div>
+    </div>
+
+    <p class="reveal" style="font-size:15px; color:var(--fg); font-weight:600; margin-bottom:20px;">
+      新しい機能を増やすことではない。
+    </p>
+
+    <div class="card reveal" style="margin-bottom:28px;">
+      <p class="quote" style="margin:0;">
+        一人の人が振り返りを続け、自分らしい選択ができるようになる体験を、徹底的に磨く。
+      </p>
+    </div>
+
+    <div class="closing reveal" style="text-align:center; padding:40px 28px; background:linear-gradient(135deg, var(--primary-dark) 0%, #0d3d48 100%); border-radius:var(--radius); color:#fff;">
+      <p style="color:rgba(255,255,255,0.85); font-size:15px; line-height:2;">
+        私たちは、答えを提供するブランドではありません。<br>
+        <strong style="color:#fff; font-size:clamp(1.05rem,2.2vw,1.25rem);">振り返ることを続けられる人を増やすブランド</strong>です。
+      </p>
+    </div>
+
+    <div class="related reveal" style="justify-content:center; margin-top:28px;">
+      <a href="business-design.html#brand-credo">ブランド・クレド（同趣旨の締め）→</a>
+      <a href="index.html">ホームへ戻る →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>キャリフレ　文化戦略・北極星　2026</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
