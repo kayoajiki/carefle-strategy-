@@ -872,7 +872,7 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
 }
 .prio-item {
   display: grid;
-  grid-template-columns: 48px 1fr auto;
+  grid-template-columns: 48px 1fr;
   gap: 12px;
   align-items: center;
   padding: 14px 18px;
@@ -880,8 +880,6 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
   border-bottom: 1px solid var(--secondary);
 }
 .prio-item:last-child { border-bottom: none; }
-.prio-item.focus { background: linear-gradient(135deg, rgba(42,155,176,0.1) 0%, rgba(200,232,240,0.3) 100%); }
-.prio-item.light { opacity: 0.72; }
 .prio-item .pi-n {
   font-size: 18px;
   font-weight: 800;
@@ -889,19 +887,6 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
 }
 .prio-item .pi-name { font-size: 14px; font-weight: 700; color: var(--fg); }
 .prio-item .pi-why { font-size: 12px; color: var(--muted-fg); }
-.prio-item .pi-tag {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 100px;
-  background: var(--primary);
-  color: #fff;
-  white-space: nowrap;
-}
-.prio-item.light .pi-tag {
-  background: var(--muted);
-  color: var(--muted-fg);
-}
 
 .ch-detail {
   margin-top: 16px;
@@ -2090,35 +2075,33 @@ section[id], .section-header[id] { scroll-margin-top: 72px; }
       <p>XやIGは「知る」場所。Career Reflection は一度見ただけでは身につかない。<strong>蓄積型</strong>を中心に据える。</p>
     </div>
     <div class="prio-list reveal">
-      <div class="prio-item focus">
+      <div class="prio-item">
         <div class="pi-n">1</div>
         <div><div class="pi-name">ニュースレター</div><div class="pi-why">問い・考え方・事例を毎週積み上げる。LTVの源泉。</div></div>
-        <span class="pi-tag">最重要</span>
       </div>
-      <div class="prio-item focus">
+      <div class="prio-item">
         <div class="pi-n">2</div>
         <div><div class="pi-name">Podcast</div><div class="pi-why">思想を深く伝えるファン化装置。週20〜30分。</div></div>
-        <span class="pi-tag">重点</span>
       </div>
-      <div class="prio-item focus">
+      <div class="prio-item">
         <div class="pi-n">3</div>
         <div><div class="pi-name">X</div><div class="pi-why">ブランドメディア。思想を毎日、短く広める。</div></div>
-        <span class="pi-tag">重点</span>
       </div>
-      <div class="prio-item focus">
+      <div class="prio-item">
         <div class="pi-n">4</div>
         <div><div class="pi-name">note</div><div class="pi-why">ブランドアーカイブ。検索に強い思想の蓄積。</div></div>
-        <span class="pi-tag">重点</span>
       </div>
-      <div class="prio-item light">
+      <div class="prio-item">
         <div class="pi-n">5</div>
         <div><div class="pi-name">Instagram</div><div class="pi-why">教育・保存。初期は再編集運用で十分。</div></div>
-        <span class="pi-tag">軽量</span>
       </div>
-      <div class="prio-item light">
+      <div class="prio-item">
         <div class="pi-n">6</div>
+        <div><div class="pi-name">Facebook</div><div class="pi-why">既存ネットワークへの直接発信。note更新時などに連動。</div></div>
+      </div>
+      <div class="prio-item">
+        <div class="pi-n">7</div>
         <div><div class="pi-name">LinkedIn</div><div class="pi-why">将来の企業向け。初期は再編集程度。</div></div>
-        <span class="pi-tag">軽量</span>
       </div>
     </div>
 
