@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キャリフレ｜顧客セグメントとペルソナ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F0F8FA;
+  --fg: #071C22;
+  --primary: #2A9BB0;
+  --primary-dark: #1A6070;
+  --secondary: #C8E8F0;
+  --muted: #E4F2F6;
+  --muted-fg: #3A6878;
+  --white: #ffffff;
+  --radius: 0.75rem;
+  --amber: #b8752a;
+  --amber-bg: #fdf6ea;
+  --amber-line: #e6c88a;
+  --ink-soft: #245864;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Manrope', 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.75;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.35rem, 3vw, 1.85rem); font-weight: 700; line-height: 1.35; }
+h3 { font-size: 1.05rem; font-weight: 700; line-height: 1.45; }
+p { color: var(--muted-fg); }
+
+a { color: var(--primary-dark); }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+.container-s { max-width: 760px; }
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.divider { width: 36px; height: 2px; background: var(--primary); margin: 18px 0 24px; }
+
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--secondary);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-back {
+  font-size: 12px;
+  color: var(--muted-fg);
+  text-decoration: none;
+  font-weight: 600;
+}
+.nav-back:hover { color: var(--primary); }
+.nav-brand {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.nav-tag {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted-fg);
+  background: var(--muted);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.hero {
+  padding: 64px 0 36px;
+  background: linear-gradient(165deg, #071C22 0%, #1A6070 55%, #2A9BB0 100%);
+}
+.hero h1 { color: white; }
+.hero .lead {
+  color: rgba(255,255,255,0.78);
+  font-size: 1.02rem;
+  max-width: 640px;
+  margin-top: 18px;
+  line-height: 1.9;
+}
+.hero .meta {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pill {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.88);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.jumpbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--secondary);
+  position: sticky;
+  top: 49px;
+  z-index: 90;
+}
+.jumpbar .container {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.jumpbar a {
+  flex: 0 0 auto;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  background: var(--muted);
+  border-radius: 100px;
+  padding: 6px 12px;
+}
+.jumpbar a:hover { background: var(--secondary); }
+
+section { padding: 72px 0; }
+section.white { background: var(--white); }
+section.muted { background: var(--muted); }
+section[id] { scroll-margin-top: 108px; }
+
+.section-header { margin-bottom: 36px; }
+.section-header p { margin-top: 8px; max-width: 640px; font-size: 1rem; }
+
+.prose {
+  font-size: 15px;
+  color: var(--ink-soft);
+  max-width: 720px;
+}
+.prose + .prose { margin-top: 12px; }
+
+/* ===== 一枚絵 ===== */
+.map-layout {
+  display: grid;
+  grid-template-columns: 168px 1fr 168px;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.rail {
+  border-radius: var(--radius);
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.rail-what {
+  background: var(--primary-dark);
+  color: white;
+}
+.rail-why {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-line);
+}
+.rail .kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.rail-what .kicker { color: rgba(255,255,255,0.65); }
+.rail-why .kicker { color: var(--amber); }
+.rail strong {
+  font-size: 1.15rem;
+  line-height: 1.4;
+  font-weight: 800;
+}
+.rail-why strong { color: #7c4f1a; }
+.rail p { font-size: 13px; line-height: 1.7; }
+.rail-what p { color: rgba(255,255,255,0.82); }
+.rail-why p { color: #7c4f1a; }
+
+.board {
+  background: white;
+  border: 1px solid var(--secondary);
+  border-radius: 1rem;
+  padding: 22px 22px 18px;
+}
+
+.board-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 14px;
+}
+.board-caption span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+.board-caption em {
+  font-style: normal;
+  font-size: 12px;
+  color: var(--muted-fg);
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: 104px 1fr 1fr;
+  grid-template-areas:
+    ". h1 h2"
+    "y1 c1 c2"
+    "y2 c3 c4";
+  gap: 8px;
+}
+.mh1 { grid-area: h1; }
+.mh2 { grid-area: h2; }
+.my1 { grid-area: y1; }
+.my2 { grid-area: y2; }
+.c1 { grid-area: c1; }
+.c2 { grid-area: c2; }
+.c3 { grid-area: c3; }
+.c4 { grid-area: c4; }
+.mob-axis { display: none; }
+
+.col-head, .row-foot {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted-fg);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+.col-head.right, .row-foot.right { color: var(--primary-dark); }
+
+.y-tick {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  color: var(--muted-fg);
+  padding-right: 4px;
+}
+.y-tick strong {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.cell {
+  border-radius: 12px;
+  padding: 16px 16px 14px;
+  min-height: 168px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cell .mark {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+.cell .who {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+.cell .desc {
+  font-size: 12px;
+  line-height: 1.65;
+  margin-top: auto;
+}
+.cell-x {
+  background: repeating-linear-gradient(-45deg, #f4f7f8, #f4f7f8 8px, #eef2f3 8px, #eef2f3 16px);
+  border: 1px dashed #c5d0d4;
+  color: #6d7c82;
+}
+.cell-x .desc { color: #6d7c82; }
+.cell-change {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-line);
+  color: #7c4f1a;
+}
+.cell-change .desc { color: #7c4f1a; }
+.cell-intro {
+  background: var(--muted);
+  border: 1px solid var(--secondary);
+  color: var(--primary-dark);
+}
+.cell-intro .desc { color: var(--ink-soft); }
+.cell-bull {
+  background: var(--primary-dark);
+  color: white;
+  box-shadow: 0 10px 28px rgba(26, 96, 112, 0.22);
+}
+.cell-bull .desc { color: rgba(255,255,255,0.84); }
+.cell a.cell-link {
+  color: inherit;
+  text-decoration: none;
+}
+.cell a.cell-link:hover .who { text-decoration: underline; }
+
+.key-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--secondary);
+}
+.key-row span {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.4;
+}
+.key-row b {
+  color: var(--primary-dark);
+  margin-right: 4px;
+}
+
+.pond-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.pond-chip {
+  background: var(--bg);
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.formula {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1.15fr;
+  gap: 8px;
+  align-items: stretch;
+  margin-top: 28px;
+}
+.f-item, .f-op, .f-result {
+  border-radius: 12px;
+  padding: 14px 14px;
+}
+.f-item {
+  background: white;
+  border: 1px solid var(--secondary);
+}
+.f-item small, .f-result small {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.f-item strong, .f-result strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.f-item span, .f-result span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted-fg);
+  margin-top: 4px;
+  line-height: 1.55;
+}
+.f-op {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 18px;
+  padding: 0 2px;
+}
+.f-result {
+  background: var(--primary-dark);
+  color: white;
+}
+.f-result small { color: rgba(255,255,255,0.65); }
+.f-result span { color: rgba(255,255,255,0.8); }
+
+.note {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--muted-fg);
+  border-left: 2px solid var(--secondary);
+  padding-left: 12px;
+  line-height: 1.8;
+}
+
+.split-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.split-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+.card {
+  background: white;
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 22px 22px 20px;
+}
+.card h3 { margin-bottom: 8px; }
+.card ul, .stack-list { list-style: none; }
+.card li, .stack-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  margin-top: 8px;
+}
+.card li::before, .stack-list li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+}
+
+.outside {
+  background: white;
+  border-radius: var(--radius);
+  border: 1px dashed #b7c9cf;
+  padding: 22px;
+}
+.outside h3 { margin-bottom: 8px; color: #4d646c; }
+.outside p { font-size: 13.5px; }
+
+/* ===== ペルソナ概観 ===== */
+.persona-nav {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr;
+  gap: 14px;
+}
+.pnav {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 14px;
+  padding: 22px 20px 18px;
+  min-height: 220px;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease;
+}
+.pnav:hover { transform: translateY(-2px); }
+.pnav .mark { font-size: 20px; font-weight: 800; }
+.pnav h3 { font-size: 1.2rem; margin: 8px 0 4px; }
+.pnav .role { font-size: 12px; font-weight: 600; opacity: 0.8; }
+.pnav .one { font-size: 14px; margin-top: 12px; line-height: 1.7; font-weight: 600; }
+.pnav-bull { background: var(--primary-dark); color: white; }
+.pnav-bull .one { color: rgba(255,255,255,0.88); font-weight: 500; }
+.pnav-intro { background: white; border-color: var(--secondary); color: var(--fg); }
+.pnav-intro .mark, .pnav-intro h3 { color: var(--primary-dark); }
+.pnav-intro .one { color: var(--ink-soft); font-weight: 500; }
+.pnav-change { background: var(--amber-bg); border-color: var(--amber-line); }
+.pnav-change .mark, .pnav-change h3 { color: #7c4f1a; }
+.pnav-change .one { color: #7c4f1a; font-weight: 500; }
+
+/* ===== VPC ===== */
+.persona-block { margin-bottom: 28px; }
+.persona-block:last-child { margin-bottom: 0; }
+
+.persona-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 18px;
+}
+.who-line {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.badge {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.badge-bull { background: var(--primary-dark); color: white; }
+.badge-intro { background: var(--secondary); color: var(--primary-dark); }
+.badge-change { background: #f3ddb8; color: #7c4f1a; }
+.who-line h3 { font-size: 1.45rem; }
+.who-line .sub { font-size: 13px; color: var(--muted-fg); margin-top: 2px; }
+
+.spec {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 4px 0 14px;
+}
+.spec div {
+  background: white;
+  border: 1px solid var(--secondary);
+  border-radius: 10px;
+  padding: 12px 14px 11px;
+}
+.spec span {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.spec p {
+  font-size: 13px;
+  color: var(--fg);
+  line-height: 1.65;
+}
+.spec-note {
+  font-size: 12px;
+  color: var(--muted-fg);
+  margin: -4px 0 14px;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+.fact {
+  background: var(--muted);
+  color: var(--primary-dark);
+  border-radius: 100px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.value-banner {
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 14px;
+}
+.value-banner small {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-bottom: 6px;
+}
+.value-banner strong {
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  line-height: 1.55;
+  font-weight: 800;
+}
+.vb-bull { background: var(--primary-dark); color: white; }
+.vb-bull small { color: rgba(255,255,255,0.65); }
+.vb-intro { background: var(--muted); color: var(--primary-dark); border: 1px solid var(--secondary); }
+.vb-intro small { color: var(--primary); }
+.vb-change { background: var(--amber-bg); color: #7c4f1a; border: 1px solid var(--amber-line); }
+.vb-change small { color: var(--amber); }
+
+.vpc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.vpc-col {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--secondary);
+  background: white;
+}
+.vpc-h {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+.vpc-h.cust { background: #071C22; color: white; }
+.vpc-h.offer { background: var(--primary); color: white; }
+.vpc-body { padding: 6px 8px 12px; }
+.vpc-block { padding: 12px 12px 4px; }
+.vpc-block + .vpc-block { border-top: 1px solid var(--secondary); }
+.vpc-block .bh {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.vpc-block.offer-tone .bh { color: var(--amber); }
+.pair {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 8px;
+  align-items: start;
+  margin-top: 8px;
+}
+.pair i {
+  font-style: normal;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--muted);
+  color: var(--primary-dark);
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.pair p {
+  font-size: 13.5px;
+  color: var(--fg);
+  line-height: 1.65;
+}
+
+.story {
+  margin-top: 12px;
+  background: white;
+  border: 1px solid var(--secondary);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+.story p { font-size: 14px; color: var(--ink-soft); }
+.evidence {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted-fg);
+  line-height: 1.7;
+}
+
+.service-map {
+  display: grid;
+  grid-template-columns: 1fr 28px 1fr 28px 1fr;
+  gap: 8px;
+  align-items: stretch;
+  margin-top: 8px;
+}
+.s-col {
+  background: white;
+  border: 1px solid var(--secondary);
+  border-radius: 12px;
+  padding: 14px 14px 12px;
+}
+.s-col h4 {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.s-col li {
+  list-style: none;
+  font-size: 13px;
+  color: var(--fg);
+  line-height: 1.6;
+  padding: 7px 0;
+  border-top: 1px solid var(--muted);
+}
+.arrow-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.offer-table { width: 100%; border-collapse: collapse; font-size: 14px; background: white; border-radius: 12px; overflow: hidden; }
+.offer-table th {
+  background: var(--muted);
+  color: var(--primary-dark);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-align: left;
+  padding: 12px 14px;
+}
+.offer-table td {
+  padding: 14px;
+  border-top: 1px solid var(--secondary);
+  vertical-align: top;
+  line-height: 1.65;
+  color: var(--fg);
+}
+.offer-table td:first-child {
+  font-weight: 700;
+  color: var(--primary-dark);
+  white-space: nowrap;
+}
+
+.master {
+  background: var(--primary-dark);
+  color: white;
+  border-radius: 16px;
+  padding: 28px 28px 24px;
+}
+.master small {
+  display: block;
+  letter-spacing: 0.16em;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 8px;
+}
+.master h2 { color: white; font-size: clamp(1.25rem, 2.4vw, 1.7rem); line-height: 1.5; }
+.master .sublines {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+.master .sublines div {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 12px 12px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.9);
+}
+.master .sublines b { display: block; font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+
+footer {
+  background: var(--primary-dark);
+  padding: 28px 0;
+}
+footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
+
+@media (max-width: 900px) {
+  .map-layout { grid-template-columns: 1fr; }
+  .rail { min-height: 0; }
+  .formula { grid-template-columns: 1fr; }
+  .f-op { padding: 0; min-height: 18px; }
+  .persona-nav, .split-2, .split-3, .vpc, .master .sublines { grid-template-columns: 1fr; }
+  .service-map { grid-template-columns: 1fr; }
+  .arrow-col { transform: rotate(90deg); min-height: 24px; }
+  .facts { justify-content: flex-start; }
+  .spec { grid-template-columns: 1fr; }
+  .matrix-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "h1 h2"
+      "c1 c2"
+      "c3 c4";
+  }
+  .y-tick { display: none; }
+  .mob-axis {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    opacity: 0.75;
+    margin-bottom: 4px;
+  }
+  .cell { min-height: 0; padding: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-back" href="index.html">← ホーム</a>
+    <a class="nav-brand" href="market-strategy.html">Carefle</a>
+    <span class="nav-tag">顧客セグメント</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <span class="label" style="color:rgba(255,255,255,0.62);">Segment · Persona · Value</span>
+    <h1>変化と内省で切る、<br>顧客の地図</h1>
+    <p class="lead">
+      2026年9月の議論を一枚に戻したもの。年齢や年収は池の枠で、買う理由は「自分ごとの変化」と「内省への興味」の掛け合わせにある。◎と二つの○に、それぞれの嬉しいこと・嫌なこと・引き受ける仕事を置いた。
+    </p>
+    <div class="meta">
+      <span class="pill">手書きの2×2を清書</span>
+      <span class="pill">ペルソナ 3人</span>
+      <span class="pill">提供価値まで接続</span>
+    </div>
+  </div>
+</header>
+
+<div class="jumpbar">
+  <div class="container">
+    <a href="#map">地図</a>
+    <a href="#logic">買う条件</a>
+    <a href="#pond">池の条件</a>
+    <a href="#three">3人</a>
+    <a href="#saori">A 高橋沙織</a>
+    <a href="#kei">B 中村圭</a>
+    <a href="#aoi">C 林葵</a>
+    <a href="#offer">商品と提供価値</a>
+  </div>
+</div>
+
+<!-- 地図 -->
+<section id="map" class="white">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">01 · The Map</span>
+      <h2>手書きメモの清書</h2>
+      <div class="divider"></div>
+      <p>左がプロセス（何をするか）、右がベネフィット（その先に何が残るか）。真ん中の四マスが、誰に出すかの地図。</p>
+    </div>
+
+    <div class="map-layout">
+      <aside class="rail rail-what">
+        <span class="kicker">How · What</span>
+        <strong>内省支援屋</strong>
+        <p>一人では来月にずれる「考え切る時間」を、お金と予約で引き受ける。ジムに置きっぱなしにするのではなく、トレーナーが横にいる。</p>
+      </aside>
+
+      <div class="board">
+        <div class="board-caption">
+          <span>Priority map</span>
+          <em>上ほど内省の言葉がまだない · 右ほど変化が自分ごと</em>
+        </div>
+
+        <div class="matrix-grid">
+          <div class="col-head mh1">変化はまだ薄い</div>
+          <div class="col-head mh2 right">自分ごとの変化がある</div>
+
+          <div class="y-tick my1">内省の言葉は<br>まだない</div>
+          <a class="cell cell-x cell-link c1" href="#outside">
+            <span class="mob-axis">内省の言葉はまだない</span>
+            <div class="mark">×</div>
+            <div class="who">D</div>
+            <p class="desc">悩みはあっても、動く出来事も、内省への興味もまだ薄い。今買う理由が弱い。</p>
+          </a>
+
+          <a class="cell cell-change cell-link c2" href="#aoi">
+            <span class="mob-axis">内省の言葉はまだない</span>
+            <div class="mark">○</div>
+            <div class="who">C</div>
+            <p class="desc">人の勧めのまま決めて、環境が合わなかった。次に動く前に、選ぶ軸が欲しい。</p>
+          </a>
+
+          <div class="y-tick my2"><strong>内省への<br>興味がある</strong></div>
+          <a class="cell cell-intro cell-link c3" href="#kei">
+            <span class="mob-axis">内省への興味がある</span>
+            <div class="mark">○</div>
+            <div class="who">B</div>
+            <p class="desc">強い不満はない。それでも、自分でなくてもいい仕事が続いている。将来を後回しにしている。</p>
+          </a>
+
+          <a class="cell cell-bull cell-link c4" href="#saori">
+            <span class="mob-axis">内省への興味がある</span>
+            <div class="mark">◎</div>
+            <div class="who">A</div>
+            <p class="desc">職場と家庭が同時に動いた。目指す方向と、今の仕事の意味を、自分の言葉にしたい。</p>
+          </a>
+        </div>
+
+        <div class="key-row">
+          <span><b>A</b> 高橋沙織</span>
+          <span><b>B</b> 中村圭</span>
+          <span><b>C</b> 林葵</span>
+          <span><b>D</b> 今の優先の外</span>
+        </div>
+
+        <div class="pond-row">
+          <span class="pond-chip">池 · 20代半ば〜40代中心</span>
+          <span class="pond-chip">年収 600〜1,500万</span>
+          <span class="pond-chip">会社員・経営者</span>
+          <span class="pond-chip">エリアは限定しない</span>
+        </div>
+      </div>
+
+      <aside class="rail rail-why">
+        <span class="kicker">Why · Insight</span>
+        <strong>働く軸</strong>
+        <p>内省の先に残るもの。モヤモヤの出口であり、異動も転職も同じ基準で見るための判断軸。</p>
+      </aside>
+    </div>
+
+    <p class="note">
+      議論の着地は、プロセスとしての内省と、出口としての働く軸を両方出すこと。興味がある人には内省から入り、変化で揺れている人には働く軸から入る。看板をどちらか一方には寄せない。
+    </p>
+  </div>
+</section>
+
+<!-- 買う条件 -->
+<section id="logic">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">02 · Why They Buy</span>
+      <h2>買う理由は、掛け算になる</h2>
+      <div class="divider"></div>
+      <p>悩みがあることは、この池では前提。悩みだけでは15万円は動かない。</p>
+    </div>
+
+    <div class="formula">
+      <div class="f-item">
+        <small>前提</small>
+        <strong>悩みがある</strong>
+        <span>このままでいいのか、が胸のどこかにある。</span>
+      </div>
+      <div class="f-op">×</div>
+      <div class="f-item">
+        <small>縦軸</small>
+        <strong>内省への興味</strong>
+        <span>考えたい。一人ではやらない。言葉を知らなくても、欲しい状態はある。</span>
+      </div>
+      <div class="f-op">×</div>
+      <div class="f-item">
+        <small>横軸</small>
+        <strong>自分ごとの変化</strong>
+        <span>出来事そのものか、世の中の変化が自分のキャリアに落ちた危機感。</span>
+      </div>
+      <div class="f-op">=</div>
+      <div class="f-result">
+        <small>今、買う</small>
+        <strong>◎ が最大</strong>
+        <span>片方だけでも買う人はいる。両方揃うと、先延ばしが止まる。</span>
+      </div>
+    </div>
+
+    <div class="split-2" style="margin-top:22px;">
+      <div class="card">
+        <h3>変化の中身は、二つ</h3>
+        <ul>
+          <li>働く変化。昇進、転職、異動、休職、ジョブ型、管理職になる／なれない。</li>
+          <li>家庭の変化。結婚、出産、介護。働く変化と重なると緊急度が上がる。</li>
+          <li>世の中の変化（AI、評価制度、周囲の転職）が、自分の市場価値への問いまで落ちたときも、右列に入る。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>新規が買った理由を見る</h3>
+        <ul>
+          <li>信頼の残高がある紹介だけを見ると、動機がぼやける。</li>
+          <li>初めましてで買った人は、残るカルテ、考え切る時間、軸の言語化に反応している。</li>
+          <li>実名の投稿を見た近接領域（同じ職種・近い年齢）が、次の新規になる。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 池 -->
+<section id="pond" class="white">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">03 · The Pond</span>
+      <h2>デモグラフィは枠、中身は状態</h2>
+      <div class="divider"></div>
+      <p>年齢と年収でマスは切れない。切れるのは、今どの変化の中にいて、内省を自分の課題だと思っているか。</p>
+    </div>
+
+    <div class="split-3">
+      <div class="card">
+        <h3>年齢</h3>
+        <ul>
+          <li>図の書き込みは、20代半ば〜40代中心。</li>
+          <li>議論では20代後半からが濃く、50代にも売れる手応えがある。</li>
+          <li>最初の壁、ライフイベント、管理職や役割の問い。訪れる年齢は人による。LTVのために幅を持つ。</li>
+          <li>カウンセラーは、顧客より3〜5歳上が解像度が高い。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>年収と仕事</h3>
+        <ul>
+          <li>図の書き込みは、年収600〜1,500万。</li>
+          <li>600万を下回ると、15万円の決断は重くなる。将来、口コミで広がれば帯は下がる。</li>
+          <li>会社員が中心。経営者にも売れるイメージはある。</li>
+          <li>自分で仮説を持ち、機会を作れる層（会議では社会の0.1%）は、この池の外。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>場所と相談相手</h3>
+        <ul>
+          <li>リモートが前提なので、居住地では絞らない。</li>
+          <li>高年収だけを見ると大都市圏に偏る。マーケの対象地域にはしない。</li>
+          <li>相談相手がいる人は、まずその人に話す。それでもプロの整理が欲しい人が来る。</li>
+          <li>相談相手がいない人は、なおさらこの枠に入りやすい。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="outside" id="outside" style="margin-top:16px;">
+      <h3>× と、池のさらに外側</h3>
+      <p>
+        左上は、悩みがあっても今買う理由が弱い人。潜在的なテーマはあっても、変化も内省への興味もまだ自分の言葉になっていない。優先して取りに行かない。
+        池の外には、情報感度が極めて高く、サービスの評判や自分のブランディングまで見て、自分で検証して動ける層がいる。伴走を必要としないので、ターゲットにしない。狙うのはその手前。変数が増えて、一人では整理しきれなくなった人。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 3人 -->
+<section id="three" class="muted">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">04 · Three Personas</span>
+      <h2>◎と、二つの○</h2>
+      <div class="divider"></div>
+      <p>名前は仮。したいこと・嫌なこと・嬉しいことは、顧客インサイト分析の本人発言と、提供後に実際返った価値から書き直している。</p>
+    </div>
+
+    <div class="persona-nav">
+      <a class="pnav pnav-bull" href="#saori">
+        <div class="mark">◎</div>
+        <h3>A 高橋沙織</h3>
+        <div class="role">32歳 · 通信・ITのインフラエンジニア · 年収850万 · 東京・子2人</div>
+        <p class="one">職場が変わり、家庭も動いた。目指したい方向を、今の条件込みで明確にしたい。</p>
+      </a>
+      <a class="pnav pnav-intro" href="#kei">
+        <div class="mark">○</div>
+        <h3>B 中村圭</h3>
+        <div class="role">35歳 · IT・人材の法人営業 · 年収900万 · 東京・二人暮らし</div>
+        <p class="one">命を燃やせていない。本は読む。考えたい将来が、仕事の予定に負けて残っている。</p>
+      </a>
+      <a class="pnav pnav-change" href="#aoi">
+        <div class="mark">○</div>
+        <h3>C 林葵</h3>
+        <div class="role">28歳 · 人材マッチングの営業 · 年収650万 · 都内一人暮らし</div>
+        <p class="one">人の言葉で転職して、環境が合わなかった。次は先に、選ぶ軸を持ちたい。</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 沙織 -->
+<section id="saori" class="white">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">05 · Persona ◎</span>
+      <h2>目指す方向を、今の条件込みで言葉にしたい人</h2>
+      <div class="divider"></div>
+    </div>
+
+    <article class="persona-block">
+      <div class="persona-head">
+        <div class="who-line">
+          <div class="badge badge-bull">◎</div>
+          <div>
+            <h3>A 高橋沙織（仮）</h3>
+            <p class="sub">内省への興味がある × 自分ごとの変化がある</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec">
+        <div><span>年齢</span><p>32歳</p></div>
+        <div><span>年収</span><p>850万円</p></div>
+        <div><span>住まい</span><p>東京都内の賃貸マンション。配偶者と、0歳と3歳の子ども</p></div>
+        <div><span>業界</span><p>通信・IT</p></div>
+        <div><span>職種</span><p>事業会社のインフラエンジニア。担当は広く、専門の核はまだない</p></div>
+        <div><span>SNS</span><p>InstagramとLINE。友人と子育ての近況を見る。Facebookは開かない。キャリアの話は、どこにも書かない</p></div>
+        <div><span>休日</span><p>子どもの世話と家事。自分の時間は、寝かしつけのあとだけ</p></div>
+        <div><span>サブスク</span><p>家族で見る動画。技術メディアの有料会員は入ったまま、読めていない</p></div>
+        <div><span>趣味</span><p>以前は技術のキャッチアップ。今はそれも止まっている</p></div>
+      </div>
+      <p class="spec-note">年齢・年収・業界・職種は、このマスの購入者の集中。暮らしとメディアは、第二子と働き方の崩れから置いた輪郭。</p>
+
+      <div class="value-banner vb-bull">
+        <small>提供価値</small>
+        <strong>重なった変化の中で、散らばった経験を拾い集め、目指す方向と今の仕事の意味を一つの軸にする。</strong>
+      </div>
+
+      <div class="vpc">
+        <div class="vpc-col">
+          <div class="vpc-h cust">顧客</div>
+          <div class="vpc-body">
+            <div class="vpc-block">
+              <div class="bh">したいこと</div>
+              <div class="pair"><i>1</i><p>職場の変化と、第二子で崩れた働き方を織り込んで、目指したい方向を明確にしたい。</p></div>
+              <div class="pair"><i>2</i><p>幅広く積んだ経験を、「自分は何屋か」が言える形にしたい。</p></div>
+              <div class="pair"><i>3</i><p>望まない異動や、今の役割に、自分なりの意味をつけたい。</p></div>
+            </div>
+            <div class="vpc-block">
+              <div class="bh">嫌なこと · Pain</div>
+              <div class="pair"><i>1</i><p>環境が変わり、家庭も動いた。働き方の帳尻が合わず、離れることまで視野に入っている。</p></div>
+              <div class="pair"><i>2</i><p>ジェネラリストのまま来て、技術や専門として名乗れる強みがない。このままではまずい。</p></div>
+              <div class="pair"><i>3</i><p>起きた変化を自分の中で咀嚼できず、目の前の仕事に意欲が湧かない。</p></div>
+              <div class="pair"><i>4</i><p>中長期を考えるのが苦手なまま、「やらねば」が何年も残っている。</p></div>
+            </div>
+            <div class="vpc-block">
+              <div class="bh">嬉しいこと · Gain</div>
+              <div class="pair"><i>1</i><p>自分がどこでどう決めてきたかが見え、これからの判断基準がわかった。</p></div>
+              <div class="pair"><i>2</i><p>振り返ると、これまでちゃんとやってきたとわかり、自信が戻った。</p></div>
+              <div class="pair"><i>3</i><p>当たり前だと思っていたことが、外から見ると強みだと気づいた。</p></div>
+              <div class="pair"><i>4</i><p>目の前の仕事と強みがつながり、エネルギーが戻った。半年で何をするかまで落ちた。</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="vpc-col">
+          <div class="vpc-h offer">提供</div>
+          <div class="vpc-body">
+            <div class="vpc-block offer-tone">
+              <div class="bh">商品・サービス</div>
+              <div class="pair"><i>1</i><p>初回で、職場の変化と家庭の変化を両方聞き、目指したい方向がまだ言葉になっていないことを確認する。</p></div>
+              <div class="pair"><i>2</i><p>全6回・15万円。内省で価値観と強みを掘り、経験の仕分けまで一気に通す。</p></div>
+              <div class="pair"><i>3</i><p>出口は、目指す方向、今の仕事との接続、半年の行動の三つ。</p></div>
+              <div class="pair"><i>4</i><p>申し込み直後に初回を固定する。この層は、忙しさで初回前に消える。</p></div>
+            </div>
+            <div class="vpc-block offer-tone">
+              <div class="bh">嫌なことを減らす要因</div>
+              <div class="pair"><i>1</i><p>働き方の制約と、離れるかどうかの迷いを、同じテーブルに載せる。</p></div>
+              <div class="pair"><i>2</i><p>ばらばらの経験を横断し、「何屋か」に名前を付ける。</p></div>
+              <div class="pair"><i>3</i><p>起きた異動や役割の変化を、本人の価値観で咀嚼し直す。</p></div>
+              <div class="pair"><i>4</i><p>中長期が苦手な人に、半年単位の問いと行動まで落とす。</p></div>
+            </div>
+            <div class="vpc-block offer-tone">
+              <div class="bh">嬉しいことを増やす要因</div>
+              <div class="pair"><i>1</i><p>過去の意思決定を辿り、判断基準を本人の言葉で返す。</p></div>
+              <div class="pair"><i>2</i><p>いいところを、具体的な場面まで掘って、自信の根拠にする。</p></div>
+              <div class="pair"><i>3</i><p>本人が当たり前と思っている事実を、外から見た強みとして言い直す。</p></div>
+              <div class="pair"><i>4</i><p>目の前の仕事と強みを接続し、エネルギーが戻る状態で終える。</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story">
+        <p>
+          A 高橋沙織の口癖は「目指したい方向を明確にしたい」だ。職場の前提が変わり、第二子で働き方の帳尻も合わない。離れることも視野にある。同時に、幅広くやってきた自分は何屋なのか、目の前の仕事に意味をつけられるのかがわからない。内省が、そのためのプロセスだと本人がわかっている。ここが◎。
+        </p>
+        <p class="evidence">
+          顧客インサイト分析での対応：職場環境の変化と第二子が重なり、方向の明確化を求めたインフラエンジニア。望まない異動のあと「自分軸」「自己肯定」「強みの自覚」を課題にし、終了後に判断基準と自信が戻った法人営業。ジョブ型のなかで「このままではまずい」「中長期を考えなくては」と伴走を求めたエンジニア。経験がばらばらで「何屋を目指すのか」とキャリアの見直し機会を求めた人。
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 圭 -->
+<section id="kei">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">06 · Persona ○</span>
+      <h2>芯がある気がするのに、後回しの人</h2>
+      <div class="divider"></div>
+    </div>
+
+    <article class="persona-block">
+      <div class="persona-head">
+        <div class="who-line">
+          <div class="badge badge-intro">○</div>
+          <div>
+            <h3>B 中村圭（仮）</h3>
+            <p class="sub">内省への興味がある × 直接の変化はまだ薄い</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec">
+        <div><span>年齢</span><p>35歳</p></div>
+        <div><span>年収</span><p>900万円</p></div>
+        <div><span>住まい</span><p>東京都内。パートナーと二人暮らし。子どもはいない</p></div>
+        <div><span>業界</span><p>IT・人材系の事業会社</p></div>
+        <div><span>職種</span><p>法人営業。マネージャー目前で、役職はまだない</p></div>
+        <div><span>SNS</span><p>Facebookを読み、たまにシェアする。発信の中心はそこ</p></div>
+        <div><span>休日</span><p>午前は寝ている。午後は本屋。夜になると、翌週の数字が戻ってくる</p></div>
+        <div><span>サブスク</span><p>電子書籍、ニュース、動画。形の残らないコーチングは、一度受けてやめた</p></div>
+        <div><span>趣味</span><p>自己理解の本を読むこと。問いを集めるのは好きで、自分のキャリアには使えていない</p></div>
+      </div>
+      <p class="spec-note">年齢・年収・業界・職種は、このマスの購入者の集中。暮らしとメディアは、強い不満がないまま将来を後回しにしている生活から置いた輪郭。</p>
+
+      <div class="value-banner vb-intro">
+        <small>提供価値</small>
+        <strong>後回しにしてきた将来を、否定されない時間で考え切り、通底する芯として残す。</strong>
+      </div>
+
+      <div class="vpc">
+        <div class="vpc-col">
+          <div class="vpc-h cust">顧客</div>
+          <div class="vpc-body">
+            <div class="vpc-block">
+              <div class="bh">したいこと</div>
+              <div class="pair"><i>1</i><p>後回しにしてきた「中長期でどうしたいか」を、今度こそ考え切りたい。</p></div>
+              <div class="pair"><i>2</i><p>人事か現場か、自分が長く関わりたい場所を自分で決めたい。</p></div>
+              <div class="pair"><i>3</i><p>考えたことを、会話が終わっても残る形にしたい。</p></div>
+            </div>
+            <div class="vpc-block">
+              <div class="bh">嫌なこと · Pain</div>
+              <div class="pair"><i>1</i><p>強い不満はない。それでも命を燃やせていない。自分でなくてもいい仕事をしている。</p></div>
+              <div class="pair"><i>2</i><p>本も読むし、ひとりでも内省している。自分の経歴の上では、芯まで落ちない。</p></div>
+              <div class="pair"><i>3</i><p>同じ仕事が続き、成長実感がない。考える時間は、仕事と家庭に飲まれる。</p></div>
+              <div class="pair"><i>4</i><p>「もっと力をつけなければ」という焦りが、漠然としたまま誰にも預けられない。</p></div>
+            </div>
+            <div class="vpc-block">
+              <div class="bh">嬉しいこと · Gain</div>
+              <div class="pair"><i>1</i><p>否定されず、何でも受け止めてもらえる時間がある。</p></div>
+              <div class="pair"><i>2</i><p>知っていた強みに、自分では出なかった発見が足される。</p></div>
+              <div class="pair"><i>3</i><p>これまでの決断を振り返ると、通底する芯が見える。点と点が、線になる。</p></div>
+              <div class="pair"><i>4</i><p>今年なににこだわるか、目の前のフォーカスが絞れる。</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="vpc-col">
+          <div class="vpc-h offer">提供</div>
+          <div class="vpc-body">
+            <div class="vpc-block offer-tone">
+              <div class="bh">商品・サービス</div>
+              <div class="pair"><i>1</i><p>入口は「内省の時間」と「考えたことが残る」の両方。この層は、残ることに反応して買う。</p></div>
+              <div class="pair"><i>2</i><p>同じ6回・15万円。ひとりの読書や、形が残らないコーチングの次に置く。</p></div>
+              <div class="pair"><i>3</i><p>購買の前に、後回しがほどけること、芯が見えること、今年のフォーカスが絞れることを伝える。</p></div>
+              <div class="pair"><i>4</i><p>終了時に、価値観と強み、今年こだわることを書き残す。</p></div>
+            </div>
+            <div class="vpc-block offer-tone">
+              <div class="bh">嫌なことを減らす要因</div>
+              <div class="pair"><i>1</i><p>「自分でなくてもいい仕事」を、次に燃やす場所の問いに変える。</p></div>
+              <div class="pair"><i>2</i><p>読んだ本の問いを、本人の決断の履歴の上に落とす。</p></div>
+              <div class="pair"><i>3</i><p>予約された時間で、仕事と家庭に飲まれる思考を一度止める。</p></div>
+              <div class="pair"><i>4</i><p>漠然とした焦りを、今年なににこだわるかまで絞る。</p></div>
+            </div>
+            <div class="vpc-block offer-tone">
+              <div class="bh">嬉しいことを増やす要因</div>
+              <div class="pair"><i>1</i><p>最初から否定しない。受け止めがあるから、この層は話し続ける。</p></div>
+              <div class="pair"><i>2</i><p>強みの再認識に、本人が気づいていなかった発見を一つ足す。</p></div>
+              <div class="pair"><i>3</i><p>節目の意思決定を辿り、通底する芯を本人の前に置く。</p></div>
+              <div class="pair"><i>4</i><p>中長期のありたい姿から、今年のフォーカスを一つに絞って終える。</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story">
+        <p>
+          B 中村圭の仕事は回っている。強い不満もない。それでも「命を燃やせていない」「自分でなくてもいい仕事だ」が抜けない。人事に振るか、現場を極めるかも決め切れていない。本は読み、ひとりでも内省している。自分の番になると、来期の数字と家庭の予定が勝つ。欲しいのは、考え切る時間と、終わったあとも残る芯だ。
+        </p>
+        <p class="evidence">
+          顧客インサイト分析での対応：人事か営業か迷い、「内省の時間をもっと設けたい」「形に残したい」と買ったセールスマネージャー。強い不満はないまま将来を後回しにし、終了後に「通底する芯」「点と点が線になった」と話した人。同じ仕事の成長実感のなさからWillの整理を求めた企画職。育児と仕事に埋もれ、自分の感情を忘れていた人。
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 葵 -->
+<section id="aoi" class="white">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">07 · Persona ○</span>
+      <h2>軸のない決断のあとで、次の基準が欲しい人</h2>
+      <div class="divider"></div>
+    </div>
+
+    <article class="persona-block">
+      <div class="persona-head">
+        <div class="who-line">
+          <div class="badge badge-change">○</div>
+          <div>
+            <h3>C 林葵（仮）</h3>
+            <p class="sub">内省はまだ看板にならない × 自分ごとの変化がある</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec">
+        <div><span>年齢</span><p>28歳</p></div>
+        <div><span>年収</span><p>650万円</p></div>
+        <div><span>住まい</span><p>都内の1K、一人暮らし。直近の転職を機に今の部屋へ移った</p></div>
+        <div><span>業界</span><p>人材・マッチング</p></div>
+        <div><span>職種</span><p>法人営業</p></div>
+        <div><span>SNS</span><p>InstagramとX。同世代の転職や働き方の投稿を見る。Facebookはほぼ開かない</p></div>
+        <div><span>休日</span><p>昼まで寝る。午後は求人を開いて、軸がなくて閉じる</p></div>
+        <div><span>サブスク</span><p>音楽と動画。転職サイトとエージェントには、登録したまま</p></div>
+        <div><span>趣味</span><p>熱中しているものがない。資格の勉強を始めかけて、続かない</p></div>
+      </div>
+      <p class="spec-note">年齢・年収・業界・職種は、軸なしで転職した購入者の集中。暮らしとメディアは、入社後に環境が合わず、次の軸を探している生活から置いた輪郭。</p>
+
+      <div class="value-banner vb-change">
+        <small>提供価値</small>
+        <strong>軸のない決断のあとで、次に選ぶ基準と、まだ閉じていない可能性を言葉にする。</strong>
+      </div>
+
+      <div class="vpc">
+        <div class="vpc-col">
+          <div class="vpc-h cust">顧客</div>
+          <div class="vpc-body">
+            <div class="vpc-block">
+              <div class="bh">したいこと</div>
+              <div class="pair"><i>1</i><p>直近の転職を反省し、軸を明確にしてから、次の活動をしたい。</p></div>
+              <div class="pair"><i>2</i><p>選ぶ基準が自分の言葉になるまで、求人の海に入りたくない。</p></div>
+              <div class="pair"><i>3</i><p>ばらばらな経験を、外に説明できるラベルにしたい。</p></div>
+            </div>
+            <div class="vpc-block">
+              <div class="bh">嫌なこと · Pain</div>
+              <div class="pair"><i>1</i><p>エージェントの言葉をそのまま受けて決めた。入ってみたら、環境が想像と違った。</p></div>
+              <div class="pair"><i>2</i><p>労働環境が悪く、長くいる絵が描けない。また軸がないまま動くのが怖い。</p></div>
+              <div class="pair"><i>3</i><p>一度の失敗が頭から離れず、次の挑戦を避けている。</p></div>
+              <div class="pair"><i>4</i><p>エージェントは求人を出す。どの会社を選ぶかの軸までは、一緒に作ってくれない。</p></div>
+            </div>
+            <div class="vpc-block">
+              <div class="bh">嬉しいこと · Gain</div>
+              <div class="pair"><i>1</i><p>次の求人を、自分の軸で受けられる。</p></div>
+              <div class="pair"><i>2</i><p>発揮してきた事実を辿ると、一度の失敗で閉じていた可能性が開く。</p></div>
+              <div class="pair"><i>3</i><p>まとまりのない言葉が、一つの軸と、職種のラベルになる。</p></div>
+              <div class="pair"><i>4</i><p>動くか残るかが、自分の基準で決まる。</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="vpc-col">
+          <div class="vpc-h offer">提供</div>
+          <div class="vpc-body">
+            <div class="vpc-block offer-tone">
+              <div class="bh">商品・サービス</div>
+              <div class="pair"><i>1</i><p>入口の言葉は「軸を明確にしてから、次の活動をする」。</p></div>
+              <div class="pair"><i>2</i><p>中身は、前回の決断の振り返り、強みの掘り起こし、選社軸の言語化。</p></div>
+              <div class="pair"><i>3</i><p>求人紹介の前に、どの会社を選ぶ基準を本人の言葉にする。</p></div>
+              <div class="pair"><i>4</i><p>終わったあとの実名投稿は本人の判断。近接領域への広告として、目安5万円を戻す。</p></div>
+            </div>
+            <div class="vpc-block offer-tone">
+              <div class="bh">嫌なことを減らす要因</div>
+              <div class="pair"><i>1</i><p>前回の決断を辿り、人の言葉で決めた一点を特定する。</p></div>
+              <div class="pair"><i>2</i><p>環境の悪さと、自分が大事にしたいことを分けて書く。</p></div>
+              <div class="pair"><i>3</i><p>勝ってきた事実を具体的に掘り、一度の失敗で閉じた前提をほどく。</p></div>
+              <div class="pair"><i>4</i><p>エージェントがやらない「選ぶ軸づくり」を、活動の前に終える。</p></div>
+            </div>
+            <div class="vpc-block offer-tone">
+              <div class="bh">嬉しいことを増やす要因</div>
+              <div class="pair"><i>1</i><p>選社軸を、次の求人を見るときの基準として書き残す。</p></div>
+              <div class="pair"><i>2</i><p>いいところを超具体的に掘り起こし、自己肯定の根拠にする。</p></div>
+              <div class="pair"><i>3</i><p>まとまりのない言葉を拾い集め、職種のラベルまで落とす。</p></div>
+              <div class="pair"><i>4</i><p>動く条件と残る条件を、本人の基準として並べる。残留も、軸がある結末にする。</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story">
+        <p>
+          C 林葵は「内省したい」とはまだ言わない。直近の転職で、エージェントの甘言を軸のないまま受け取った。入ってみたら労働環境が想像と違い、長くいる絵が描けない。欲しいのは反省のあとにある、次の選社軸だ。一度の失敗で次の挑戦を避けている人も、このマスにいる。
+        </p>
+        <p class="evidence">
+          顧客インサイト分析での対応：28歳の営業。「エージェントの甘言を鵜呑みにして軸なし意思決定。労働環境が悪すぎる。軸を明確にしたうえで転職したい」。就職活動の失敗を引きずり、価値発揮の振り返りから自己肯定が戻り、転職活動を再開した若手。選社軸が言語化できず、エージェントへの不満から壁打ちを求めた人。終了後に残留を選んだケースもある。
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 商品と提供価値 -->
+<section id="offer" class="muted">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">08 · Offer</span>
+      <h2>三人に渡すものは一つ、入り方が三つ</h2>
+      <div class="divider"></div>
+      <p>商品の本体は、考える時間を死守する伴走。月額で道具を置いておくだけだと、使われずに終わる。</p>
+    </div>
+
+    <div class="master">
+      <small>提供価値 · 全体</small>
+      <h2>まとまりのないキャリアの言葉を拾い集め、自分の軸として残す。</h2>
+      <div class="sublines">
+        <div><b>A 高橋沙織へ</b>重なった変化の中で、目指す方向と今の仕事の意味を一つの軸にする。</div>
+        <div><b>B 中村圭へ</b>後回しにしてきた将来を考え切り、通底する芯として残す。</div>
+        <div><b>C 林葵へ</b>軸のない決断のあとで、次に選ぶ基準を言葉にする。</div>
+      </div>
+    </div>
+
+    <div class="service-map" style="margin-top:18px;">
+      <div class="s-col">
+        <h4>何をするか · What</h4>
+        <ul>
+          <li>初回相談で、変化と内省への興味を聞く</li>
+          <li>6回の対話で、経歴・強み・制約・方向を言語化する</li>
+          <li>一人では開かない時間を、予約として確保する</li>
+          <li>カウンセラーは顧客より3〜5歳上</li>
+        </ul>
+      </div>
+      <div class="arrow-col">→</div>
+      <div class="s-col">
+        <h4>何が残るか · Why</h4>
+        <ul>
+          <li>働く軸（次の判断基準）</li>
+          <li>強みと価値観の自覚</li>
+          <li>キャリアカルテ</li>
+          <li>半年のアクションプラン</li>
+        </ul>
+      </div>
+      <div class="arrow-col">→</div>
+      <div class="s-col">
+        <h4>価格と広がり</h4>
+        <ul>
+          <li>総額15万円（12万円から改定）</li>
+          <li>1回2万5,000円。3万円は割高に感じるライン</li>
+          <li>実名のSNS投稿は終了後の自由判断</li>
+          <li>投稿には目安5万円を戻す。近接領域への広告費</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin:36px 0 12px;">入口で先に出す言葉</h3>
+    <table class="offer-table">
+      <thead>
+        <tr>
+          <th>誰に</th>
+          <th>先に出す</th>
+          <th>セットで出す</th>
+          <th>セッションで最初に上げるもの</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A 高橋沙織</td>
+          <td>目指す方向と、今の仕事の意味</td>
+          <td>そのために、価値観と強みを掘る</td>
+          <td>職場の変化、家庭の制約、「何屋か」</td>
+        </tr>
+        <tr>
+          <td>B 中村圭</td>
+          <td>考えたことが残る、内省の時間</td>
+          <td>終わると、通底する芯と今年のフォーカスが残る</td>
+          <td>後回しにしてきた中長期と、自分でなくてもいい仕事</td>
+        </tr>
+        <tr>
+          <td>C 林葵</td>
+          <td>軸を明確にしてから、次の活動</td>
+          <td>軸は、前回の決断と発揮してきた事実から作る</td>
+          <td>軸なしで決めた一点と、今の環境</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="note">
+      発信も同じ構造で育てる。内省に興味がある人には、意味と小さなやり方と、やったあとに残る良いことを届ける。変化で痛んでいる人には、働く軸と、軸があると次の決断が変わることを届ける。両方を並べ、どちらの入口からも同じ伴走に着地させる。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>キャリフレ　顧客セグメントとペルソナ　2026年9月の議論より</p>
+  </div>
+</footer>
+
+</body>
+</html>
