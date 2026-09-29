@@ -469,7 +469,7 @@ section[id] { scroll-margin-top: 108px; }
 /* ===== ペルソナ概観 ===== */
 .persona-nav {
   display: grid;
-  grid-template-columns: 1.15fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 .pnav {
@@ -746,7 +746,7 @@ section[id] { scroll-margin-top: 108px; }
 .master h2 { color: white; font-size: clamp(1.25rem, 2.4vw, 1.7rem); line-height: 1.5; }
 .master .sublines {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-top: 18px;
 }
@@ -811,11 +811,11 @@ footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
     <span class="label" style="color:rgba(255,255,255,0.62);">Segment · Persona · Value</span>
     <h1>変化と内省で切る、<br>顧客の地図</h1>
     <p class="lead">
-      2026年9月の議論を一枚に戻したもの。年齢や年収は池の枠で、買う理由は「自分ごとの変化」と「内省への興味」の掛け合わせにある。◎と二つの○に、それぞれの嬉しいこと・嫌なこと・引き受ける仕事を置いた。
+      2026年9月の議論を一枚に戻したもの。年齢や年収は池の枠で、買う理由は「自分ごとの変化」と「内省への興味」の掛け合わせにある。◎が二人、○が二人。それぞれに、嬉しいこと・嫌なこと・引き受ける仕事を置いた。
     </p>
     <div class="meta">
       <span class="pill">手書きの2×2を清書</span>
-      <span class="pill">ペルソナ 3人</span>
+      <span class="pill">ペルソナ 4人</span>
       <span class="pill">提供価値まで接続</span>
     </div>
   </div>
@@ -826,8 +826,9 @@ footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
     <a href="#map">地図</a>
     <a href="#logic">買う条件</a>
     <a href="#pond">池の条件</a>
-    <a href="#three">3人</a>
+    <a href="#three">4人</a>
     <a href="#saori">A 高橋沙織</a>
+    <a href="#daisuke">A2 森大輔</a>
     <a href="#kei">B 中村圭</a>
     <a href="#aoi">C 林葵</a>
     <a href="#offer">商品と提供価値</a>
@@ -888,12 +889,13 @@ footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
             <span class="mob-axis">内省への興味がある</span>
             <div class="mark">◎</div>
             <div class="who">A</div>
-            <p class="desc">職場と家庭が同時に動いた。目指す方向と、今の仕事の意味を、自分の言葉にしたい。</p>
+            <p class="desc">自分ごとの変化が来た。目指す方向と、今の仕事の意味を言葉にしたい。重なった変化の人も、出世の天井が見えた人も、ここ。</p>
           </a>
         </div>
 
         <div class="key-row">
           <span><b>A</b> 高橋沙織</span>
+          <span><b>A2</b> 森大輔</span>
           <span><b>B</b> 中村圭</span>
           <span><b>C</b> 林葵</span>
           <span><b>D</b> 今の優先の外</span>
@@ -1031,10 +1033,10 @@ footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
 <section id="three" class="muted">
   <div class="container">
     <div class="section-header">
-      <span class="label">04 · Three Personas</span>
-      <h2>◎と、二つの○</h2>
+      <span class="label">04 · Four Personas</span>
+      <h2>◎が二人、○が二人</h2>
       <div class="divider"></div>
-      <p>名前は仮。したいこと・嫌なこと・嬉しいことは、顧客インサイト分析の本人発言と、提供後に実際返った価値から書き直している。</p>
+      <p>名前は仮。AとBとCは、顧客インサイト分析の本人発言と、提供後に実際返った価値から書いている。A2は同じ◎に、40代前半の中間管理職を置いた具体像。</p>
     </div>
 
     <div class="persona-nav">
@@ -1043,6 +1045,12 @@ footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
         <h3>A 高橋沙織</h3>
         <div class="role">32歳 · 通信・ITのインフラエンジニア · 年収850万 · 東京・子2人</div>
         <p class="one">職場が変わり、家庭も動いた。目指したい方向を、今の条件込みで明確にしたい。</p>
+      </a>
+      <a class="pnav pnav-bull" href="#daisuke">
+        <div class="mark">◎</div>
+        <h3>A2 森大輔</h3>
+        <div class="role">42歳 · 消費財メーカーの営業企画課長 · 年収1,120万 · 神奈川・妻子</div>
+        <p class="one">「来期も課長のまま」と言われたあとも、この役をあと何年やるのかが残る。</p>
       </a>
       <a class="pnav pnav-intro" href="#kei">
         <div class="mark">○</div>
@@ -1164,11 +1172,115 @@ footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
   </div>
 </section>
 
-<!-- 圭 -->
-<section id="kei">
+<!-- 大輔 -->
+<section id="daisuke">
   <div class="container">
     <div class="section-header">
-      <span class="label">06 · Persona ○</span>
+      <span class="label">06 · Persona ◎</span>
+      <h2>出世の天井のあと、「あと何年この役か」が残る人</h2>
+      <div class="divider"></div>
+    </div>
+
+    <article class="persona-block">
+      <div class="persona-head">
+        <div class="who-line">
+          <div class="badge badge-bull">◎</div>
+          <div>
+            <h3>A2 森大輔（仮）</h3>
+            <p class="sub">内省への興味がある × 自分ごとの変化がある · Aと同じマス</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec">
+        <div><span>年齢</span><p>42歳</p></div>
+        <div><span>年収</span><p>1,120万円。賞与込み。住宅ローンと、息子の塾代が先に出る</p></div>
+        <div><span>住まい</span><p>神奈川県の分譲マンション。妻と、中学1年の息子。駅まで自転車で12分</p></div>
+        <div><span>業界</span><p>大手消費財メーカー。本社勤務</p></div>
+        <div><span>職種</span><p>営業企画部の課長。部下は7人。量販の販促と、営業部への数字の説明が仕事</p></div>
+        <div><span>SNS</span><p>同期の「立ち止まった」長文は最後まで読む。いいねは押さない。キャリアは書かない</p></div>
+        <div><span>休日</span><p>土曜は息子のサッカー送迎。夜、日経を開いたまま読まない。妻には「来週の部会」と答える</p></div>
+        <div><span>サブスク</span><p>日経電子版。通勤の音声は聞き流し、日曜の夜だけ巻き戻す。本は本棚で止まっている</p></div>
+        <div><span>趣味</span><p>以前はフルマラソン。膝を痛めてから、大会のエントリーはしていない</p></div>
+      </div>
+      <p class="spec-note">年齢・年収・役職は、Aのマスに40代前半の中間管理職を置いた輪郭。顧客インサイト分析に、この年齢と役職の購入者はいない。一日の場面は、そのパターンの具体化。</p>
+
+      <div class="value-banner vb-bull">
+        <small>提供価値</small>
+        <strong>出世が止まったあと、「この役をあと何年やるのか」に自分の言葉で答えが出る。今の部の仕事が、その答えになる。</strong>
+      </div>
+
+      <div class="vpc">
+        <div class="vpc-col">
+          <div class="vpc-h cust">顧客</div>
+          <div class="vpc-body">
+            <div class="vpc-block">
+              <div class="bh">したいこと</div>
+              <div class="pair"><i>1</i><p>「あと何年、この役をやるのか」に、昇格以外の自分の言葉で答えたい。</p></div>
+              <div class="pair"><i>2</i><p>通してきた数字を、管理職の途中ではなく、自分の仕事として言いたい。</p></div>
+              <div class="pair"><i>3</i><p>キャリアシートの「専門性を深めたい」を、去年と同じ文のままにしたくない。</p></div>
+            </div>
+            <div class="vpc-block">
+              <div class="bh">嫌なこと · Pain</div>
+              <div class="pair"><i>1</i><p>部長は54歳で席が空かない。同期は去年、子会社の部長で出た。</p></div>
+              <div class="pair"><i>2</i><p>評価は3年「標準の上」。コメントは「安定して期待通り」で、自分の言葉がない。</p></div>
+              <div class="pair"><i>3</i><p>部会では「型を固めてほしい」。研修では「チームで成果」と答え、シートだけ鞄に残る。</p></div>
+              <div class="pair"><i>4</i><p>同期に「このままでいいのか」と聞かれ、「ローンがある」と笑った。質問だけ残った。</p></div>
+            </div>
+            <div class="vpc-block">
+              <div class="bh">嬉しいこと · Gain</div>
+              <div class="pair"><i>1</i><p>「あと何年やるのか」に、昇格以外の判断基準が自分の言葉でついた。</p></div>
+              <div class="pair"><i>2</i><p>数字を通してきたことは当たり前だと思っていたが、外から見ると強みだった。</p></div>
+              <div class="pair"><i>3</i><p>キャリアシートの定型文を、去年のコピーではなく自分の言葉にできた。</p></div>
+              <div class="pair"><i>4</i><p>今の部で渡すことと残すことが分かれ、半年の行動まで落ちた。</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="vpc-col">
+          <div class="vpc-h offer">提供</div>
+          <div class="vpc-body">
+            <div class="vpc-block offer-tone">
+              <div class="bh">商品・サービス</div>
+              <div class="pair"><i>1</i><p>初回で、空かない席と、「安定して期待通り」に自分の言葉がないことを両方聞く。</p></div>
+              <div class="pair"><i>2</i><p>全6回・15万円。内省とは呼ばせず、価値観と強みを掘り、課長の経験の仕分けまで通す。</p></div>
+              <div class="pair"><i>3</i><p>出口は、残りの方向、今の部との接続、半年の行動。転職の成否ではない。</p></div>
+              <div class="pair"><i>4</i><p>申し込み直後に初回を固定する。部会と家族の予定で、初回前に消える。</p></div>
+            </div>
+            <div class="vpc-block offer-tone">
+              <div class="bh">嫌なことを減らす要因</div>
+              <div class="pair"><i>1</i><p>空かない部長席を、能力不足の結論にしない。制約として置く。</p></div>
+              <div class="pair"><i>2</i><p>「標準の上」と、コメントに自分の言葉がないことを分けて置く。</p></div>
+              <div class="pair"><i>3</i><p>研修で「チームで成果」と答えたシートを、言えなかった問いに戻す。</p></div>
+              <div class="pair"><i>4</i><p>「ローンがある」と笑って流した質問を、残る条件として扱う。</p></div>
+            </div>
+            <div class="vpc-block offer-tone">
+              <div class="bh">嬉しいことを増やす要因</div>
+              <div class="pair"><i>1</i><p>過去の意思決定を辿り、「あと何年か」への答えを本人の言葉で返す。</p></div>
+              <div class="pair"><i>2</i><p>数字を通してきた場面を、当たり前ではなく強みの根拠にする。</p></div>
+              <div class="pair"><i>3</i><p>定型文の裏に残っていた問いを、本人の前に置く。</p></div>
+              <div class="pair"><i>4</i><p>今の部の仕事と強みを接続し、半年で渡すことと残すことを分けて終える。</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story">
+        <p>
+          A2 森大輔の口癖は「この役を、あと何年やるんだろう」だ。内省とは言わない。部下の話は30分聞き、自分の番は「特にないです」。研修のシートは捨てず、同期の長文はいいねせず最後まで読む。妻には「来週の部会」と答える。同じ問いが戻ってくる。A 高橋沙織と同じ◎で、変化の中身は出世の天井である。
+        </p>
+        <p class="evidence">
+          顧客インサイト分析に、42歳で課長の購入者はいない。近い事実は別の年齢にある。31歳の官僚は、出世競争を勝ち抜くために今の自分に何が足りないかを糸口にしていた。34歳の人事は、現職で評価されていない感覚を持っていた。34歳のエンジニアは「このままではまずい」と、5年残っていた「やらねば」を半年の計画まで落とした。44歳の代表は、案件は安定しているのに労働集約のまま次がない、と壁打ちした。森大輔は、これらの「次が見えない」「評価は悪くないのに名前がない」を、40代前半の中間管理職の一週間に置いた輪郭。
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 圭 -->
+<section id="kei" class="white">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">07 · Persona ○</span>
       <h2>芯がある気がするのに、後回しの人</h2>
       <div class="divider"></div>
     </div>
@@ -1269,10 +1381,10 @@ footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
 </section>
 
 <!-- 葵 -->
-<section id="aoi" class="white">
+<section id="aoi">
   <div class="container">
     <div class="section-header">
-      <span class="label">07 · Persona ○</span>
+      <span class="label">08 · Persona ○</span>
       <h2>軸のない決断のあとで、次の基準が欲しい人</h2>
       <div class="divider"></div>
     </div>
@@ -1376,8 +1488,8 @@ footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
 <section id="offer" class="muted">
   <div class="container">
     <div class="section-header">
-      <span class="label">08 · Offer</span>
-      <h2>三人に渡すものは一つ、入り方が三つ</h2>
+      <span class="label">09 · Offer</span>
+      <h2>四人に渡すものは一つ、入り方が四つ</h2>
       <div class="divider"></div>
       <p>商品の本体は、考える時間を死守する伴走。月額で道具を置いておくだけだと、使われずに終わる。</p>
     </div>
@@ -1387,6 +1499,7 @@ footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
       <h2>まとまりのないキャリアの言葉を拾い集め、自分の軸として残す。</h2>
       <div class="sublines">
         <div><b>A 高橋沙織へ</b>重なった変化の中で、目指す方向と今の仕事の意味を一つの軸にする。</div>
+        <div><b>A2 森大輔へ</b>出世が止まったあと、「この役をあと何年やるのか」に答えが出て、今の部の仕事がその答えになる。</div>
         <div><b>B 中村圭へ</b>後回しにしてきた将来を考え切り、通底する芯として残す。</div>
         <div><b>C 林葵へ</b>軸のない決断のあとで、次に選ぶ基準を言葉にする。</div>
       </div>
@@ -1440,6 +1553,12 @@ footer p { color: rgba(255,255,255,0.45); font-size: 13px; text-align: center; }
           <td>目指す方向と、今の仕事の意味</td>
           <td>そのために、価値観と強みを掘る</td>
           <td>職場の変化、家庭の制約、「何屋か」</td>
+        </tr>
+        <tr>
+          <td>A2 森大輔</td>
+          <td>「あと何年、この役をやるのか」</td>
+          <td>その問いを、課長として通してきた経験の上に落とす</td>
+          <td>空かない部長席、「安定して期待通り」、ローンがあるからと笑った夜</td>
         </tr>
         <tr>
           <td>B 中村圭</td>
